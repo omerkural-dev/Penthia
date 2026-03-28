@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Penthia Store | Interactive Boards</title>
+  <title>Penthia | Interactive Boards</title>
   <style>
     :root {
-      --bg: #0a0f1e;
-      --bg-2: #10172c;
-      --panel: #101829;
-      --panel-2: #141f35;
-      --text: #eef4ff;
-      --muted: #b8c4dd;
-      --line: rgba(255,255,255,0.1);
-      --accent: #6ea8fe;
-      --accent-2: #7ef0c8;
-      --shadow: 0 24px 60px rgba(0,0,0,0.35);
+      --bg: #f4f8ff;
+      --bg-2: #edf3fb;
+      --panel: #ffffff;
+      --panel-2: #f7faff;
+      --text: #18233a;
+      --muted: #60708f;
+      --line: rgba(24,35,58,0.12);
+      --accent: #4c8df6;
+      --accent-2: #57d6b4;
+      --shadow: 0 22px 50px rgba(33,52,88,0.12);
       --radius: 24px;
       --max: 1280px;
       --amazon-yellow: #ffd814;
@@ -29,9 +29,9 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top right, rgba(110,168,254,0.12), transparent 24%),
-        radial-gradient(circle at left, rgba(126,240,200,0.08), transparent 18%),
-        linear-gradient(180deg, #070b16, #0a0f1e 35%, #0d1324 100%);
+        radial-gradient(circle at top right, rgba(76,141,246,0.12), transparent 24%),
+        radial-gradient(circle at left, rgba(87,214,180,0.1), transparent 18%),
+        linear-gradient(180deg, #fbfdff, #f4f8ff 35%, #edf3fb 100%);
     }
 
     a { color: inherit; text-decoration: none; }
@@ -43,8 +43,8 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(8, 12, 24, 0.82);
-      backdrop-filter: blur(18px);
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--line);
     }
 
@@ -62,18 +62,15 @@
       gap: 12px;
       font-weight: 800;
       letter-spacing: 0.3px;
+      white-space: nowrap;
     }
 
-    .brand-mark {
+    .brand img {
       width: 42px;
       height: 42px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      display: grid;
-      place-items: center;
-      color: #06111f;
-      font-weight: 900;
-      box-shadow: 0 12px 28px rgba(110,168,254,0.26);
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 10px 24px rgba(76,141,246,0.16);
     }
 
     .nav-links {
@@ -90,12 +87,23 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      background: rgba(255,255,255,0.06);
+      background: rgba(76,141,246,0.05);
       border: 1px solid var(--line);
       border-radius: 999px;
       padding: 11px 16px;
       color: var(--muted);
     }
+
+    .search input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+      font: inherit;
+    }
+
+    .search input::placeholder { color: var(--muted); }
 
     .btn {
       border: none;
@@ -107,13 +115,13 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #8b7fff);
+      background: linear-gradient(135deg, var(--accent), #7d8ef8);
       color: #fff;
-      box-shadow: 0 18px 34px rgba(110,168,254,0.2);
+      box-shadow: 0 16px 28px rgba(76,141,246,0.18);
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.06);
+      background: #fff;
       color: var(--text);
       border: 1px solid var(--line);
     }
@@ -155,7 +163,7 @@
       gap: 10px;
       padding: 10px 14px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.05);
+      background: rgba(76,141,246,0.06);
       border: 1px solid var(--line);
       color: var(--muted);
       margin-bottom: 18px;
@@ -191,7 +199,7 @@
     }
 
     .highlight {
-      background: rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.82);
       border: 1px solid var(--line);
       border-radius: 20px;
       padding: 18px;
@@ -215,7 +223,7 @@
       overflow: hidden;
       border-radius: 30px;
       border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(246,249,255,0.96));
       box-shadow: var(--shadow);
     }
 
@@ -229,15 +237,14 @@
       position: absolute;
       padding: 14px 16px;
       border-radius: 18px;
-      background: rgba(9,14,26,0.82);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--line);
       box-shadow: var(--shadow);
     }
 
     .floating small { display: block; color: var(--muted); margin-bottom: 4px; }
     .f1 { top: 24px; left: -14px; }
-    .f2 { right: -10px; bottom: 28px; }
 
     .section {
       padding: 34px 0 76px;
@@ -271,7 +278,7 @@
     }
 
     .feature-card {
-      background: rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.86);
       border: 1px solid var(--line);
       border-radius: 24px;
       padding: 22px;
@@ -282,7 +289,7 @@
     .feature-card p { margin: 0; color: var(--muted); line-height: 1.7; }
 
     .store-shell {
-      background: rgba(255,255,255,0.035);
+      background: rgba(255,255,255,0.72);
       border: 1px solid var(--line);
       border-radius: 28px;
       padding: 18px;
@@ -302,29 +309,18 @@
 
     .store-layout {
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 1fr;
       gap: 18px;
     }
 
-    .filters, .results {
+    .results {
       border-radius: 24px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.035);
+      background: rgba(255,255,255,0.7);
       padding: 18px;
     }
 
-    .filters h3, .results h3 { margin-top: 0; }
-
-    .filter-group { margin-bottom: 20px; }
-    .filter-group h4 { margin: 0 0 10px; font-size: .96rem; }
-    .filter-group label {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 8px 0;
-      color: var(--muted);
-      font-size: .95rem;
-    }
+    .results h3 { margin-top: 0; }
 
     .product-grid {
       display: grid;
@@ -341,12 +337,13 @@
       cursor: pointer;
       display: flex;
       flex-direction: column;
+      box-shadow: var(--shadow);
     }
 
     .card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 24px 50px rgba(0,0,0,0.28);
-      border-color: rgba(110,168,254,0.35);
+      box-shadow: 0 24px 50px rgba(34,53,88,0.14);
+      border-color: rgba(76,141,246,0.35);
     }
 
     .card-media {
@@ -354,7 +351,7 @@
       padding: 16px;
       display: grid;
       place-items: center;
-      background: linear-gradient(180deg, #18233d, #0e1528);
+      background: linear-gradient(180deg, #f6f9ff, #eaf1fb);
     }
 
     .card-media img {
@@ -377,9 +374,9 @@
       align-self: flex-start;
       padding: 7px 12px;
       border-radius: 999px;
-      background: rgba(126,240,200,0.12);
-      border: 1px solid rgba(126,240,200,0.2);
-      color: #cbfff1;
+      background: rgba(87,214,180,0.12);
+      border: 1px solid rgba(87,214,180,0.22);
+      color: #0e6a56;
       font-size: .82rem;
       font-weight: 700;
     }
@@ -398,8 +395,9 @@
       border-collapse: collapse;
       overflow: hidden;
       border-radius: 20px;
-      background: rgba(255,255,255,0.035);
+      background: rgba(255,255,255,0.85);
       border: 1px solid var(--line);
+      box-shadow: var(--shadow);
     }
 
     .spec-table th, .spec-table td {
@@ -411,14 +409,8 @@
 
     .spec-table th {
       width: 220px;
-      color: #dfe8ff;
-      background: rgba(255,255,255,0.03);
-    }
-
-    .compare-note {
-      margin-top: 14px;
-      color: var(--muted);
-      line-height: 1.7;
+      color: var(--text);
+      background: rgba(76,141,246,0.04);
     }
 
     .modal {
@@ -429,7 +421,7 @@
       align-items: center;
       justify-content: center;
       padding: 18px;
-      background: rgba(4,7,14,0.78);
+      background: rgba(17,29,52,0.36);
       backdrop-filter: blur(14px);
     }
 
@@ -439,10 +431,10 @@
       width: min(1240px, 100%);
       max-height: calc(100vh - 36px);
       overflow: auto;
-      background: #0b1222;
+      background: #ffffff;
       border: 1px solid var(--line);
       border-radius: 28px;
-      box-shadow: 0 34px 80px rgba(0,0,0,0.5);
+      box-shadow: 0 34px 80px rgba(34,53,88,0.22);
       position: relative;
     }
 
@@ -455,8 +447,8 @@
       height: 46px;
       border-radius: 50%;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.06);
-      color: #fff;
+      background: rgba(255,255,255,0.96);
+      color: var(--text);
       cursor: pointer;
       z-index: 2;
       display: block;
@@ -474,7 +466,7 @@
     }
 
     .gallery-main {
-      background: linear-gradient(180deg, #17223d, #0f162a);
+      background: linear-gradient(180deg, #f6f9ff, #edf3fb);
       border: 1px solid var(--line);
       border-radius: 24px;
       padding: 20px;
@@ -500,7 +492,7 @@
     .thumb {
       border: 1px solid var(--line);
       border-radius: 16px;
-      background: rgba(255,255,255,0.035);
+      background: rgba(247,250,255,0.96);
       padding: 10px;
       min-height: 110px;
       display: grid;
@@ -519,7 +511,7 @@
     }
 
     .rating {
-      color: #ffd36e;
+      color: #d69100;
       font-size: .96rem;
       margin-bottom: 14px;
     }
@@ -549,7 +541,7 @@
     .chip {
       padding: 10px 14px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.05);
+      background: rgba(76,141,246,0.06);
       border: 1px solid var(--line);
       color: var(--text);
       font-size: .92rem;
@@ -559,7 +551,7 @@
       align-self: start;
       border: 1px solid var(--line);
       border-radius: 24px;
-      background: rgba(255,255,255,0.04);
+      background: rgba(247,250,255,0.96);
       padding: 18px;
       box-shadow: var(--shadow);
       position: sticky;
@@ -573,22 +565,12 @@
     .buybox-note {
       margin-top: 16px;
       padding: 12px 14px;
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.9);
       border: 1px solid var(--line);
       border-radius: 16px;
       color: var(--muted);
       line-height: 1.7;
       font-size: .93rem;
-    }
-
-    .store-note {
-      padding: 22px;
-      border-radius: 24px;
-      background: linear-gradient(135deg, rgba(110,168,254,0.14), rgba(139,127,255,0.1));
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      line-height: 1.75;
-      color: var(--muted);
     }
 
     footer {
@@ -599,13 +581,12 @@
 
     @media (max-width: 1150px) {
       .hero-grid,
-      .store-layout,
       .product-page { grid-template-columns: 1fr; }
       .feature-grid,
       .product-grid,
       .hero-highlights { grid-template-columns: repeat(2, 1fr); }
       .hero-visual { min-height: 440px; }
-      .f1, .f2 { position: static; margin-top: 12px; }
+      .f1 { position: static; margin-top: 12px; }
       .buybox { position: static; }
     }
 
@@ -631,15 +612,14 @@
   <header class="nav">
     <div class="container nav-inner">
       <a class="brand" href="#top">
-        <span class="brand-mark">P</span>
+        <img src="penthialogo.jpg" alt="Penthia logo" />
         <span>Penthia</span>
       </a>
-      <div class="search">Search smartboards, classroom displays, product models, configurations...</div>
+      <div class="search"><input id="siteSearch" type="text" placeholder="Search for products" aria-label="Search for products" /></div>
       <nav class="nav-links">
         <a href="#about">About</a>
         <a href="#products">Store</a>
         <a href="#compare">Compare</a>
-        <a href="#contact">Contact</a>
       </nav>
       <a href="#products" class="btn btn-primary">Shop Now</a>
     </div>
@@ -649,10 +629,10 @@
     <section class="hero container">
       <div class="hero-grid">
         <div>
-          <div class="eyebrow">Penthia Online Store • Current product family concept</div>
+          <div class="eyebrow">Penthia Online Store • Interactive classroom displays</div>
           <h1>Professional smartboards for modern schools.</h1>
           <p>
-            Welcome to the Penthia store. Our current focus is a premium smartboard lineup built around the <strong>iBoard</strong> family. This concept presents the product catalog in a polished e-commerce style so customers can browse models, compare variations, and view each product in a detailed product-page experience.
+            Welcome to the Penthia store. Explore our interactive smartboard lineup built around the <strong>iBoard</strong> family. Browse products, compare models, and review each product in a detailed storefront experience designed for real customers and real sales conversations.
           </p>
           <div class="hero-actions">
             <a href="#products" class="btn btn-primary">Browse Products</a>
@@ -675,15 +655,11 @@
         </div>
         <div class="hero-visual">
           <div class="hero-device">
-            <img src="iBoardWebsite,windowsbackgroundiboardpro.png" alt="Penthia iBoard product concept" />
+            <img src="iBoardWebsite,windowsbackgroundiboardpro.png" alt="Penthia iBoard product" />
           </div>
           <div class="floating f1">
             <small>Current flagship family</small>
             <strong>iBoard Pro Max / iBoard Pro / iBoard</strong>
-          </div>
-          <div class="floating f2">
-            <small>Placeholder media currently used</small>
-            <strong>All products use repository images until dedicated product photos are added</strong>
           </div>
         </div>
       </div>
@@ -695,14 +671,14 @@
           <div>
             <h2>Built to present products clearly.</h2>
             <p>
-              This store concept is designed for customer presentation. It is structured like a complete online storefront, with browseable product cards, detailed product pages, specification comparisons, and product variations listed cleanly. It does not include investor-facing or delegation language — it is focused strictly on presenting Penthia’s products professionally to customers.
+              This store is structured as a complete online storefront for Penthia, with browseable product cards, detailed product pages, specification comparisons, and product variations listed clearly for customers.
             </p>
           </div>
         </div>
         <div class="feature-grid">
           <article class="feature-card">
             <h3>Professional Catalog Layout</h3>
-            <p>A polished storefront structure that can later grow into a full online company website with more products, product media, and inquiry workflows.</p>
+            <p>A polished storefront structure that can grow with more products, richer media, and expanded sales workflows.</p>
           </article>
           <article class="feature-card">
             <h3>Detailed Product Variations</h3>
@@ -710,11 +686,11 @@
           </article>
           <article class="feature-card">
             <h3>Amazon-Inspired Product Experience</h3>
-            <p>Product pages are structured with a visual gallery, specification highlights, model options, and a right-side purchase/inquiry box.</p>
+            <p>Product pages are structured with a visual gallery, specification highlights, model options, and a right-side buy box.</p>
           </article>
           <article class="feature-card">
             <h3>Easy to Expand</h3>
-            <p>This single-file HTML concept is simple to keep developing now and can later be split into real multi-page product flows or a React store.</p>
+            <p>This single-file HTML version is simple to keep improving now and can later evolve into a larger storefront.</p>
           </article>
         </div>
       </div>
@@ -726,7 +702,7 @@
           <div>
             <h2>Penthia Store</h2>
             <p>
-              Current product lineup based on the customization request: three distinct product models with clearly listed variations. For now, all products use the current placeholder repository images until more specific product media is added.
+              Browse the current iBoard lineup and view each model with its listed configurations.
             </p>
           </div>
         </div>
@@ -737,41 +713,14 @@
               <strong style="font-size:1.08rem;">Browse Products</strong><br>
               <span class="muted">Interactive smartboards for schools and educational environments</span>
             </div>
-            <div class="search">Search iBoard Pro Max, iBoard Pro, iBoard, Android, Windows, 4K, stylus...</div>
+            <div class="search"><input id="productSearch" type="text" placeholder="Search for products" aria-label="Search for products" /></div>
           </div>
 
           <div class="store-layout">
-            <aside class="filters">
-              <h3>Filters</h3>
-              <div class="filter-group">
-                <h4>Product Family</h4>
-                <label><input type="checkbox" checked> iBoard Pro Max</label>
-                <label><input type="checkbox" checked> iBoard Pro</label>
-                <label><input type="checkbox" checked> iBoard</label>
-              </div>
-              <div class="filter-group">
-                <h4>Operating System</h4>
-                <label><input type="checkbox" checked> Android</label>
-                <label><input type="checkbox" checked> Windows</label>
-              </div>
-              <div class="filter-group">
-                <h4>Display Size</h4>
-                <label><input type="checkbox" checked> 85”</label>
-                <label><input type="checkbox" checked> 70”</label>
-                <label><input type="checkbox" checked> 65”</label>
-              </div>
-              <div class="filter-group">
-                <h4>Included Support</h4>
-                <label><input type="checkbox" checked> Wall-Mount</label>
-                <label><input type="checkbox" checked> Stand Support</label>
-                <label><input type="checkbox" checked> Stylus Support</label>
-              </div>
-            </aside>
-
             <section class="results">
               <h3>Available Models</h3>
-              <div class="product-grid">
-                <article class="card" onclick="openProduct('pro-max')">
+              <div class="product-grid" id="productGrid">
+                <article class="card" data-search="iboard pro max 85 4k android windows stylus touchscreen wall mount stand 16gb 256gb 32gb 512gb" onclick="openProduct('pro-max')">
                   <div class="card-media">
                     <img src="iBoardWebsite,windowsbackgroundiboardpro.png" alt="iBoard Pro Max" />
                   </div>
@@ -784,7 +733,7 @@
                   </div>
                 </article>
 
-                <article class="card" onclick="openProduct('pro')">
+                <article class="card" data-search="iboard pro 70 4k android windows stylus touchscreen wall mount stand 16gb 256gb" onclick="openProduct('pro')">
                   <div class="card-media">
                     <img src="iBoardWebsite,androidbackground,withstandtoholdup.png" alt="iBoard Pro" />
                   </div>
@@ -797,7 +746,7 @@
                   </div>
                 </article>
 
-                <article class="card" onclick="openProduct('iboard')">
+                <article class="card" data-search="iboard 65 4k android stylus touchscreen wall mount stand 8gb 128gb" onclick="openProduct('iboard')">
                   <div class="card-media">
                     <img src="iBoardWebsite,androidbackgroundiboardpro.png" alt="iBoard" />
                   </div>
@@ -822,7 +771,7 @@
           <div>
             <h2>Compare the lineup</h2>
             <p>
-              This comparison table summarizes the three current products exactly according to the customization outline provided to the manufacturer.
+              This comparison table summarizes the three current products and their listed configurations.
             </p>
           </div>
         </div>
@@ -864,24 +813,12 @@
             <td>Touchscreen with stylus support</td>
           </tr>
         </table>
-        <p class="compare-note">
-          Placeholder imagery currently used across the lineup: <strong>iBoardWebsite,windowsbackgroundiboardpro.png</strong>, <strong>iBoardWebsite,androidbackground,withstandtoholdup.png</strong>, and <strong>iBoardWebsite,androidbackgroundiboardpro.png</strong>. Additional product-specific media can be added later without changing the overall store structure.
-        </p>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="store-note">
-          <strong style="display:block; color:var(--text); margin-bottom:8px; font-size:1.1rem;">Customer Presentation Concept</strong>
-          This page is structured as a complete online store concept for Penthia. It is designed to present products professionally to customers. Later, it can be expanded with inquiry forms, real pricing, shipping or installation details, technical downloads, and separate product media galleries.
-        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">© 2026 Penthia Store. Product presentation concept for the current iBoard lineup.</div>
+    <div class="container">© 2026 Penthia Store. All rights reserved.</div>
   </footer>
 
   <div class="modal" id="modal" onclick="closeModal(event)">
@@ -898,7 +835,7 @@
         <section class="details">
           <div class="badge" id="modalBadge"></div>
           <h2 id="modalTitle"></h2>
-          <div class="rating">★★★★★ <span class="muted">Store presentation layout</span></div>
+          <div class="rating">★★★★★ <span class="muted">Product page</span></div>
           <p id="modalDescription"></p>
           <ul id="modalBullets"></ul>
 
@@ -965,7 +902,7 @@
         support: ['Wall-mount support', 'Stand support'],
         input: ['Touchscreen', 'Stylus support'],
         price: 'Request Pricing',
-        note: 'Large-format flagship board for premium classroom and lecture environments. Placeholder images are used until dedicated Pro Max visuals are added.'
+        note: 'Current store images shown for this product.'
       },
       'pro': {
         badge: 'Core Product',
@@ -984,7 +921,7 @@
         support: ['Wall-mount support', 'Stand support'],
         input: ['Touchscreen', 'Stylus support'],
         price: 'Request Pricing',
-        note: 'Mainline product for schools looking for a balanced premium board. Placeholder images are currently shared across the store until more specific imagery is added.'
+        note: 'Current store images shown for this product.'
       },
       'iboard': {
         badge: 'Essential Model',
@@ -1003,7 +940,7 @@
         support: ['Wall-mount support', 'Stand support'],
         input: ['Touchscreen', 'Stylus support'],
         price: 'Request Pricing',
-        note: 'Compact entry model for schools that want the iBoard ecosystem in a smaller format. Placeholder images are being used for now.'
+        note: 'Current store images shown for this product.'
       }
     };
 
@@ -1013,7 +950,7 @@
 
     function renderThumbs() {
       document.getElementById('thumbs').innerHTML = placeholderImages.map(src => `
-        <div class="thumb"><img src="${src}" alt="Product placeholder image"></div>
+        <div class="thumb"><img src="${src}" alt="Product image"></div>
       `).join('');
     }
 
@@ -1048,9 +985,25 @@
       if (e.target.id === 'modal') forceClose();
     }
 
+    function attachSearch(inputId) {
+      const input = document.getElementById(inputId);
+      if (!input) return;
+      input.addEventListener('input', function () {
+        const query = this.value.trim().toLowerCase();
+        const cards = document.querySelectorAll('#productGrid .card');
+        cards.forEach(card => {
+          const haystack = (card.getAttribute('data-search') || '') + ' ' + card.textContent.toLowerCase();
+          card.style.display = !query || haystack.includes(query) ? '' : 'none';
+        });
+      });
+    }
+
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') forceClose();
     });
+
+    attachSearch('siteSearch');
+    attachSearch('productSearch');
   </script>
 </body>
 </html>
