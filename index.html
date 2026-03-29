@@ -465,6 +465,10 @@
       min-width: 0;
     }
 
+    .gallery-wrap {
+      position: relative;
+    }
+
     .gallery-main {
       background: linear-gradient(180deg, #f6f9ff, #edf3fb);
       border: 1px solid var(--line);
@@ -482,6 +486,23 @@
       border-radius: 18px;
     }
 
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.95);
+      cursor: pointer;
+      z-index: 1;
+      font-size: 1.3rem;
+    }
+
+    .gallery-arrow.left { left: 12px; }
+    .gallery-arrow.right { right: 12px; }
+
     .thumbs {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -497,6 +518,12 @@
       min-height: 110px;
       display: grid;
       place-items: center;
+      cursor: pointer;
+    }
+
+    .thumb.active {
+      border-color: rgba(76,141,246,0.55);
+      box-shadow: 0 0 0 2px rgba(76,141,246,0.12) inset;
     }
 
     .thumb img {
@@ -573,6 +600,64 @@
       font-size: .93rem;
     }
 
+    .contact-shell {
+      background: rgba(255,255,255,0.86);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      max-width: 860px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px 16px;
+      font: inherit;
+      color: var(--text);
+      background: #fff;
+      outline: none;
+    }
+
+    .field textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .contact-note {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 0 0 18px;
+    }
+
+    .contact-inline-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 6px;
+    }
+
     footer {
       padding: 34px 0 56px;
       text-align: center;
@@ -595,7 +680,8 @@
       .feature-grid,
       .product-grid,
       .hero-highlights,
-      .thumbs { grid-template-columns: 1fr; }
+      .thumbs,
+      .contact-grid { grid-template-columns: 1fr; }
       .hero { padding-top: 44px; }
       h1 { font-size: 2.5rem; }
       .panel { border-radius: 20px; }
@@ -605,6 +691,8 @@
       .spec-table th, .spec-table td { display: block; width: 100%; }
       .spec-table tr { display: block; border-bottom: 1px solid var(--line); }
       .spec-table th { border-bottom: none; }
+      .gallery-arrow.left { left: 8px; }
+      .gallery-arrow.right { right: 8px; }
     }
   </style>
 </head>
@@ -620,6 +708,7 @@
         <a href="#about">About</a>
         <a href="#products">Store</a>
         <a href="#compare">Compare</a>
+        <a href="#contact">Contact</a>
       </nav>
       <a href="#products" class="btn btn-primary">Shop Now</a>
     </div>
@@ -640,8 +729,8 @@
           </div>
           <div class="hero-highlights">
             <div class="highlight">
-              <strong>3 Product Lines</strong>
-              <span class="muted">iBoard Pro Max, iBoard Pro, and iBoard — each positioned for different classroom needs.</span>
+              <strong>4 Product Lines</strong>
+              <span class="muted">iBoard Pro Max, iBoard Pro, iBoard, and projector solutions for different learning spaces.</span>
             </div>
             <div class="highlight">
               <strong>Multiple Variations</strong>
@@ -649,7 +738,7 @@
             </div>
             <div class="highlight">
               <strong>Touch + Stylus</strong>
-              <span class="muted">All current models include touchscreen capability with stylus support.</span>
+              <span class="muted">All current board models include touchscreen capability with stylus support.</span>
             </div>
           </div>
         </div>
@@ -669,28 +758,28 @@
       <div class="container">
         <div class="section-header">
           <div>
-            <h2>Built to present products clearly.</h2>
+            <h2>Built for better teaching and presentation.</h2>
             <p>
-              This store is structured as a complete online storefront for Penthia, with browseable product cards, detailed product pages, specification comparisons, and product variations listed clearly for customers.
+              Penthia boards are designed for classrooms and professional learning environments with 4K displays, touchscreen interaction, stylus support, flexible operating system configurations, and support for both wall-mount and stand-based setups.
             </p>
           </div>
         </div>
         <div class="feature-grid">
           <article class="feature-card">
-            <h3>Professional Catalog Layout</h3>
-            <p>A polished storefront structure that can grow with more products, richer media, and expanded sales workflows.</p>
+            <h3>4K Visual Clarity</h3>
+            <p>High-resolution displays help lessons, presentations, diagrams, and media look sharp and easy to follow in classroom settings.</p>
           </article>
           <article class="feature-card">
-            <h3>Detailed Product Variations</h3>
-            <p>Each model lists operating system options, storage configurations, mounting support, and display specifications in a customer-friendly way.</p>
+            <h3>Touchscreen + Pen Support</h3>
+            <p>Interactive touch control with stylus support makes writing, annotating, and presenting more natural for teachers and students.</p>
           </article>
           <article class="feature-card">
-            <h3>Amazon-Inspired Product Experience</h3>
-            <p>Product pages are structured with a visual gallery, specification highlights, model options, and a right-side buy box.</p>
+            <h3>Flexible System Options</h3>
+            <p>Select Android, Windows, or model-specific configurations depending on the needs of the school, teacher, or institution.</p>
           </article>
           <article class="feature-card">
-            <h3>Easy to Expand</h3>
-            <p>This single-file HTML version is simple to keep improving now and can later evolve into a larger storefront.</p>
+            <h3>Easy Installation Options</h3>
+            <p>Each board line is built with support for wall mounting and stand placement for different room layouts and deployment needs.</p>
           </article>
         </div>
       </div>
@@ -758,6 +847,19 @@
                     <div class="muted">Click to view all listed variations</div>
                   </div>
                 </article>
+
+                <article class="card" data-search="projector iboard projector presentation classroom display projection" onclick="openProduct('projector')">
+                  <div class="card-media">
+                    <img src="iBoardProector.png" alt="Penthia Projector" />
+                  </div>
+                  <div class="card-body">
+                    <span class="badge">Projection</span>
+                    <div class="card-title">Penthia Projector</div>
+                    <div class="muted">Projection solution for classrooms and presentation spaces</div>
+                    <div class="price">Projector Line</div>
+                    <div class="muted">Click to view product images</div>
+                  </div>
+                </article>
               </div>
             </section>
           </div>
@@ -771,7 +873,7 @@
           <div>
             <h2>Compare the lineup</h2>
             <p>
-              This comparison table summarizes the three current products and their listed configurations.
+              This comparison table summarizes the current products and their listed configurations.
             </p>
           </div>
         </div>
@@ -781,38 +883,98 @@
             <td><strong>iBoard Pro Max</strong></td>
             <td><strong>iBoard Pro</strong></td>
             <td><strong>iBoard</strong></td>
+            <td><strong>Penthia Projector</strong></td>
           </tr>
           <tr>
             <th>Display</th>
             <td>85” 4K</td>
             <td>70” 4K</td>
             <td>65” 4K</td>
+            <td>Projector display</td>
           </tr>
           <tr>
             <th>Operating System</th>
             <td>Android and Windows configurations, including Windows-only and Android-only options</td>
             <td>Android (primary), with optional Windows configuration</td>
             <td>Android only</td>
+            <td>Contact for configuration details</td>
           </tr>
           <tr>
             <th>Storage / RAM</th>
             <td>16GB RAM / 256GB or 32GB RAM / 512GB</td>
             <td>16GB RAM / 256GB</td>
             <td>8GB RAM / 128GB</td>
+            <td>Contact for configuration details</td>
           </tr>
           <tr>
             <th>Support</th>
             <td>Wall-mount and stand support</td>
             <td>Wall-mount and stand support</td>
             <td>Wall-mount and stand support</td>
+            <td>Classroom and presentation use</td>
           </tr>
           <tr>
             <th>Touch / Stylus</th>
             <td>Touchscreen with stylus support</td>
             <td>Touchscreen with stylus support</td>
             <td>Touchscreen with stylus support</td>
+            <td>Not listed</td>
           </tr>
         </table>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Contact</h2>
+            <p>
+              Send us a message and we’ll get back to you in less than 24 hours.
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-shell">
+          <p class="contact-note">Please provide your first name, last name, and message. Add your phone number and/or email so we can contact you back.</p>
+          <form id="contactForm" action="https://formsubmit.co/omerkural@tlhschools.org" method="POST">
+            <input type="hidden" name="_subject" value="New Penthia Contact Request">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+
+            <div class="contact-grid">
+              <div class="field">
+                <label for="firstName">First Name</label>
+                <input id="firstName" name="First Name" type="text" required>
+              </div>
+
+              <div class="field">
+                <label for="lastName">Last Name</label>
+                <input id="lastName" name="Last Name" type="text" required>
+              </div>
+
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="Email" type="email">
+              </div>
+
+              <div class="field">
+                <label for="phone">Phone Number</label>
+                <input id="phone" name="Phone Number" type="tel">
+              </div>
+
+              <div class="field full">
+                <label for="message">Message</label>
+                <textarea id="message" name="Message" required></textarea>
+                <div class="contact-inline-note">At least one of email or phone number is required.</div>
+              </div>
+
+              <div class="field full">
+                <button type="submit" class="btn btn-primary">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
   </main>
@@ -826,8 +988,12 @@
       <button class="close" onclick="forceClose()">×</button>
       <div class="product-page">
         <section class="gallery">
-          <div class="gallery-main">
-            <img id="modalMainImage" src="" alt="Product image">
+          <div class="gallery-wrap">
+            <button class="gallery-arrow left" type="button" onclick="changeImage(-1)">‹</button>
+            <div class="gallery-main">
+              <img id="modalMainImage" src="" alt="Product image">
+            </div>
+            <button class="gallery-arrow right" type="button" onclick="changeImage(1)">›</button>
           </div>
           <div class="thumbs" id="thumbs"></div>
         </section>
@@ -865,9 +1031,8 @@
           <div class="price" id="buyboxPrice">Request Pricing</div>
           <p id="buyboxText">Contact Penthia for product details, purchasing information, and deployment discussions.</p>
           <div class="stack">
-            <button class="btn-amazon">Request Quote</button>
-            <button class="btn-amazon-2">Contact Sales</button>
-            <button class="btn btn-secondary">Save Product</button>
+            <button class="btn-amazon" type="button" onclick="openContactForm('Request Quote')">Request Quote</button>
+            <button class="btn-amazon-2" type="button" onclick="openContactForm('Contact Sales')">Contact Sales</button>
           </div>
           <div class="buybox-note" id="buyboxNote"></div>
         </aside>
@@ -876,11 +1041,27 @@
   </div>
 
   <script>
-    const placeholderImages = [
-      'iBoardWebsite,windowsbackgroundiboardpro.png',
-      'iBoardWebsite,androidbackground,withstandtoholdup.png',
-      'iBoardWebsite,androidbackgroundiboardpro.png'
-    ];
+    const productImages = {
+      'pro-max': [
+        'iBoardWebsite,windowsbackgroundiboardpro.png',
+        'iBoardWebsite,androidbackground,withstandtoholdup.png',
+        'iBoardWebsite,androidbackgroundiboardpro.png'
+      ],
+      'pro': [
+        'iBoardWebsite,androidbackground,withstandtoholdup.png',
+        'iBoardWebsite,windowsbackgroundiboardpro.png',
+        'iBoardWebsite,androidbackgroundiboardpro.png'
+      ],
+      'iboard': [
+        'iBoardWebsite,androidbackgroundiboardpro.png',
+        'iBoardWebsite,androidbackground,withstandtoholdup.png',
+        'iBoardWebsite,windowsbackgroundiboardpro.png'
+      ],
+      'projector': [
+        'iBoardProector.png',
+        'iBoardProjectorimage#2.png'
+      ]
+    };
 
     const products = {
       'pro-max': {
@@ -902,7 +1083,7 @@
         support: ['Wall-mount support', 'Stand support'],
         input: ['Touchscreen', 'Stylus support'],
         price: 'Request Pricing',
-        note: 'Current store images shown for this product.'
+        note: 'We’ll get back to you in less than 24 hours.'
       },
       'pro': {
         badge: 'Core Product',
@@ -921,7 +1102,7 @@
         support: ['Wall-mount support', 'Stand support'],
         input: ['Touchscreen', 'Stylus support'],
         price: 'Request Pricing',
-        note: 'Current store images shown for this product.'
+        note: 'We’ll get back to you in less than 24 hours.'
       },
       'iboard': {
         badge: 'Essential Model',
@@ -940,29 +1121,70 @@
         support: ['Wall-mount support', 'Stand support'],
         input: ['Touchscreen', 'Stylus support'],
         price: 'Request Pricing',
-        note: 'Current store images shown for this product.'
+        note: 'We’ll get back to you in less than 24 hours.'
+      },
+      'projector': {
+        badge: 'Projection Product',
+        title: 'Penthia Projector',
+        description: 'The Penthia Projector expands the lineup with a projection-based presentation option for classrooms, meeting spaces, and larger display environments.',
+        bullets: [
+          'Projector product line',
+          'Suitable for classroom and presentation environments',
+          'Contact sales for pricing and available configuration details'
+        ],
+        display: ['Projector display'],
+        os: ['Contact for details'],
+        storage: ['Contact for details'],
+        support: ['Classroom and presentation use'],
+        input: ['Contact for details'],
+        price: 'Request Pricing',
+        note: 'We’ll get back to you in less than 24 hours.'
       }
     };
+
+    let currentProductKey = null;
+    let currentImageIndex = 0;
 
     function renderChips(id, values) {
       document.getElementById(id).innerHTML = values.map(v => `<span class="chip">${v}</span>`).join('');
     }
 
-    function renderThumbs() {
-      document.getElementById('thumbs').innerHTML = placeholderImages.map(src => `
-        <div class="thumb"><img src="${src}" alt="Product image"></div>
+    function setMainImage(index) {
+      const images = productImages[currentProductKey] || [];
+      if (!images.length) return;
+      currentImageIndex = (index + images.length) % images.length;
+      const mainImage = document.getElementById('modalMainImage');
+      mainImage.src = images[currentImageIndex];
+      mainImage.alt = products[currentProductKey].title;
+
+      const thumbs = document.querySelectorAll('#thumbs .thumb');
+      thumbs.forEach((thumb, i) => {
+        thumb.classList.toggle('active', i === currentImageIndex);
+      });
+    }
+
+    function changeImage(direction) {
+      setMainImage(currentImageIndex + direction);
+    }
+
+    function renderThumbs(key) {
+      const images = productImages[key] || [];
+      document.getElementById('thumbs').innerHTML = images.map((src, index) => `
+        <div class="thumb ${index === 0 ? 'active' : ''}" onclick="setMainImage(${index})">
+          <img src="${src}" alt="Product image ${index + 1}">
+        </div>
       `).join('');
     }
 
     function openProduct(key) {
       const p = products[key];
       if (!p) return;
+      currentProductKey = key;
+      currentImageIndex = 0;
       document.getElementById('modalBadge').textContent = p.badge;
       document.getElementById('modalTitle').textContent = p.title;
       document.getElementById('modalDescription').textContent = p.description;
       document.getElementById('modalBullets').innerHTML = p.bullets.map(item => `<li>${item}</li>`).join('');
-      document.getElementById('modalMainImage').src = placeholderImages[0];
-      document.getElementById('modalMainImage').alt = p.title;
       document.getElementById('buyboxPrice').textContent = p.price;
       document.getElementById('buyboxText').textContent = `Contact Penthia for ${p.title} purchasing details, available configurations, and next-step discussions.`;
       document.getElementById('buyboxNote').textContent = p.note;
@@ -971,7 +1193,8 @@
       renderChips('variantStorage', p.storage);
       renderChips('variantSupport', p.support);
       renderChips('variantInput', p.input);
-      renderThumbs();
+      renderThumbs(key);
+      setMainImage(0);
       document.getElementById('modal').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
@@ -985,21 +1208,61 @@
       if (e.target.id === 'modal') forceClose();
     }
 
+    function openContactForm(type) {
+      const productTitle = currentProductKey && products[currentProductKey] ? products[currentProductKey].title : '';
+      const messageField = document.getElementById('message');
+      if (messageField) {
+        messageField.value = `${type}${productTitle ? ' - ' + productTitle : ''}`;
+      }
+      forceClose();
+      location.hash = 'contact';
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function filterProducts(query) {
+      const normalized = query.trim().toLowerCase();
+      const cards = document.querySelectorAll('#productGrid .card');
+      cards.forEach(card => {
+        const haystack = ((card.getAttribute('data-search') || '') + ' ' + card.textContent).toLowerCase();
+        card.style.display = !normalized || haystack.includes(normalized) ? '' : 'none';
+      });
+    }
+
     function attachSearch(inputId) {
       const input = document.getElementById(inputId);
       if (!input) return;
       input.addEventListener('input', function () {
-        const query = this.value.trim().toLowerCase();
-        const cards = document.querySelectorAll('#productGrid .card');
-        cards.forEach(card => {
-          const haystack = (card.getAttribute('data-search') || '') + ' ' + card.textContent.toLowerCase();
-          card.style.display = !query || haystack.includes(query) ? '' : 'none';
-        });
+        filterProducts(this.value);
+      });
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          filterProducts(this.value);
+          const productsSection = document.getElementById('products');
+          if (productsSection) {
+            productsSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
       });
     }
 
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') forceClose();
+      if (!document.getElementById('modal').classList.contains('active')) return;
+      if (e.key === 'ArrowLeft') changeImage(-1);
+      if (e.key === 'ArrowRight') changeImage(1);
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      if (!email && !phone) {
+        e.preventDefault();
+        alert('Please provide at least an email or a phone number.');
+      }
     });
 
     attachSearch('siteSearch');
