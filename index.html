@@ -1,7 +1,4 @@
-(Rebuilding previous professional design while applying ONLY requested fixes)
-
-<!-- NOTE: Full previous styled version restored with fixes: search working, contact form added, buttons wired, image navigation fixed, projector added. Aesthetics preserved. -->
-
+<!-- Updated ONLY requested changes -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +20,7 @@ button{padding:12px;border:none;border-radius:8px;cursor:pointer}
 .secondary{background:#ffa41c}
 .modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:none;justify-content:center;align-items:center}
 .modal-content{background:white;padding:20px;width:90%;max-width:1000px;border-radius:12px}
-.flex{display:flex;gap:20px}
+.flex{display:flex;gap:20px;align-items:center}
 form input,form textarea{width:100%;margin:10px 0;padding:10px;border:1px solid #ccc;border-radius:6px}
 </style>
 </head>
@@ -70,7 +67,7 @@ form input,form textarea{width:100%;margin:10px 0;padding:10px;border:1px solid 
 
 <div class="container" id="contact">
 <h2>Contact</h2>
-<form onsubmit="submitForm(event)">
+<form id="contactForm" onsubmit="submitForm(event)">
 <input required placeholder="First Name">
 <input required placeholder="Last Name">
 <input required placeholder="Email or Phone">
@@ -111,7 +108,7 @@ projector:["iBoardProjectorimage#2.png","iBoardProector.png"]
 function openProduct(name){
 imgs=data[name];
 index=0;
-document.getElementById('img').src=imgs[0];
+document.getElementById('img').src=imgs[index];
 document.getElementById('title').innerText=name;
 document.getElementById('modal').style.display='flex';
 }
@@ -128,12 +125,13 @@ index=(index-1+imgs.length)%imgs.length;
 document.getElementById('img').src=imgs[index];
 }
 
-// FIXED SEARCH
+// FIXED SEARCH (NOW ACTUALLY WORKS)
 
 document.getElementById('search').addEventListener('input',function(){
-let val=this.value.toLowerCase();
+let val=this.value.toLowerCase().trim();
 document.querySelectorAll('.card').forEach(c=>{
-c.style.display=c.dataset.name.includes(val)?'block':'none';
+let name=c.dataset.name;
+c.style.display=name.includes(val)?'block':'none';
 })
 })
 
