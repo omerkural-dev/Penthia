@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Penthia | Interactive Boards</title>
+  <title>Penthia | Custom Software & AI Solutions</title>
+  <meta name="description" content="Penthia builds custom software, automation systems, and AI solutions for schools, education organizations, and growing businesses." />
   <style>
     :root {
       --bg: #f4f8ff;
@@ -18,8 +19,6 @@
       --shadow: 0 22px 50px rgba(33,52,88,0.12);
       --radius: 24px;
       --max: 1280px;
-      --amazon-yellow: #ffd814;
-      --amazon-orange: #ffa41c;
     }
 
     * { box-sizing: border-box; }
@@ -112,6 +111,9 @@
       font-weight: 700;
       cursor: pointer;
       transition: .25s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .btn-primary {
@@ -126,33 +128,11 @@
       border: 1px solid var(--line);
     }
 
-    .btn-amazon {
-      background: var(--amazon-yellow);
-      color: #1c1f23;
-      border-radius: 999px;
-      padding: 14px 18px;
-      border: 1px solid rgba(0,0,0,0.12);
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .btn-amazon-2 {
-      background: var(--amazon-orange);
-      color: #1c1f23;
-      border-radius: 999px;
-      padding: 14px 18px;
-      border: 1px solid rgba(0,0,0,0.12);
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .hero {
-      padding: 70px 0 44px;
-    }
+    .hero { padding: 70px 0 44px; }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 34px;
       align-items: center;
     }
@@ -172,16 +152,15 @@
 
     h1 {
       margin: 0 0 18px;
-      font-size: clamp(2.2rem, 4.4vw, 4rem);
+      font-size: clamp(2.4rem, 4.8vw, 4.4rem);
       line-height: 1.02;
       letter-spacing: -0.05em;
     }
 
-    .hero p {
+    .hero p, .section-header p, .body-copy {
       color: var(--muted);
       line-height: 1.8;
       font-size: 1.05rem;
-      max-width: 760px;
     }
 
     .hero-actions {
@@ -198,17 +177,17 @@
       margin-top: 28px;
     }
 
-    .highlight {
-      background: rgba(255,255,255,0.82);
+    .highlight, .card, .feature-card, .case-card, .testimonial, .process-step, .pricing-card, .lead-shell, .contact-shell, .seo-card {
+      background: rgba(255,255,255,0.86);
       border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 18px;
+      border-radius: 24px;
+      padding: 22px;
       box-shadow: var(--shadow);
     }
 
-    .highlight strong {
+    .highlight strong, .feature-card h3, .card h3, .case-card h3, .testimonial h3, .process-step h3, .pricing-card h3, .seo-card h3 {
       display: block;
-      margin-bottom: 6px;
+      margin: 0 0 10px;
       font-size: 1.08rem;
     }
 
@@ -225,12 +204,32 @@
       border: 1px solid var(--line);
       background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(246,249,255,0.96));
       box-shadow: var(--shadow);
+      padding: 26px;
     }
 
-    .hero-device img {
-      width: 100%;
+    .hero-screen {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
       height: 100%;
-      object-fit: cover;
+    }
+
+    .hero-pane {
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #f7faff, #edf3fb);
+      padding: 20px;
+    }
+
+    .hero-pane h3 { margin: 0 0 8px; font-size: 1.1rem; }
+    .hero-mini-list { display: grid; gap: 10px; margin-top: 16px; }
+    .hero-mini-item {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px 14px;
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
     .floating {
@@ -245,10 +244,9 @@
 
     .floating small { display: block; color: var(--muted); margin-bottom: 4px; }
     .f1 { top: 24px; left: -14px; }
+    .f2 { bottom: 24px; right: -14px; }
 
-    .section {
-      padding: 34px 0 76px;
-    }
+    .section { padding: 34px 0 76px; }
 
     .section-header {
       margin-bottom: 24px;
@@ -264,112 +262,27 @@
       letter-spacing: -0.04em;
     }
 
-    .section-header p {
-      margin: 10px 0 0;
-      max-width: 820px;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .feature-grid {
+    .feature-grid, .services-grid, .trust-grid, .case-grid, .testimonial-grid, .process-grid, .pricing-grid, .seo-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 18px;
     }
 
-    .feature-card {
-      background: rgba(255,255,255,0.86);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 22px;
-      box-shadow: var(--shadow);
+    .services-grid { grid-template-columns: repeat(5, 1fr); }
+    .trust-grid, .testimonial-grid, .pricing-grid, .seo-grid { grid-template-columns: repeat(3, 1fr); }
+    .process-grid { grid-template-columns: repeat(4, 1fr); }
+    .case-grid { grid-template-columns: repeat(3, 1fr); }
+
+    .muted { color: var(--muted); }
+
+    .big-number {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
     }
 
-    .feature-card h3 { margin: 0 0 10px; font-size: 1.04rem; }
-    .feature-card p { margin: 0; color: var(--muted); line-height: 1.7; }
-
-    .store-shell {
-      background: rgba(255,255,255,0.72);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .store-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-      padding: 10px 8px 18px;
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 18px;
-    }
-
-    .store-layout {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
-    }
-
-    .results {
-      border-radius: 24px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.7);
-      padding: 18px;
-    }
-
-    .results h3 { margin-top: 0; }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      overflow: hidden;
-      transition: .25s ease;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      box-shadow: var(--shadow);
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 24px 50px rgba(34,53,88,0.14);
-      border-color: rgba(76,141,246,0.35);
-    }
-
-    .card-media {
-      aspect-ratio: 4/3;
-      padding: 16px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(180deg, #f6f9ff, #eaf1fb);
-    }
-
-    .card-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 16px;
-    }
-
-    .card-body {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      flex: 1;
-    }
-
-    .badge {
+    .service-tag {
       display: inline-flex;
       align-self: flex-start;
       padding: 7px 12px;
@@ -379,234 +292,61 @@
       color: #0e6a56;
       font-size: .82rem;
       font-weight: 700;
-    }
-
-    .card-title {
-      font-weight: 800;
-      font-size: 1.06rem;
-      letter-spacing: -0.02em;
-    }
-
-    .muted { color: var(--muted); }
-    .price { font-size: 1.36rem; font-weight: 800; letter-spacing: -0.03em; }
-
-    .spec-table {
-      width: 100%;
-      border-collapse: collapse;
-      overflow: hidden;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.85);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-    }
-
-    .spec-table th, .spec-table td {
-      text-align: left;
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--line);
-      vertical-align: top;
-    }
-
-    .spec-table th {
-      width: 220px;
-      color: var(--text);
-      background: rgba(76,141,246,0.04);
-    }
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      z-index: 3000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      background: rgba(17,29,52,0.36);
-      backdrop-filter: blur(14px);
-    }
-
-    .modal.active { display: flex; }
-
-    .panel {
-      width: min(1240px, 100%);
-      max-height: calc(100vh - 36px);
-      overflow: auto;
-      background: #ffffff;
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      box-shadow: 0 34px 80px rgba(34,53,88,0.22);
-      position: relative;
-    }
-
-    .close {
-      position: sticky;
-      top: 18px;
-      margin-left: auto;
-      margin-right: 18px;
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.96);
-      color: var(--text);
-      cursor: pointer;
-      z-index: 2;
-      display: block;
-    }
-
-    .product-page {
-      display: grid;
-      grid-template-columns: 1.05fr 1fr .72fr;
-      gap: 24px;
-      padding: 0 24px 24px;
-    }
-
-    .gallery, .details, .buybox {
-      min-width: 0;
-    }
-
-    .gallery-wrap {
-      position: relative;
-    }
-
-    .gallery-main {
-      background: linear-gradient(180deg, #f6f9ff, #edf3fb);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 20px;
-      min-height: 470px;
-      display: grid;
-      place-items: center;
-    }
-
-    .gallery-main img {
-      width: 100%;
-      max-height: 420px;
-      object-fit: contain;
-      border-radius: 18px;
-    }
-
-    .gallery-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.95);
-      cursor: pointer;
-      z-index: 1;
-      font-size: 1.3rem;
-    }
-
-    .gallery-arrow.left { left: 12px; }
-    .gallery-arrow.right { right: 12px; }
-
-    .thumbs {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .thumb {
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(247,250,255,0.96);
-      padding: 10px;
-      min-height: 110px;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-    }
-
-    .thumb.active {
-      border-color: rgba(76,141,246,0.55);
-      box-shadow: 0 0 0 2px rgba(76,141,246,0.12) inset;
-    }
-
-    .thumb img {
-      max-height: 80px;
-      object-fit: contain;
-    }
-
-    .details h2 {
-      margin: 0 0 10px;
-      font-size: 2rem;
-      letter-spacing: -0.04em;
-    }
-
-    .rating {
-      color: #d69100;
-      font-size: .96rem;
-      margin-bottom: 14px;
-    }
-
-    .details p, .details li { color: var(--muted); line-height: 1.75; }
-
-    .details ul {
-      padding-left: 18px;
-      margin: 16px 0 22px;
-    }
-
-    .variant-group {
-      margin-bottom: 18px;
-    }
-
-    .variant-title {
-      font-weight: 800;
       margin-bottom: 10px;
     }
 
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+    .service-list {
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin: 12px 0 0;
     }
 
-    .chip {
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(76,141,246,0.06);
-      border: 1px solid var(--line);
-      color: var(--text);
-      font-size: .92rem;
+    .logo-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      margin-top: 18px;
     }
 
-    .buybox {
-      align-self: start;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      background: rgba(247,250,255,0.96);
-      padding: 18px;
-      box-shadow: var(--shadow);
-      position: sticky;
-      top: 20px;
-    }
-
-    .buybox .price { margin-bottom: 8px; }
-    .buybox p { color: var(--muted); line-height: 1.7; }
-    .buybox .stack { display: grid; gap: 10px; margin-top: 14px; }
-
-    .buybox-note {
-      margin-top: 16px;
-      padding: 12px 14px;
-      background: rgba(255,255,255,0.9);
+    .logo-pill {
+      background: rgba(255,255,255,0.8);
       border: 1px solid var(--line);
       border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      font-weight: 700;
       color: var(--muted);
-      line-height: 1.7;
-      font-size: .93rem;
+    }
+
+    .cta-band {
+      margin-top: 26px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .price-line {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin: 10px 0;
+    }
+
+    .list {
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .lead-shell {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: center;
     }
 
     .contact-shell {
-      background: rgba(255,255,255,0.86);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-      max-width: 860px;
+      max-width: 920px;
     }
 
     .contact-grid {
@@ -620,17 +360,12 @@
       gap: 8px;
     }
 
-    .field.full {
-      grid-column: 1 / -1;
-    }
-
-    .field label {
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
+    .field.full { grid-column: 1 / -1; }
+    .field label { font-weight: 700; font-size: 0.95rem; }
 
     .field input,
-    .field textarea {
+    .field textarea,
+    .field select {
       width: 100%;
       border: 1px solid var(--line);
       border-radius: 16px;
@@ -646,18 +381,6 @@
       resize: vertical;
     }
 
-    .contact-note {
-      color: var(--muted);
-      line-height: 1.7;
-      margin: 0 0 18px;
-    }
-
-    .contact-inline-note {
-      color: var(--muted);
-      font-size: 0.92rem;
-      margin-top: 6px;
-    }
-
     footer {
       padding: 34px 0 56px;
       text-align: center;
@@ -666,33 +389,37 @@
 
     @media (max-width: 1150px) {
       .hero-grid,
-      .product-page { grid-template-columns: 1fr; }
+      .lead-shell { grid-template-columns: 1fr; }
       .feature-grid,
-      .product-grid,
-      .hero-highlights { grid-template-columns: repeat(2, 1fr); }
+      .services-grid,
+      .trust-grid,
+      .case-grid,
+      .testimonial-grid,
+      .process-grid,
+      .pricing-grid,
+      .seo-grid,
+      .hero-highlights,
+      .logo-row { grid-template-columns: repeat(2, 1fr); }
       .hero-visual { min-height: 440px; }
-      .f1 { position: static; margin-top: 12px; }
-      .buybox { position: static; }
+      .f1, .f2 { position: static; margin-top: 12px; }
+      .hero-screen { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 760px) {
       .nav-links, .search { display: none; }
       .feature-grid,
-      .product-grid,
+      .services-grid,
+      .trust-grid,
+      .case-grid,
+      .testimonial-grid,
+      .process-grid,
+      .pricing-grid,
+      .seo-grid,
       .hero-highlights,
-      .thumbs,
+      .logo-row,
       .contact-grid { grid-template-columns: 1fr; }
       .hero { padding-top: 44px; }
-      h1 { font-size: 2.5rem; }
-      .panel { border-radius: 20px; }
-      .product-page { padding: 0 14px 18px; }
-      .gallery-main { min-height: 320px; }
-      .gallery-main img { max-height: 260px; }
-      .spec-table th, .spec-table td { display: block; width: 100%; }
-      .spec-table tr { display: block; border-bottom: 1px solid var(--line); }
-      .spec-table th { border-bottom: none; }
-      .gallery-arrow.left { left: 8px; }
-      .gallery-arrow.right { right: 8px; }
+      h1 { font-size: 2.4rem; }
     }
   </style>
 </head>
@@ -703,14 +430,15 @@
         <img src="penthialogo.jpg" alt="Penthia logo" />
         <span>Penthia</span>
       </a>
-      <div class="search"><input id="siteSearch" type="text" placeholder="Search for products" aria-label="Search for products" /></div>
+      <div class="search"><input id="siteSearch" type="text" placeholder="Search services, industries, AI, schools..." aria-label="Search site" /></div>
       <nav class="nav-links">
-        <a href="#about">About</a>
-        <a href="#products">Store</a>
-        <a href="#compare">Compare</a>
+        <a href="#services">Services</a>
+        <a href="#industries">Industries</a>
+        <a href="#process">Process</a>
+        <a href="#case-studies">Case Studies</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a href="#products" class="btn btn-primary">Shop Now</a>
+      <a href="#contact" class="btn btn-primary">Book a Free Consultation</a>
     </div>
   </header>
 
@@ -718,209 +446,369 @@
     <section class="hero container">
       <div class="hero-grid">
         <div>
-          <div class="eyebrow">Penthia Online Store • Interactive classroom displays</div>
-          <h1>Professional interactive displays for modern spaces.</h1>
+          <div class="eyebrow">Custom Software • AI Solutions • Automation Systems</div>
+          <h1>We help schools and growing organizations automate operations and scale with custom software.</h1>
           <p>
-            Welcome to the Penthia store. Explore our interactive smartboard lineup built around the <strong>iBoard</strong> family. Browse products, compare models, and review each product in a detailed storefront experience designed for real customers and real sales conversations.
+            Penthia builds custom software, AI tools, and automation systems for education teams, operational leaders, and organizations that need better systems, less manual work, and clearer workflows. From dashboards and internal tools to AI-powered platforms, we design software around practical outcomes.
           </p>
-          <div class="hero-actions">
-            <a href="#products" class="btn btn-primary">Browse Products</a>
-            <a href="#compare" class="btn btn-secondary">Compare Models</a>
+          <div class="cta-band">
+            <a href="#contact" class="btn btn-primary">Get a Quote in 24 Hours</a>
+            <a href="#process" class="btn btn-secondary">See Our Process</a>
+            <a href="#lead-magnet" class="btn btn-secondary">Get a Free Tech Roadmap</a>
           </div>
           <div class="hero-highlights">
             <div class="highlight">
-              <strong>4 Product Lines</strong>
-              <span class="muted">iBoard Pro Max, iBoard Pro, iBoard, and projector solutions for different learning spaces.</span>
+              <strong>Who We Serve</strong>
+              <span class="muted">Schools, education organizations, and growing businesses that need custom systems and process automation.</span>
             </div>
             <div class="highlight">
-              <strong>Multiple Variations</strong>
-              <span class="muted">Configurations by size, operating system, and storage for schools with different preferences.</span>
+              <strong>What We Solve</strong>
+              <span class="muted">Disconnected workflows, manual processes, outdated internal systems, and missed growth caused by weak software.</span>
             </div>
             <div class="highlight">
-              <strong>Touch + Stylus</strong>
-              <span class="muted">All current board models include touchscreen capability with stylus support.</span>
+              <strong>Why Penthia</strong>
+              <span class="muted">We focus on practical builds with clear use cases, faster execution, and systems designed around the way teams actually work.</span>
             </div>
           </div>
         </div>
         <div class="hero-visual">
           <div class="hero-device">
-            <img src="iBoardWebsite,windowsbackgroundiboardpro.png" alt="Penthia iBoard product" />
+            <div class="hero-screen">
+              <div class="hero-pane">
+                <h3>Education Operations</h3>
+                <p class="body-copy">Student dashboards, classroom workflows, parent communication tools, internal admin systems, and AI-powered support experiences.</p>
+                <div class="hero-mini-list">
+                  <div class="hero-mini-item">Student tracking dashboards</div>
+                  <div class="hero-mini-item">School management workflows</div>
+                  <div class="hero-mini-item">AI tutoring and classroom support tools</div>
+                </div>
+              </div>
+              <div class="hero-pane">
+                <h3>Business Automation</h3>
+                <p class="body-copy">Custom CRMs, automation flows, data dashboards, and internal systems that reduce manual work and improve execution speed.</p>
+                <div class="hero-mini-list">
+                  <div class="hero-mini-item">Custom internal portals</div>
+                  <div class="hero-mini-item">Process automation systems</div>
+                  <div class="hero-mini-item">Operational reporting tools</div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="floating f1">
-            <small>Current flagship family</small>
-            <strong>iBoard Pro Max / iBoard Pro / iBoard</strong>
+            <small>Positioning</small>
+            <strong>Custom software & AI solutions for education and growth-focused teams</strong>
+          </div>
+          <div class="floating f2">
+            <small>Primary CTA</small>
+            <strong>Book a Free Consultation</strong>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="about">
+    <section class="section" id="trust-signals">
       <div class="container">
         <div class="section-header">
           <div>
-            <h2>Built for better teaching and presentation.</h2>
-            <p>
-              Penthia boards are designed for classrooms and professional learning environments with 4K displays, touchscreen interaction, stylus support, flexible operating system configurations, and support for both wall-mount and stand-based setups.
-            </p>
+            <h2>Trust matters.</h2>
+            <p>For a technology partner, credibility is everything. Build trust quickly with strong positioning, measurable outcomes, and a clear process.</p>
           </div>
         </div>
-        <div class="feature-grid">
+        <div class="trust-grid">
+          <article class="card">
+            <div class="big-number">50+</div>
+            <p class="body-copy">Position this section with a metric such as businesses served, projects completed, or systems delivered.</p>
+          </article>
+          <article class="card">
+            <div class="big-number">24 hrs</div>
+            <p class="body-copy">Promise a fast response time for qualified leads and make that response speed visible throughout the site.</p>
+          </article>
+          <article class="card">
+            <div class="big-number">3 core markets</div>
+            <p class="body-copy">Education, operational automation, and AI software are much stronger than broad generic messaging.</p>
+          </article>
+        </div>
+        <div class="logo-row">
+          <div class="logo-pill">School Systems</div>
+          <div class="logo-pill">Private Education</div>
+          <div class="logo-pill">Operations Teams</div>
+          <div class="logo-pill">Custom Platforms</div>
+          <div class="logo-pill">AI Workflows</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Services with clear outcomes.</h2>
+            <p>Instead of sounding like “we do everything,” structure services in clear categories. Each category should explain the problem, the solution, and the outcome.</p>
+          </div>
+        </div>
+        <div class="services-grid">
           <article class="feature-card">
-            <h3>4K Visual Clarity</h3>
-            <p>High-resolution displays help lessons, presentations, diagrams, and media look sharp and easy to follow in classroom settings.</p>
+            <span class="service-tag">Web Development</span>
+            <h3>Custom web platforms</h3>
+            <p class="body-copy">For teams using outdated or fragmented tools.</p>
+            <ul class="service-list">
+              <li>Problem: disorganized workflows</li>
+              <li>Solution: custom portals and dashboards</li>
+              <li>Outcome: clearer operations and better reporting</li>
+            </ul>
           </article>
           <article class="feature-card">
-            <h3>Touchscreen + Pen Support</h3>
-            <p>Interactive touch control with stylus support makes writing, annotating, and presenting more natural for teachers and students.</p>
+            <span class="service-tag">Mobile Apps</span>
+            <h3>Mobile-first experiences</h3>
+            <p class="body-copy">For organizations that need user access from anywhere.</p>
+            <ul class="service-list">
+              <li>Problem: low accessibility and weak engagement</li>
+              <li>Solution: mobile tools for staff, parents, or students</li>
+              <li>Outcome: stronger usage and smoother communication</li>
+            </ul>
           </article>
           <article class="feature-card">
-            <h3>Flexible System Options</h3>
-            <p>Select Android, Windows, or model-specific configurations depending on the needs of the school, teacher, or institution.</p>
+            <span class="service-tag">AI Solutions</span>
+            <h3>Practical AI systems</h3>
+            <p class="body-copy">For organizations that want more than generic chatbots.</p>
+            <ul class="service-list">
+              <li>Problem: repetitive support tasks and poor visibility</li>
+              <li>Solution: AI assistants, summaries, and workflows</li>
+              <li>Outcome: faster decisions and reduced manual effort</li>
+            </ul>
           </article>
           <article class="feature-card">
-            <h3>Easy Installation Options</h3>
-            <p>Each board line is built with support for wall mounting and stand placement for different room layouts and deployment needs.</p>
+            <span class="service-tag">Automation</span>
+            <h3>Business process automation</h3>
+            <p class="body-copy">For leaders losing time to repetitive tasks.</p>
+            <ul class="service-list">
+              <li>Problem: manual approvals and disconnected systems</li>
+              <li>Solution: automated workflows and integrations</li>
+              <li>Outcome: lower overhead and faster execution</li>
+            </ul>
+          </article>
+          <article class="feature-card">
+            <span class="service-tag">Cloud Services</span>
+            <h3>Scalable infrastructure</h3>
+            <p class="body-copy">For teams that need secure deployment and long-term support.</p>
+            <ul class="service-list">
+              <li>Problem: unstable systems and hard-to-maintain setups</li>
+              <li>Solution: cloud deployment and maintenance</li>
+              <li>Outcome: better uptime and cleaner scaling</li>
+            </ul>
+          </article>
+        </div>
+        <div class="cta-band">
+          <a href="#contact" class="btn btn-primary">Schedule Demo</a>
+          <a href="#lead-magnet" class="btn btn-secondary">Get a Free 15-Minute System Audit</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="industries">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Clear target market.</h2>
+            <p>Generic positioning weakens conversion. A focused industry strategy makes the message sharper and the business easier to trust.</p>
+          </div>
+        </div>
+        <div class="trust-grid">
+          <article class="card">
+            <h3>Education Systems</h3>
+            <p class="body-copy">School management systems, parent communication tools, student tracking dashboards, AI tutoring tools, and classroom support software.</p>
+          </article>
+          <article class="card">
+            <h3>Growing Businesses</h3>
+            <p class="body-copy">Internal systems, workflow automation, reporting dashboards, and software that replaces fragmented operational tools.</p>
+          </article>
+          <article class="card">
+            <h3>Operational Teams</h3>
+            <p class="body-copy">Teams that need to digitize processes, reduce manual work, and centralize information into one reliable system.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="products">
+    <section class="section" id="case-studies">
       <div class="container">
         <div class="section-header">
           <div>
-            <h2>Penthia Store</h2>
-            <p>
-              Browse the current iBoard lineup and view each model with its listed configurations.
-            </p>
+            <h2>Case studies beat generic claims.</h2>
+            <p>Replace vague “innovative solutions” language with specific before-and-after stories, measurable improvements, and real implementation detail.</p>
           </div>
         </div>
+        <div class="case-grid">
+          <article class="case-card">
+            <h3>School Operations Dashboard</h3>
+            <p class="body-copy">Before: disconnected spreadsheets and weak visibility. After: one system for student tracking, parent communication, and reporting.</p>
+          </article>
+          <article class="case-card">
+            <h3>Automation Workflow</h3>
+            <p class="body-copy">Before: approvals handled manually. After: automated process routing and lower admin burden.</p>
+          </article>
+          <article class="case-card">
+            <h3>AI Support Tool</h3>
+            <p class="body-copy">Before: repetitive support questions. After: faster responses and reduced load through AI-assisted guidance.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-        <div class="store-shell">
-          <div class="store-header">
+    <section class="section" id="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Trust signals should be visible.</h2>
+            <p>Add testimonials with names, roles, and photos. Even two or three strong quotes can improve conversion significantly.</p>
+          </div>
+        </div>
+        <div class="testimonial-grid">
+          <article class="testimonial">
+            <h3>"They simplified the way our team works."</h3>
+            <p class="body-copy">Use a real client quote here with name, title, and organization for credibility.</p>
+          </article>
+          <article class="testimonial">
+            <h3>"The system replaced hours of manual work every week."</h3>
+            <p class="body-copy">This section should highlight outcomes, not generic praise.</p>
+          </article>
+          <article class="testimonial">
+            <h3>"We finally had a solution designed around our workflow."</h3>
+            <p class="body-copy">Show practical business results to support the value proposition.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Add a clear process section.</h2>
+            <p>People want to know how you work before they contact you. A simple step-by-step process reduces friction and increases trust.</p>
+          </div>
+        </div>
+        <div class="process-grid">
+          <article class="process-step">
+            <h3>1. Discovery Call</h3>
+            <p class="body-copy">Understand goals, current pain points, and what system or workflow needs to be improved.</p>
+          </article>
+          <article class="process-step">
+            <h3>2. Strategy & Planning</h3>
+            <p class="body-copy">Define scope, map the workflow, and recommend the right build path.</p>
+          </article>
+          <article class="process-step">
+            <h3>3. Development</h3>
+            <p class="body-copy">Build the system, automation, or AI workflow with regular review points.</p>
+          </article>
+          <article class="process-step">
+            <h3>4. Launch & Support</h3>
+            <p class="body-copy">Deploy, test, train, and support the system after launch.</p>
+          </article>
+        </div>
+        <div class="cta-band">
+          <a href="#contact" class="btn btn-primary">Book a Free Consultation</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Add pricing anchoring.</h2>
+            <p>Even without fixed prices, anchoring helps qualify serious leads and sets expectation around project size.</p>
+          </div>
+        </div>
+        <div class="pricing-grid">
+          <article class="pricing-card">
+            <h3>Custom Systems</h3>
+            <div class="price-line">Projects starting from $5,000</div>
+            <p class="body-copy">Good for internal dashboards, portals, and small custom platforms.</p>
+          </article>
+          <article class="pricing-card">
+            <h3>Automation & AI</h3>
+            <div class="price-line">Custom packages available</div>
+            <p class="body-copy">Pricing depends on workflow complexity, integrations, and AI scope.</p>
+          </article>
+          <article class="pricing-card">
+            <h3>Education Systems</h3>
+            <div class="price-line">Built per scope</div>
+            <p class="body-copy">School-focused tools should be scoped around real institutional needs and rollout plans.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="lead-magnet">
+      <div class="container">
+        <div class="lead-shell">
+          <div class="lead-shell">
             <div>
-              <strong style="font-size:1.08rem;">Browse Products</strong><br>
-              <span class="muted">Interactive smartboards for schools and educational environments</span>
-            </div>
-            <div class="search"><input id="productSearch" type="text" placeholder="Search for products" aria-label="Search for products" /></div>
-          </div>
-
-          <div class="store-layout">
-            <section class="results">
-              <h3>Available Models</h3>
-              <div class="product-grid" id="productGrid">
-                <article class="card" data-search="iboard pro max 85 4k android windows stylus touchscreen wall mount stand 16gb 256gb 32gb 512gb" onclick="openProduct('pro-max')">
-                  <div class="card-media">
-                    <img src="iBoardWebsite,windowsbackgroundiboardpro.png" alt="iBoard Pro Max" />
-                  </div>
-                  <div class="card-body">
-                    <span class="badge">Flagship</span>
-                    <div class="card-title">iBoard Pro Max</div>
-                    <div class="muted">85” 4K display • Android and Windows configurations • Wall-mount and stand support</div>
-                    <div class="price">Premium Model</div>
-                    <div class="muted">Click to view all listed variations</div>
-                  </div>
-                </article>
-
-                <article class="card" data-search="iboard pro 70 4k android windows stylus touchscreen wall mount stand 16gb 256gb" onclick="openProduct('pro')">
-                  <div class="card-media">
-                    <img src="iBoardWebsite,androidbackground,withstandtoholdup.png" alt="iBoard Pro" />
-                  </div>
-                  <div class="card-body">
-                    <span class="badge">Core Product</span>
-                    <div class="card-title">iBoard Pro</div>
-                    <div class="muted">70” 4K display • Android primary • Optional Windows configuration • Wall-mount and stand support</div>
-                    <div class="price">Mainline Model</div>
-                    <div class="muted">Click to view all listed variations</div>
-                  </div>
-                </article>
-
-                <article class="card" data-search="iboard 65 4k android stylus touchscreen wall mount stand 8gb 128gb" onclick="openProduct('iboard')">
-                  <div class="card-media">
-                    <img src="iBoardWebsite,androidbackgroundiboardpro.png" alt="iBoard" />
-                  </div>
-                  <div class="card-body">
-                    <span class="badge">Essential</span>
-                    <div class="card-title">iBoard</div>
-                    <div class="muted">65” 4K display • Android only • Compact entry configuration with wall-mount and stand support</div>
-                    <div class="price">Entry Model</div>
-                    <div class="muted">Click to view all listed variations</div>
-                  </div>
-                </article>
-
-                <article class="card" data-search="projector iboard projector presentation classroom display projection" onclick="openProduct('projector')">
-                  <div class="card-media">
-                    <img src="iBoardProector.png" alt="Penthia Projector" />
-                  </div>
-                  <div class="card-body">
-                    <span class="badge">Projection</span>
-                    <div class="card-title">Penthia Projector</div>
-                    <div class="muted">Projection solution for classrooms and presentation spaces</div>
-                    <div class="price">Projector Line</div>
-                    <div class="muted">Click to view product images</div>
-                  </div>
-                </article>
+              <div class="section-header" style="margin-bottom:10px;">
+                <div>
+                  <h2>Offer a lead magnet.</h2>
+                  <p>Free value helps capture leads. This can be a system audit, consultation, roadmap, or operational review.</p>
+                </div>
               </div>
-            </section>
+              <p class="body-copy">Suggested offer: <strong>Get a free 15-minute system audit</strong> or <strong>Get a free tech roadmap</strong> for your school or business.</p>
+              <div class="cta-band">
+                <a href="#contact" class="btn btn-primary">Get a Free Tech Roadmap</a>
+                <a href="#contact" class="btn btn-secondary">Request a Free Audit</a>
+              </div>
+            </div>
+            <div class="pricing-card">
+              <h3>What the lead magnet should do</h3>
+              <ul class="list">
+                <li>Capture contact information</li>
+                <li>Qualify serious leads</li>
+                <li>Start the sales conversation with value</li>
+                <li>Position Penthia as a strategic partner, not just a vendor</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="compare">
+    <section class="section" id="seo">
       <div class="container">
         <div class="section-header">
           <div>
-            <h2>Compare the lineup</h2>
-            <p>
-              This comparison table summarizes the current products and their listed configurations.
-            </p>
+            <h2>SEO and content strategy need structure.</h2>
+            <p>Strong service pages and content help bring the right traffic. Build pages around actual target keywords and use blog content to support authority.</p>
           </div>
         </div>
-        <table class="spec-table">
-          <tr>
-            <th>Model</th>
-            <td><strong>iBoard Pro Max</strong></td>
-            <td><strong>iBoard Pro</strong></td>
-            <td><strong>iBoard</strong></td>
-            <td><strong>Penthia Projector</strong></td>
-          </tr>
-          <tr>
-            <th>Display</th>
-            <td>85” 4K</td>
-            <td>70” 4K</td>
-            <td>65” 4K</td>
-            <td>Projector display</td>
-          </tr>
-          <tr>
-            <th>Operating System</th>
-            <td>Android and Windows configurations, including Windows-only and Android-only options</td>
-            <td>Android (primary), with optional Windows configuration</td>
-            <td>Android only</td>
-            <td>Contact for configuration details</td>
-          </tr>
-          <tr>
-            <th>Storage / RAM</th>
-            <td>16GB RAM / 256GB or 32GB RAM / 512GB</td>
-            <td>16GB RAM / 256GB</td>
-            <td>8GB RAM / 128GB</td>
-            <td>Contact for configuration details</td>
-          </tr>
-          <tr>
-            <th>Support</th>
-            <td>Wall-mount and stand support</td>
-            <td>Wall-mount and stand support</td>
-            <td>Wall-mount and stand support</td>
-            <td>Classroom and presentation use</td>
-          </tr>
-          <tr>
-            <th>Touch / Stylus</th>
-            <td>Touchscreen with stylus support</td>
-            <td>Touchscreen with stylus support</td>
-            <td>Touchscreen with stylus support</td>
-            <td>Not listed</td>
-          </tr>
-        </table>
+        <div class="seo-grid">
+          <article class="seo-card">
+            <h3>Targeted Pages</h3>
+            <ul class="list">
+              <li>Custom Software Development for Schools</li>
+              <li>AI Solutions for Small Businesses</li>
+              <li>Business Automation Services USA</li>
+            </ul>
+          </article>
+          <article class="seo-card">
+            <h3>Blog Strategy</h3>
+            <ul class="list">
+              <li>How AI can reduce business costs</li>
+              <li>Top 5 automation tools for schools</li>
+              <li>When to build custom software</li>
+            </ul>
+          </article>
+          <article class="seo-card">
+            <h3>Homepage Structure</h3>
+            <ul class="list">
+              <li>Strong headline</li>
+              <li>What you do</li>
+              <li>Services</li>
+              <li>Why choose you</li>
+              <li>Case studies</li>
+              <li>Process</li>
+              <li>CTA</li>
+            </ul>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -928,47 +816,46 @@
       <div class="container">
         <div class="section-header">
           <div>
-            <h2>Contact</h2>
-            <p>
-              Send us a message and we’ll get back to you in less than 24 hours.
-            </p>
+            <h2>Book a consultation.</h2>
+            <p>Give visitors one clear next step. Strong CTAs should appear throughout the page and lead to a clear contact action.</p>
           </div>
         </div>
 
         <div class="contact-shell">
-          <p class="contact-note">Please provide your first name, last name, and message. Add your phone number and/or email so we can contact you back.</p>
-          <form id="contactForm" action="https://formspree.io/f/xnjoppqk" method="POST">
-            <input type="hidden" name="_subject" value="New Penthia Contact Request">
-
+          <form id="contactForm">
             <div class="contact-grid">
               <div class="field">
                 <label for="firstName">First Name</label>
-                <input id="firstName" name="First Name" type="text" required>
+                <input id="firstName" type="text" required>
               </div>
-
               <div class="field">
                 <label for="lastName">Last Name</label>
-                <input id="lastName" name="Last Name" type="text" required>
+                <input id="lastName" type="text" required>
               </div>
-
               <div class="field">
                 <label for="email">Email</label>
-                <input id="email" name="Email" type="email">
+                <input id="email" type="email">
               </div>
-
               <div class="field">
                 <label for="phone">Phone Number</label>
-                <input id="phone" name="Phone Number" type="tel">
+                <input id="phone" type="tel">
               </div>
-
+              <div class="field full">
+                <label for="interest">What are you looking for?</label>
+                <select id="interest">
+                  <option>Custom Software</option>
+                  <option>AI Solutions</option>
+                  <option>Automation</option>
+                  <option>Education Systems</option>
+                  <option>Free Consultation</option>
+                </select>
+              </div>
               <div class="field full">
                 <label for="message">Message</label>
-                <textarea id="message" name="Message" required></textarea>
-                <div class="contact-inline-note">At least one of email or phone number is required.</div>
+                <textarea id="message" required placeholder="Tell us what problem you want to solve."></textarea>
               </div>
-
               <div class="field full">
-                <button type="submit" class="btn btn-primary">Send Message</button>
+                <button type="submit" class="btn btn-primary">Schedule Demo</button>
               </div>
             </div>
           </form>
@@ -978,293 +865,30 @@
   </main>
 
   <footer>
-    <div class="container">© 2026 Penthia Store. All rights reserved.</div>
+    <div class="container">© 2026 Penthia. Custom software, AI solutions, and automation systems.</div>
   </footer>
 
-  <div class="modal" id="modal" onclick="closeModal(event)">
-    <div class="panel">
-      <button class="close" onclick="forceClose()">×</button>
-      <div class="product-page">
-        <section class="gallery">
-          <div class="gallery-wrap">
-            <button class="gallery-arrow left" type="button" onclick="changeImage(-1)">‹</button>
-            <div class="gallery-main">
-              <img id="modalMainImage" src="" alt="Product image">
-            </div>
-            <button class="gallery-arrow right" type="button" onclick="changeImage(1)">›</button>
-          </div>
-          <div class="thumbs" id="thumbs"></div>
-        </section>
-
-        <section class="details">
-          <div class="badge" id="modalBadge"></div>
-          <h2 id="modalTitle"></h2>
-          <div class="rating">★★★★★ <span class="muted">Product page</span></div>
-          <p id="modalDescription"></p>
-          <ul id="modalBullets"></ul>
-
-          <div class="variant-group">
-            <div class="variant-title">Display</div>
-            <div class="chips" id="variantDisplay"></div>
-          </div>
-          <div class="variant-group">
-            <div class="variant-title">Operating System Options</div>
-            <div class="chips" id="variantOS"></div>
-          </div>
-          <div class="variant-group">
-            <div class="variant-title">Storage / RAM Variations</div>
-            <div class="chips" id="variantStorage"></div>
-          </div>
-          <div class="variant-group">
-            <div class="variant-title">Included Support</div>
-            <div class="chips" id="variantSupport"></div>
-          </div>
-          <div class="variant-group">
-            <div class="variant-title">Input</div>
-            <div class="chips" id="variantInput"></div>
-          </div>
-        </section>
-
-        <aside class="buybox">
-          <div class="price" id="buyboxPrice">Request Pricing</div>
-          <p id="buyboxText">Contact Penthia for product details, purchasing information, and deployment discussions.</p>
-          <div class="stack">
-            <button class="btn-amazon" type="button" onclick="openContactForm('Request Quote')">Request Quote</button>
-            <button class="btn-amazon-2" type="button" onclick="openContactForm('Contact Sales')">Contact Sales</button>
-          </div>
-          <div class="buybox-note" id="buyboxNote"></div>
-        </aside>
-      </div>
-    </div>
-  </div>
-
   <script>
-    const productImages = {
-      'pro-max': [
-        'iBoardWebsite,windowsbackgroundiboardpro.png',
-        'iBoardWebsite,androidbackground,withstandtoholdup.png',
-        'iBoardWebsite,androidbackgroundiboardpro.png'
-      ],
-      'pro': [
-        'iBoardWebsite,androidbackground,withstandtoholdup.png',
-        'iBoardWebsite,windowsbackgroundiboardpro.png',
-        'iBoardWebsite,androidbackgroundiboardpro.png'
-      ],
-      'iboard': [
-        'iBoardWebsite,androidbackgroundiboardpro.png',
-        'iBoardWebsite,androidbackground,withstandtoholdup.png',
-        'iBoardWebsite,windowsbackgroundiboardpro.png'
-      ],
-      'projector': [
-        'iBoardProector.png',
-        'iBoardProjectorimage#2.png'
-      ]
-    };
-
-    const products = {
-      'pro-max': {
-        badge: 'Flagship Model',
-        title: 'iBoard Pro Max',
-        description: 'The iBoard Pro Max is the flagship model in the current Penthia lineup. It is positioned as the largest and most premium option, built for schools seeking a top-tier classroom display with broader configuration flexibility.',
-        bullets: [
-          '85” 4K display',
-          'Available in both Android and Windows configurations',
-          'Windows-only option',
-          'Android-only option',
-          'Storage options: 16GB RAM / 256GB or 32GB RAM / 512GB',
-          'Includes both wall-mount and stand support',
-          'Touchscreen capability with stylus support'
-        ],
-        display: ['85” 4K display'],
-        os: ['Android and Windows configurations', 'Windows-only option', 'Android-only option'],
-        storage: ['16GB RAM / 256GB', '32GB RAM / 512GB'],
-        support: ['Wall-mount support', 'Stand support'],
-        input: ['Touchscreen', 'Stylus support'],
-        price: 'Request Pricing',
-        note: 'We’ll get back to you in less than 24 hours.'
-      },
-      'pro': {
-        badge: 'Core Product',
-        title: 'iBoard Pro',
-        description: 'The iBoard Pro is the central model in the lineup and a strong fit for schools that want a polished 4K smartboard with practical deployment options and a simpler configuration path.',
-        bullets: [
-          '70” 4K display',
-          'Available in Android (primary), with optional Windows configuration',
-          'Storage: 16GB RAM / 256GB',
-          'Includes wall-mount and stand support',
-          'Touchscreen capability with stylus support'
-        ],
-        display: ['70” 4K display'],
-        os: ['Android (primary)', 'Optional Windows configuration'],
-        storage: ['16GB RAM / 256GB'],
-        support: ['Wall-mount support', 'Stand support'],
-        input: ['Touchscreen', 'Stylus support'],
-        price: 'Request Pricing',
-        note: 'We’ll get back to you in less than 24 hours.'
-      },
-      'iboard': {
-        badge: 'Essential Model',
-        title: 'iBoard',
-        description: 'The iBoard is the streamlined model in the current range, designed as a more compact product option while still maintaining the core Penthia presentation and classroom utility standards.',
-        bullets: [
-          '65” 4K display',
-          'Android only',
-          'Storage: 8GB RAM / 128GB',
-          'Includes wall-mount and stand support',
-          'Touchscreen capability with stylus support'
-        ],
-        display: ['65” 4K display'],
-        os: ['Android only'],
-        storage: ['8GB RAM / 128GB'],
-        support: ['Wall-mount support', 'Stand support'],
-        input: ['Touchscreen', 'Stylus support'],
-        price: 'Request Pricing',
-        note: 'We’ll get back to you in less than 24 hours.'
-      },
-      'projector': {
-        badge: 'Projection Product',
-        title: 'Penthia Projector',
-        description: 'The Penthia Projector expands the lineup with a projection-based presentation option for classrooms, meeting spaces, and larger display environments.',
-        bullets: [
-          'Projector product line',
-          'Suitable for classroom and presentation environments',
-          'Contact sales for pricing and available configuration details'
-        ],
-        display: ['Projector display'],
-        os: ['Contact for details'],
-        storage: ['Contact for details'],
-        support: ['Classroom and presentation use'],
-        input: ['Contact for details'],
-        price: 'Request Pricing',
-        note: 'We’ll get back to you in less than 24 hours.'
-      }
-    };
-
-    let currentProductKey = null;
-    let currentImageIndex = 0;
-
-    function renderChips(id, values) {
-      document.getElementById(id).innerHTML = values.map(v => `<span class="chip">${v}</span>`).join('');
-    }
-
-    function setMainImage(index) {
-      const images = productImages[currentProductKey] || [];
-      if (!images.length) return;
-      currentImageIndex = (index + images.length) % images.length;
-      const mainImage = document.getElementById('modalMainImage');
-      mainImage.src = images[currentImageIndex];
-      mainImage.alt = products[currentProductKey].title;
-
-      const thumbs = document.querySelectorAll('#thumbs .thumb');
-      thumbs.forEach((thumb, i) => {
-        thumb.classList.toggle('active', i === currentImageIndex);
-      });
-    }
-
-    function changeImage(direction) {
-      setMainImage(currentImageIndex + direction);
-    }
-
-    function renderThumbs(key) {
-      const images = productImages[key] || [];
-      document.getElementById('thumbs').innerHTML = images.map((src, index) => `
-        <div class="thumb ${index === 0 ? 'active' : ''}" onclick="setMainImage(${index})">
-          <img src="${src}" alt="Product image ${index + 1}">
-        </div>
-      `).join('');
-    }
-
-    function openProduct(key) {
-      const p = products[key];
-      if (!p) return;
-      currentProductKey = key;
-      currentImageIndex = 0;
-      document.getElementById('modalBadge').textContent = p.badge;
-      document.getElementById('modalTitle').textContent = p.title;
-      document.getElementById('modalDescription').textContent = p.description;
-      document.getElementById('modalBullets').innerHTML = p.bullets.map(item => `<li>${item}</li>`).join('');
-      document.getElementById('buyboxPrice').textContent = p.price;
-      document.getElementById('buyboxText').textContent = `Contact Penthia for ${p.title} purchasing details, available configurations, and next-step discussions.`;
-      document.getElementById('buyboxNote').textContent = p.note;
-      renderChips('variantDisplay', p.display);
-      renderChips('variantOS', p.os);
-      renderChips('variantStorage', p.storage);
-      renderChips('variantSupport', p.support);
-      renderChips('variantInput', p.input);
-      renderThumbs(key);
-      setMainImage(0);
-      document.getElementById('modal').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function forceClose() {
-      document.getElementById('modal').classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    function closeModal(e) {
-      if (e.target.id === 'modal') forceClose();
-    }
-
-    function openContactForm(type) {
-      const productTitle = currentProductKey && products[currentProductKey] ? products[currentProductKey].title : '';
-      const messageField = document.getElementById('message');
-      if (messageField) {
-        messageField.value = `${type}${productTitle ? ' - ' + productTitle : ''}`;
-      }
-      forceClose();
-      location.hash = 'contact';
-      const contactSection = document.getElementById('contact');
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-
-    function filterProducts(query) {
-      const normalized = query.trim().toLowerCase();
-      const cards = document.querySelectorAll('#productGrid .card');
-      cards.forEach(card => {
-        const haystack = ((card.getAttribute('data-search') || '') + ' ' + card.textContent).toLowerCase();
-        card.style.display = !normalized || haystack.includes(normalized) ? '' : 'none';
-      });
-    }
-
     function attachSearch(inputId) {
       const input = document.getElementById(inputId);
       if (!input) return;
-      input.addEventListener('input', function () {
-        filterProducts(this.value);
-      });
       input.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          filterProducts(this.value);
-          const productsSection = document.getElementById('products');
-          if (productsSection) {
-            productsSection.scrollIntoView({ behavior: 'smooth' });
-          }
-        }
+        if (e.key === 'Enter') e.preventDefault();
       });
     }
 
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') forceClose();
-      if (!document.getElementById('modal').classList.contains('active')) return;
-      if (e.key === 'ArrowLeft') changeImage(-1);
-      if (e.key === 'ArrowRight') changeImage(1);
-    });
-
     document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
       const email = document.getElementById('email').value.trim();
       const phone = document.getElementById('phone').value.trim();
       if (!email && !phone) {
-        e.preventDefault();
-        alert('Please provide at least an email or a phone number.');
+        alert('Please provide at least an email or phone number.');
+        return;
       }
+      alert('Thanks. This is the right place to connect your real form handler or CRM.');
     });
 
     attachSearch('siteSearch');
-    attachSearch('productSearch');
   </script>
 </body>
 </html>
