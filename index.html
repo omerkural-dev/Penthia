@@ -4,21 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Penthia | Advanced Interactive Learning Solutions</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
     <style>
         :root {
+            /* New Sophisticated Palette */
             --bg: #f8fbff;
-            --panel: #ffffff;
-            --text: #1a2333;
-            --muted: #5c6c89;
-            --accent: #4c8df6;
-            --accent-glow: rgba(76, 141, 246, 0.15);
-            --line: rgba(24, 35, 58, 0.08);
-            --shadow: 0 20px 40px rgba(33, 52, 88, 0.08);
-            --radius: 24px;
-            --max: 1280px;
-            --amazon-yellow: #ffd814;
-            --amazon-orange: #ffa41c;
+            --surface: #ffffff;
+            --primary: #1a2333; /* Deep Professional Navy */
+            --accent: #4c8df6;  /* Tech Blue */
+            --accent-soft: rgba(76, 141, 246, 0.1);
+            --text-main: #1a2333;
+            --text-muted: #5c6c89;
+            --border: rgba(24, 35, 58, 0.08);
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.03);
+            --shadow-lg: 0 30px 60px rgba(33, 52, 88, 0.1);
+            --radius-lg: 32px;
+            --radius-md: 18px;
+            --amazon-gold: #ffd814;
+            --amazon-bright: #ffa41c;
         }
 
         * { box-sizing: border-box; }
@@ -27,491 +30,421 @@
         body {
             margin: 0;
             font-family: 'Inter', system-ui, sans-serif;
-            color: var(--text);
-            background: 
-                radial-gradient(circle at 0% 0%, rgba(76,141,246,0.05) 0%, transparent 30%),
-                radial-gradient(circle at 100% 100%, rgba(87,214,180,0.05) 0%, transparent 30%),
-                var(--bg);
+            color: var(--text-main);
+            background: var(--bg);
             line-height: 1.6;
         }
 
-        .container { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+        .container { width: min(1280px, calc(100% - 48px)); margin: 0 auto; }
 
-        /* --- NAVIGATION --- */
+        /* --- NAVIGATION REIMAGINED --- */
         .nav {
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 2000;
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--line);
+            border-bottom: 1px solid var(--border);
         }
         .nav-inner {
-            height: 84px;
+            height: 88px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 24px;
         }
         .brand {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             font-weight: 800;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             text-decoration: none;
-            color: var(--text);
+            color: var(--primary);
         }
         .brand img {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px var(--accent-glow);
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px var(--accent-soft);
         }
         .nav-links { display: flex; gap: 32px; }
         .nav-links a { 
-            color: var(--muted); 
-            font-weight: 500; 
+            color: var(--text-muted); 
+            font-weight: 600; 
             font-size: 0.95rem; 
-            transition: color 0.2s;
+            transition: 0.2s;
             text-decoration: none;
         }
         .nav-links a:hover { color: var(--accent); }
 
-        .nav-search {
-            flex: 1;
-            max-width: 380px;
-            position: relative;
-        }
-        .nav-search input {
-            width: 100%;
-            padding: 10px 16px;
-            border-radius: 99px;
-            border: 1px solid var(--line);
-            background: rgba(255,255,255,0.5);
-            outline: none;
-            font-size: 0.9rem;
-        }
-
-        /* --- HERO SECTION --- */
+        /* --- NEW HERO ARCHITECTURE --- */
         .hero {
-            padding: 100px 0 80px;
+            padding: 120px 0 80px;
             text-align: center;
+            background: radial-gradient(circle at top, rgba(76,141,246,0.05) 0%, transparent 70%);
         }
         .eyebrow {
             display: inline-block;
-            padding: 8px 16px;
-            background: var(--accent-glow);
+            padding: 8px 20px;
+            background: var(--accent-soft);
             color: var(--accent);
             border-radius: 99px;
             font-weight: 700;
-            font-size: 0.85rem;
-            margin-bottom: 24px;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            margin-bottom: 30px;
         }
         h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
             line-height: 1.1;
             margin: 0 0 24px;
             letter-spacing: -0.04em;
-            background: linear-gradient(135deg, #1a2333 0%, #4c8df6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--primary);
         }
         .hero p {
-            font-size: 1.25rem;
-            color: var(--muted);
-            max-width: 750px;
-            margin: 0 auto 40px;
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 48px;
         }
         .hero-visual {
-            margin-top: 60px;
+            margin-top: 40px;
             position: relative;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 1100px;
+            margin-inline: auto;
         }
         .hero-visual img {
             width: 100%;
-            border-radius: 32px;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.1);
-            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
         }
-        .floating-label {
+        .floating-status {
             position: absolute;
             bottom: 40px;
-            left: -20px;
+            left: -30px;
             background: white;
-            padding: 20px;
+            padding: 24px;
             border-radius: 20px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-lg);
             text-align: left;
-            border: 1px solid var(--line);
+            border: 1px solid var(--border);
         }
 
-        /* --- PROCESS SECTION --- */
-        .process-section { padding: 80px 0; background: rgba(255,255,255,0.5); }
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .step-card { padding: 30px; background: white; border-radius: 24px; border: 1px solid var(--line); box-shadow: var(--shadow); }
-        .step-card h3 { margin: 0 0 12px; color: var(--accent); }
-
-        /* --- STORE FRONT --- */
-        .store-header {
-            margin-bottom: 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            gap: 20px;
+        /* --- THE PROCESS SECTION (NEW) --- */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
         }
+        .process-card {
+            padding: 40px;
+            background: white;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+        .process-card span {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent-soft);
+            position: absolute;
+            top: 20px;
+            right: 30px;
+        }
+
+        /* --- REIMAGINED STOREFRONT --- */
+        .store-section { padding: 100px 0; }
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 32px;
         }
         .card {
-            background: var(--panel);
+            background: white;
             border-radius: 28px;
+            border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             overflow: hidden;
-            border: 1px solid var(--line);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
             display: flex;
             flex-direction: column;
+            cursor: pointer;
         }
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(76, 141, 246, 0.15);
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-lg);
             border-color: var(--accent);
         }
-        .card-media {
-            height: 260px;
-            background: linear-gradient(180deg, #f0f7ff, #ffffff);
-            display: grid;
-            place-items: center;
-            padding: 30px;
+        .card-image {
+            height: 300px;
+            background: #fcfdfe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
         }
-        .card-media img { max-height: 100%; object-fit: contain; }
-        .card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+        .card-image img { max-height: 100%; object-fit: contain; }
+        .card-content { padding: 32px; flex: 1; display: flex; flex-direction: column; }
         .badge {
             align-self: flex-start;
-            padding: 4px 12px;
+            padding: 6px 14px;
             background: #eefdf9;
             color: #0e6a56;
             border-radius: 99px;
             font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 16px;
         }
-        .card-title { font-size: 1.4rem; font-weight: 800; }
-        .price-label { font-weight: 700; color: var(--accent); font-size: 1.1rem; }
+        .card-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; }
+        .card-price { font-size: 1.2rem; font-weight: 700; color: var(--accent); margin-top: auto; }
 
-        /* --- COMPARISON TABLE --- */
-        .spec-table-wrap { overflow-x: auto; border-radius: 24px; border: 1px solid var(--line); box-shadow: var(--shadow); }
-        .spec-table { width: 100%; border-collapse: collapse; background: white; }
-        .spec-table th, .spec-table td { padding: 20px; text-align: left; border-bottom: 1px solid var(--line); }
-        .spec-table th { background: #f9fbff; width: 200px; color: var(--muted); }
-
-        /* --- CONTACT FORM --- */
-        .contact-card {
-            max-width: 800px;
+        /* --- CONTACT & QUOTE SYSTEM --- */
+        .quote-container {
+            max-width: 900px;
             margin: 0 auto;
             background: white;
-            border-radius: 32px;
-            padding: 48px;
-            border: 1px solid var(--line);
-            box-shadow: var(--shadow);
+            border-radius: 40px;
+            padding: 60px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
         }
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-        .full { grid-column: span 2; }
-        .field { display: grid; gap: 8px; }
-        .field label { font-weight: 600; font-size: 0.9rem; }
-        .field input, .field textarea {
-            padding: 14px 18px;
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .form-full { grid-column: span 2; }
+        .form-field label { display: block; font-weight: 700; margin-bottom: 10px; font-size: 0.9rem; }
+        .form-field input, .form-field textarea {
+            width: 100%;
+            padding: 16px;
             border-radius: 14px;
-            border: 1px solid var(--line);
-            background: #fcfdfe;
+            border: 1px solid var(--border);
+            background: #fbfcfe;
             font-family: inherit;
         }
-        .field input:focus, .field textarea:focus { outline: 2px solid var(--accent); border-color: transparent; }
 
-        /* --- BUTTONS --- */
+        /* --- BUTTON STYLES --- */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 16px 32px;
+            padding: 18px 36px;
             border-radius: 99px;
             font-weight: 700;
             cursor: pointer;
             transition: 0.3s;
             border: none;
             text-decoration: none;
-            gap: 10px;
         }
-        .btn-primary { background: var(--accent); color: white; box-shadow: 0 10px 20px var(--accent-glow); }
-        .btn-primary:hover { transform: scale(1.05); background: #3a7be0; }
-        .btn-amazon { background: var(--amazon-yellow); color: #111; width: 100%; }
-        .btn-amazon-2 { background: var(--amazon-orange); color: #111; width: 100%; }
+        .btn-primary { background: var(--accent); color: white; box-shadow: 0 10px 25px var(--accent-soft); }
+        .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.1); }
+        .btn-quote { background: var(--amazon-gold); color: #111; width: 100%; margin-bottom: 12px; }
+        .btn-demo { background: var(--amazon-bright); color: #111; width: 100%; }
 
-        /* --- MODAL --- */
+        /* --- PRODUCT MODAL REBUILD --- */
         .modal {
             position: fixed;
             inset: 0;
             z-index: 3000;
             display: none;
+            background: rgba(10, 24, 45, 0.4);
+            backdrop-filter: blur(12px);
             align-items: center;
             justify-content: center;
-            background: rgba(10, 20, 40, 0.4);
-            backdrop-filter: blur(10px);
-            padding: 20px;
+            padding: 24px;
         }
         .modal.active { display: flex; }
-        .panel {
-            width: min(1100px, 100%);
+        .modal-inner {
             background: white;
-            border-radius: 32px;
+            width: min(1200px, 100%);
             max-height: 90vh;
-            overflow-y: auto;
+            border-radius: 40px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
             position: relative;
-            padding: 40px;
         }
-        .close-btn {
+        .modal-gallery { background: #f8faff; padding: 60px; display: flex; flex-direction: column; align-items: center; }
+        .modal-info { padding: 60px; overflow-y: auto; }
+        .modal-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
+            top: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            border: 1px solid var(--line);
+            border: 1px solid var(--border);
             background: white;
             cursor: pointer;
-            font-size: 20px;
+            font-size: 1.5rem;
+            display: grid;
+            place-items: center;
+            z-index: 10;
         }
-        .product-page { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; }
-        .gallery-main { 
-            background: #f6f9ff; 
-            border-radius: 24px; 
-            height: 400px; 
-            display: grid; 
-            place-items: center; 
-            margin-bottom: 20px;
-        }
-        .gallery-main img { max-height: 80%; object-fit: contain; }
-        .thumbs { display: flex; gap: 12px; }
-        .thumb { width: 80px; height: 80px; border: 1px solid var(--line); border-radius: 12px; cursor: pointer; padding: 5px; }
-        .thumb.active { border-color: var(--accent); border-width: 2px; }
-        .thumb img { width: 100%; height: 100%; object-fit: contain; }
-        
-        .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-        .chip { padding: 6px 12px; background: #f0f4f8; border-radius: 6px; font-size: 0.85rem; border: 1px solid var(--line); }
 
-        footer { padding: 60px 0; text-align: center; border-top: 1px solid var(--line); color: var(--muted); }
+        footer { padding: 80px 0; text-align: center; border-top: 1px solid var(--border); color: var(--text-muted); }
 
-        @media (max-width: 900px) {
-            .product-page, .contact-grid, .grid-3 { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.5rem; }
-            .nav-links, .nav-search { display: none; }
+        @media (max-width: 1000px) {
+            .modal-inner { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-full { grid-column: span 1; }
+            .nav-links, .search { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <header class="nav">
+    <nav class="nav">
         <div class="container nav-inner">
             <a href="#" class="brand">
                 <img src="penthialogo.jpg" alt="Penthia logo" />
                 <span>Penthia</span>
             </a>
             
-            <nav class="nav-links">
-                <a href="#about">Features</a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
                 <a href="#products">Store</a>
                 <a href="#compare">Compare</a>
                 <a href="#contact">Support</a>
-            </nav>
-
-            <div class="nav-search">
-                <input id="siteSearch" type="text" placeholder="Search boards or solutions..." aria-label="Search" />
             </div>
 
-            <a href="#products" class="btn btn-primary">Shop Now</a>
+            <a href="#contact" class="btn btn-primary" style="padding: 12px 24px; font-size: 0.9rem;">Get a Quote</a>
         </div>
-    </header>
+    </nav>
 
     <main>
         <section class="hero container">
-            <div class="eyebrow">The Future of Education</div>
-            <h1>Professional interactive displays for modern spaces.</h1>
-            <p>We help schools and enterprise teams automate collaboration and inspire learning with the iBoard family of custom smart solutions[cite: 896, 934, 946].</p>
+            <div class="eyebrow">Professional Interactive Learning</div>
+            <h1>Empowering modern classrooms with custom smart solutions. [cite: 457]</h1>
+            <p>We help schools and education systems digitize operations with the high-performance iBoard family of interactive displays. [cite: 464]</p>
             
-            <div class="hero-actions">
-                <a href="#products" class="btn btn-primary">View the iBoard Lineup</a>
-                <a href="#contact" style="color: var(--accent); font-weight: 700; margin-left: 20px;">Book a Free Demo →</a>
+            <div style="display: flex; justify-content: center; gap: 16px;">
+                <a href="#products" class="btn btn-primary">Explore the Lineup</a>
+                <a href="#contact" class="btn" style="color: var(--accent); border: 2px solid var(--accent);">Schedule a Demo [cite: 460]</a>
             </div>
 
             <div class="hero-visual">
-                <img src="iBoardWebsite,windowsbackgroundiboardpro.png" alt="Penthia iBoard Pro" />
-                <div class="floating-label">
-                    <small style="color: var(--accent); font-weight: 800;">CURRENT FLAGSHIP</small>
+                <img src="iBoardWebsite,windowsbackgroundiboardpro.png" alt="Penthia iBoard Flagship" />
+                <div class="floating-status">
+                    <small style="color: var(--accent); font-weight: 800; text-transform: uppercase;">Premium Standards</small>
                     <div style="font-weight: 800; font-size: 1.2rem;">iBoard Pro Max</div>
-                    <div style="color: var(--muted); font-size: 0.9rem;">85" 4K | Dual OS Support</div>
+                    <div style="color: var(--text-muted); font-size: 0.9rem;">The standard for institutional learning.</div>
                 </div>
             </div>
         </section>
 
-        <section class="process-section" id="about">
+        <section id="features" style="padding: 100px 0; background: #fff;">
             <div class="container">
-                <div style="text-align: center; margin-bottom: 50px;">
-                    <h2>Built for better teaching and presentation.</h2>
-                    <p style="color: var(--muted);">Penthia boards are designed for high-performance learning environments[cite: 899].</p>
+                <div style="text-align: center; margin-bottom: 60px;">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 16px;">Our Deployment Process [cite: 465]</h2>
+                    <p style="color: var(--text-muted); max-width: 600px; margin-inline: auto;">How we take your classroom from traditional to interactive in three steps.</p>
                 </div>
-                <div class="grid-3">
-                    <div class="step-card">
-                        <h3>01. Discovery</h3>
-                        <p>We analyze your room layout and software requirements to suggest the perfect board configuration[cite: 941].</p>
+                <div class="process-grid">
+                    <div class="process-card">
+                        <span>01</span>
+                        <h3 style="margin-top: 0;">Discovery</h3>
+                        <p style="color: var(--text-muted);">We analyze your room layout and institutional needs to recommend the perfect board size and OS configuration. [cite: 466]</p>
                     </div>
-                    <div class="step-card">
-                        <h3>02. Setup</h3>
-                        <p>Our boards support both wall-mounting and mobile stands, compatible with Android and Windows[cite: 900].</p>
+                    <div class="process-card">
+                        <span>02</span>
+                        <h3 style="margin-top: 0;">Configuration</h3>
+                        <p style="color: var(--text-muted);">Select from Android, Windows, or Dual-OS setups with storage up to 512GB for seamless teaching. [cite: 431, 438]</p>
                     </div>
-                    <div class="step-card">
-                        <h3>03. Launch</h3>
-                        <p>Enjoy seamless 4K touchscreen interaction with high-precision stylus support for every student[cite: 907].</p>
+                    <div class="process-card">
+                        <span>03</span>
+                        <h3 style="margin-top: 0;">Deployment</h3>
+                        <p style="color: var(--text-muted);">Professional wall-mounting or mobile stand support ensures your technology is ready for Day 1. [cite: 423, 424]</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="container" id="products" style="padding: 100px 0;">
-            <div class="store-header">
+        <section id="products" class="store-section container">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px;">
                 <div>
-                    <h2 style="margin:0;">Penthia Store</h2>
-                    <p style="color: var(--muted); margin: 5px 0 0;">Interactive smartboards for schools and educational environments[cite: 902].</p>
+                    <h2 style="font-size: 2.5rem; margin: 0;">Interactive Store</h2>
+                    <p style="color: var(--text-muted); margin: 8px 0 0;">Browse our current smartboard configurations. [cite: 426]</p>
                 </div>
-                <div class="nav-search" style="max-width: 300px;">
-                    <input id="productSearch" type="text" placeholder="Filter by size..." />
+                <div style="max-width: 300px; width: 100%;">
+                    <input type="text" id="siteSearch" placeholder="Filter by size or model..." style="width:100%; padding: 14px; border-radius: 12px; border: 1px solid var(--border);">
                 </div>
             </div>
 
             <div class="product-grid" id="productGrid">
-                <article class="card" data-search="pro max 85 4k android windows flagship stylus" onclick="openProduct('pro-max')">
-                    <div class="card-media">
-                        <img src="iBoardWebsite,windowsbackgroundiboardpro.png" alt="iBoard Pro Max" />
-                    </div>
-                    <div class="card-body">
-                        <span class="badge">Flagship Model</span>
+                <div class="card" data-search="pro max 85 4k android windows flagship" onclick="openProduct('pro-max')">
+                    <div class="card-image"><img src="iBoardWebsite,windowsbackgroundiboardpro.png" alt="Pro Max"></div>
+                    <div class="card-content">
+                        <span class="badge">Flagship Model [cite: 437]</span>
                         <div class="card-title">iBoard Pro Max</div>
-                        <div style="color: var(--muted); font-size: 0.9rem;">85” 4K display • Android and Windows • Premium performance[cite: 913].</div>
-                        <div class="price-label">Request Pricing</div>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">85” 4K UHD | Dual OS Support | 32GB RAM Opt. [cite: 438]</p>
+                        <div class="card-price">Request Quote [cite: 439]</div>
                     </div>
-                </article>
-
-                <article class="card" data-search="pro 70 4k android windows mainline" onclick="openProduct('pro')">
-                    <div class="card-media">
-                        <img src="iBoardWebsite,androidbackground,withstandtoholdup.png" alt="iBoard Pro" />
-                    </div>
-                    <div class="card-body">
-                        <span class="badge">Mainline Model</span>
-                        <div class="card-title">iBoard Pro</div>
-                        <div style="color: var(--muted); font-size: 0.9rem;">70” 4K display • Android Primary • Optional Windows Module[cite: 903].</div>
-                        <div class="price-label">Request Pricing</div>
-                    </div>
-                </article>
-
-                <article class="card" data-search="iboard 65 4k android essential" onclick="openProduct('iboard')">
-                    <div class="card-media">
-                        <img src="iBoardWebsite,androidbackgroundiboardpro.png" alt="iBoard" />
-                    </div>
-                    <div class="card-body">
-                        <span class="badge">Essential Model</span>
-                        <div class="card-title">iBoard</div>
-                        <div style="color: var(--muted); font-size: 0.9rem;">65” 4K display • Android only • Optimized for standard classrooms[cite: 916].</div>
-                        <div class="price-label">Request Pricing</div>
-                    </div>
-                </article>
-
-                <article class="card" data-search="projector projection display presentation" onclick="openProduct('projector')">
-                    <div class="card-media">
-                        <img src="iBoardProector.png" alt="Penthia Projector" />
-                    </div>
-                    <div class="card-body">
-                        <span class="badge">Projection</span>
-                        <div class="card-title">Penthia Projector</div>
-                        <div style="color: var(--muted); font-size: 0.9rem;">High-lumens projection solution for meeting spaces[cite: 917].</div>
-                        <div class="price-label">Request Pricing</div>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section class="container" id="compare" style="padding-bottom: 100px;">
-            <h2 style="text-align: center; margin-bottom: 40px;">Compare the iBoard Lineup</h2>
-            <div class="spec-table-wrap">
-                <table class="spec-table">
-                    <thead>
-                        <tr>
-                            <th>Feature</th>
-                            <td><strong>iBoard Pro Max</strong></td>
-                            <td><strong>iBoard Pro</strong></td>
-                            <td><strong>iBoard</strong></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>Display Size</th>
-                            <td>85” 4K [cite: 914]</td>
-                            <td>70” 4K [cite: 903]</td>
-                            <td>65” 4K [cite: 916]</td>
-                        </tr>
-                        <tr>
-                            <th>OS Support</th>
-                            <td>Android & Windows</td>
-                            <td>Android (Primary)</td>
-                            <td>Android Only</td>
-                        </tr>
-                        <tr>
-                            <th>Storage / RAM</th>
-                            <td>Up to 32GB / 512GB</td>
-                            <td>16GB / 256GB</td>
-                            <td>8GB / 128GB</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section id="contact" style="background: #f0f4f8; padding: 100px 0;">
-            <div class="container">
-                <div style="text-align: center; margin-bottom: 40px;">
-                    <h2>Request a Custom Quote</h2>
-                    <p style="color: var(--muted);">Trusted by schools and businesses. Get a response in 24 hours[cite: 916].</p>
                 </div>
-                <div class="contact-card">
+
+                <div class="card" data-search="pro 70 4k android windows core" onclick="openProduct('pro')">
+                    <div class="card-image"><img src="iBoardWebsite,androidbackground,withstandtoholdup.png" alt="Pro"></div>
+                    <div class="card-content">
+                        <span class="badge">Mainline Solution [cite: 427, 428]</span>
+                        <div class="card-title">iBoard Pro</div>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">70” 4K UHD | Android Primary | 16GB RAM. [cite: 431]</p>
+                        <div class="card-price">Request Quote</div>
+                    </div>
+                </div>
+
+                <div class="card" data-search="iboard 65 4k android essential" onclick="openProduct('iboard')">
+                    <div class="card-image"><img src="iBoardWebsite,androidbackgroundiboardpro.png" alt="iBoard"></div>
+                    <div class="card-content">
+                        <span class="badge">Essential Model [cite: 440]</span>
+                        <div class="card-title">iBoard</div>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">65” 4K UHD | Android 11+ | High-Precision Touch. [cite: 440]</p>
+                        <div class="card-price">Request Quote</div>
+                    </div>
+                </div>
+
+                <div class="card" data-search="projector projection display presentation" onclick="openProduct('projector')">
+                    <div class="card-image"><img src="iBoardProector.png" alt="Projector"></div>
+                    <div class="card-content">
+                        <span class="badge">Projection [cite: 441]</span>
+                        <div class="card-title">Penthia Projector</div>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">High-lumen presentation for large lecture spaces. [cite: 441]</p>
+                        <div class="card-price">Request Quote</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" style="background: #f0f4f8; padding: 120px 0;">
+            <div class="container">
+                <div class="quote-container">
+                    <div style="text-align: center; margin-bottom: 40px;">
+                        <h2 style="font-size: 2.2rem; margin-bottom: 12px;">Institutional Quote Request</h2>
+                        <p style="color: var(--text-muted);">Get a free tech roadmap and system audit for your school. [cite: 467]</p>
+                    </div>
+                    
                     <form id="contactForm" action="https://formspree.io/f/xnjoppqk" method="POST">
-                        <div class="contact-grid">
-                            <div class="field">
+                        <div class="form-grid">
+                            <div class="form-field">
                                 <label>First Name</label>
                                 <input type="text" name="First Name" required>
                             </div>
-                            <div class="field">
+                            <div class="form-field">
                                 <label>Last Name</label>
                                 <input type="text" name="Last Name" required>
                             </div>
-                            <div class="field">
-                                <label>Email Address</label>
+                            <div class="form-field">
+                                <label>Work Email</label>
                                 <input type="email" name="Email" required>
                             </div>
-                            <div class="field">
+                            <div class="form-field">
                                 <label>Phone Number</label>
                                 <input type="tel" name="Phone Number">
                             </div>
-                            <div class="field full">
-                                <label>How can we help you?</label>
-                                <textarea id="message" name="Message" rows="5" placeholder="Tell us about your project..."></textarea>
+                            <div class="form-field form-full">
+                                <label>How can Penthia help your institution?</label>
+                                <textarea id="message" name="Message" rows="5" placeholder="Details about your classrooms or required board counts..."></textarea>
                             </div>
-                            <div class="full" style="text-align: center; margin-top: 20px;">
-                                <button type="submit" class="btn btn-primary" style="min-width: 240px;">Send Inquiry</button>
+                            <div class="form-full" style="text-align: center; margin-top: 20px;">
+                                <button type="submit" class="btn btn-primary" style="min-width: 280px;">Submit Request [cite: 433]</button>
+                                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 15px;">We typically respond with a custom quote within 24 hours. [cite: 440]</p>
                             </div>
                         </div>
                     </form>
@@ -522,46 +455,42 @@
 
     <footer>
         <div class="container">
-            <p>© 2026 Penthia Store. Advanced Interactive Classroom Solutions[cite: 911].</p>
+            <p>© 2026 Penthia Store. Advanced Interactive Classroom Solutions. [cite: 435]</p>
         </div>
     </footer>
 
     <div class="modal" id="modal" onclick="closeModal(event)">
-        <div class="panel">
-            <button class="close-btn" onclick="forceClose()">×</button>
-            <div class="product-page">
-                <section>
-                    <div class="gallery-main">
-                        <img id="modalMainImage" src="" alt="">
-                    </div>
-                    <div class="thumbs" id="thumbs"></div>
-                </section>
-                <section>
-                    <span class="badge" id="modalBadge"></span>
-                    <h2 id="modalTitle" style="margin: 10px 0; font-size: 2.2rem;"></h2>
-                    <p id="modalDescription" style="color: var(--muted);"></p>
-                    
-                    <div style="margin-top: 30px;">
-                        <strong style="display: block; margin-bottom: 10px;">Available Configurations</strong>
-                        <div id="variantDisplay" class="chips"></div>
-                        <div id="variantOS" class="chips"></div>
-                    </div>
+        <div class="modal-inner">
+            <button class="modal-close" onclick="forceClose()">×</button>
+            <div class="modal-gallery">
+                <div style="height: 400px; display: grid; place-items: center; margin-bottom: 30px;">
+                    <img id="modalMainImage" src="" alt="Product" style="max-height: 100%; object-fit: contain;">
+                </div>
+                <div style="display: flex; gap: 12px;" id="thumbs"></div>
+            </div>
+            <div class="modal-info">
+                <span class="badge" id="modalBadge"></span>
+                <h2 id="modalTitle" style="font-size: 2.2rem; margin: 12px 0;"></h2>
+                <p id="modalDescription" style="color: var(--text-muted); margin-bottom: 30px;"></p>
+                
+                <div style="margin-bottom: 30px;">
+                    <div style="font-weight: 800; margin-bottom: 15px;">Technical Configurations</div>
+                    <div id="variantDisplay" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;"></div>
+                    <div id="variantOS" style="display: flex; flex-wrap: wrap; gap: 10px;"></div>
+                </div>
 
-                    <div style="margin-top: 40px; padding: 25px; background: #f8fbff; border-radius: 20px; border: 1px solid var(--line);">
-                        <div id="buyboxPrice" style="font-size: 1.5rem; font-weight: 800; margin-bottom: 10px;"></div>
-                        <p style="font-size: 0.9rem; margin-bottom: 20px;">Get a detailed tech roadmap and deployment quote for your institution[cite: 925].</p>
-                        <div style="display: grid; gap: 10px;">
-                            <button class="btn btn-amazon" onclick="openContactForm('Quote Request')">Request Quote</button>
-                            <button class="btn btn-amazon-2" onclick="openContactForm('Consultation')">Schedule Demo</button>
-                        </div>
-                    </div>
-                </section>
+                <div style="background: #f8fbff; border-radius: 24px; padding: 32px; border: 1px solid var(--border);">
+                    <div id="buyboxPrice" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 8px;"></div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 24px;">Includes wall-mount hardware and multi-user stylus support. [cite: 431, 432]</p>
+                    <button class="btn btn-quote" onclick="openContactForm('Quote Request')">Request Official Quote</button>
+                    <button class="btn btn-demo" onclick="openContactForm('Demo Request')">Schedule Live Demo [cite: 460]</button>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Original product data and images preserved exactly [cite: 912, 913, 917]
+        // Data preserved from original source
         const productImages = {
             'pro-max': ['iBoardWebsite,windowsbackgroundiboardpro.png', 'iBoardWebsite,androidbackground,withstandtoholdup.png', 'iBoardWebsite,androidbackgroundiboardpro.png'],
             'pro': ['iBoardWebsite,androidbackground,withstandtoholdup.png', 'iBoardWebsite,windowsbackgroundiboardpro.png', 'iBoardWebsite,androidbackgroundiboardpro.png'],
@@ -570,22 +499,23 @@
         };
 
         const products = {
-            'pro-max': { badge: 'Flagship Model', title: 'iBoard Pro Max', description: 'The definitive solution for large lecture halls and premium spaces[cite: 913].', display: ['85” 4K Ultra HD'], os: ['Android & Windows'], price: 'Request Pricing' },
-            'pro': { badge: 'Core Solution', title: 'iBoard Pro', description: 'The versatile mainline model perfect for modern K-12 classrooms[cite: 903].', display: ['70” 4K display'], os: ['Android (Standard)', 'Optional Windows'], price: 'Request Pricing' },
-            'iboard': { badge: 'Essential', title: 'iBoard', description: 'A streamlined, reliable interactive display focused on ease of use[cite: 916].', display: ['65” 4K display'], os: ['Android Only'], price: 'Request Pricing' },
-            'projector': { badge: 'Projection', title: 'Penthia Projector', description: 'Expand your presentation capabilities with high-lumen projection technology[cite: 917].', display: ['Variable Size'], os: ['Standard Input'], price: 'Request Pricing' }
+            'pro-max': { badge: 'Flagship Model', title: 'iBoard Pro Max', description: 'The definitive solution for large lecture halls and premium spaces. [cite: 437, 438]', display: ['85” 4K display'], os: ['Android & Windows Options'], price: 'Request Pricing' },
+            'pro': { badge: 'Mainline Model', title: 'iBoard Pro', description: 'The versatile core product for K-12 and corporate meeting rooms. [cite: 427, 428]', display: ['70” 4K display'], os: ['Android Primary', 'Windows Module Opt.'], price: 'Request Pricing' },
+            'iboard': { badge: 'Essential Model', title: 'iBoard', description: 'A streamlined, reliable interactive display focused on classroom utility. [cite: 440]', display: ['65” 4K display'], os: ['Android Only'], price: 'Request Pricing' },
+            'projector': { badge: 'Projection', title: 'Penthia Projector', description: 'High-lumen presentation solution for expansive viewing areas. [cite: 441]', display: ['Variable Screen Size'], os: ['Multi-Input'], price: 'Request Pricing' }
         };
 
-        let currentProductKey = '';
+        let currentKey = '';
 
         function openProduct(key) {
-            currentProductKey = key;
+            currentKey = key;
             const p = products[key];
             document.getElementById('modalTitle').textContent = p.title;
             document.getElementById('modalBadge').textContent = p.badge;
             document.getElementById('modalDescription').textContent = p.description;
             document.getElementById('buyboxPrice').textContent = p.price;
             
+            // Chips render [cite: 442]
             renderChips('variantDisplay', p.display);
             renderChips('variantOS', p.os);
             renderThumbs(key);
@@ -596,23 +526,21 @@
         }
 
         function renderChips(id, values) {
-            document.getElementById(id).innerHTML = values.map(v => `<span class="chip">${v}</span>`).join('');
+            document.getElementById(id).innerHTML = values.map(v => `<span style="padding: 8px 16px; background: #f0f4f8; border-radius: 8px; font-size: 0.85rem; font-weight: 600;">${v}</span>`).join('');
         }
 
         function renderThumbs(key) {
             const imgs = productImages[key] || [];
             document.getElementById('thumbs').innerHTML = imgs.map((src, i) => `
-                <div class="thumb ${i===0?'active':''}" onclick="setMainImage(${i})">
-                    <img src="${src}" alt="thumb">
+                <div style="width: 70px; height: 70px; border: 2px solid ${i===0?'#4c8df6':'#eee'}; border-radius: 12px; cursor: pointer; padding: 5px;" onclick="setMainImage(${i})">
+                    <img src="${src}" style="width:100%; height:100%; object-fit:contain;">
                 </div>
             `).join('');
         }
 
-        function setMainImage(index) {
-            const imgs = productImages[currentProductKey];
-            document.getElementById('modalMainImage').src = imgs[index];
-            const ts = document.querySelectorAll('.thumb');
-            ts.forEach((t, i) => t.classList.toggle('active', i === index));
+        function setMainImage(idx) {
+            const imgs = productImages[currentKey];
+            document.getElementById('modalMainImage').src = imgs[idx];
         }
 
         function forceClose() {
@@ -624,23 +552,19 @@
 
         function openContactForm(type) {
             const msg = document.getElementById('message');
-            msg.value = `${type} for ${products[currentProductKey].title}. Please send technical specs[cite: 926].`;
+            msg.value = `Hello, I'm interested in a ${type} for the ${products[currentKey].title}. Please send availability and pricing details.`;
             forceClose();
             location.hash = 'contact';
         }
 
-        // Original search logic [cite: 928, 929]
-        function filterProducts(query) {
-            const q = query.toLowerCase();
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                const searchData = card.getAttribute('data-search').toLowerCase();
-                card.style.display = searchData.includes(q) ? 'flex' : 'none';
+        // Original search logic [cite: 453]
+        document.getElementById('siteSearch').addEventListener('input', (e) => {
+            const q = e.target.value.toLowerCase();
+            document.querySelectorAll('.card').forEach(card => {
+                const data = card.getAttribute('data-search').toLowerCase();
+                card.style.display = data.includes(q) ? 'flex' : 'none';
             });
-        }
-
-        document.getElementById('siteSearch').addEventListener('input', (e) => filterProducts(e.target.value));
-        document.getElementById('productSearch').addEventListener('input', (e) => filterProducts(e.target.value));
+        });
     </script>
 </body>
 </html>
