@@ -1,570 +1,1854 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Penthia | Advanced Interactive Learning Solutions</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
-    <style>
-        :root {
-            /* New Sophisticated Palette */
-            --bg: #f8fbff;
-            --surface: #ffffff;
-            --primary: #1a2333; /* Deep Professional Navy */
-            --accent: #4c8df6;  /* Tech Blue */
-            --accent-soft: rgba(76, 141, 246, 0.1);
-            --text-main: #1a2333;
-            --text-muted: #5c6c89;
-            --border: rgba(24, 35, 58, 0.08);
-            --shadow-sm: 0 4px 12px rgba(0,0,0,0.03);
-            --shadow-lg: 0 30px 60px rgba(33, 52, 88, 0.1);
-            --radius-lg: 32px;
-            --radius-md: 18px;
-            --amazon-gold: #ffd814;
-            --amazon-bright: #ffa41c;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Penthia | Interactive Display Solutions</title>
+  <meta name="description" content="Penthia provides professional interactive display solutions for schools, training spaces, and modern presentation environments." />
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --bg-soft: #eef2f8;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --surface-3: #e9eef6;
+      --text: #111827;
+      --muted: #5f6b7a;
+      --line: #d9e1ec;
+      --line-strong: #c7d2e3;
+      --primary: #0f4c81;
+      --primary-2: #123b66;
+      --accent: #1f7ae0;
+      --accent-soft: rgba(31, 122, 224, 0.08);
+      --success: #107a5b;
+      --warning: #c78414;
+      --shadow-sm: 0 10px 30px rgba(17, 24, 39, 0.06);
+      --shadow-md: 0 22px 60px rgba(17, 24, 39, 0.10);
+      --shadow-lg: 0 30px 80px rgba(15, 23, 42, 0.16);
+      --radius: 24px;
+      --radius-sm: 18px;
+      --radius-xs: 14px;
+      --max: 1320px;
+      --amazon-yellow: #ffd814;
+      --amazon-orange: #ffa41c;
+    }
 
-        * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        
-        body {
-            margin: 0;
-            font-family: 'Inter', system-ui, sans-serif;
-            color: var(--text-main);
-            background: var(--bg);
-            line-height: 1.6;
-        }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(31,122,224,0.08), transparent 28%),
+        radial-gradient(circle at right 20%, rgba(15,76,129,0.08), transparent 26%),
+        linear-gradient(180deg, #fbfcfe 0%, #f5f7fb 44%, #eef2f8 100%);
+    }
 
-        .container { width: min(1280px, calc(100% - 48px)); margin: 0 auto; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button, input, textarea { font: inherit; }
 
-        /* --- NAVIGATION REIMAGINED --- */
-        .nav {
-            position: sticky;
-            top: 0;
-            z-index: 2000;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-        }
-        .nav-inner {
-            height: 88px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            font-weight: 800;
-            font-size: 1.3rem;
-            text-decoration: none;
-            color: var(--primary);
-        }
-        .brand img {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px var(--accent-soft);
-        }
-        .nav-links { display: flex; gap: 32px; }
-        .nav-links a { 
-            color: var(--text-muted); 
-            font-weight: 600; 
-            font-size: 0.95rem; 
-            transition: 0.2s;
-            text-decoration: none;
-        }
-        .nav-links a:hover { color: var(--accent); }
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
 
-        /* --- NEW HERO ARCHITECTURE --- */
-        .hero {
-            padding: 120px 0 80px;
-            text-align: center;
-            background: radial-gradient(circle at top, rgba(76,141,246,0.05) 0%, transparent 70%);
-        }
-        .eyebrow {
-            display: inline-block;
-            padding: 8px 20px;
-            background: var(--accent-soft);
-            color: var(--accent);
-            border-radius: 99px;
-            font-weight: 700;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 30px;
-        }
-        h1 {
-            font-size: clamp(2.8rem, 6vw, 4.5rem);
-            line-height: 1.1;
-            margin: 0 0 24px;
-            letter-spacing: -0.04em;
-            color: var(--primary);
-        }
-        .hero p {
-            font-size: 1.3rem;
-            color: var(--text-muted);
-            max-width: 800px;
-            margin: 0 auto 48px;
-        }
-        .hero-visual {
-            margin-top: 40px;
-            position: relative;
-            max-width: 1100px;
-            margin-inline: auto;
-        }
-        .hero-visual img {
-            width: 100%;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--border);
-        }
-        .floating-status {
-            position: absolute;
-            bottom: 40px;
-            left: -30px;
-            background: white;
-            padding: 24px;
-            border-radius: 20px;
-            box-shadow: var(--shadow-lg);
-            text-align: left;
-            border: 1px solid var(--border);
-        }
+    .section {
+      padding: 84px 0;
+    }
 
-        /* --- THE PROCESS SECTION (NEW) --- */
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-        .process-card {
-            padding: 40px;
-            background: white;
-            border-radius: 24px;
-            border: 1px solid var(--border);
-            position: relative;
-        }
-        .process-card span {
-            font-size: 3rem;
-            font-weight: 900;
-            color: var(--accent-soft);
-            position: absolute;
-            top: 20px;
-            right: 30px;
-        }
+    .section-tight {
+      padding: 58px 0;
+    }
 
-        /* --- REIMAGINED STOREFRONT --- */
-        .store-section { padding: 100px 0; }
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-            gap: 32px;
-        }
-        .card {
-            background: white;
-            border-radius: 28px;
-            border: 1px solid var(--border);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-        }
-        .card:hover {
-            transform: translateY(-12px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--accent);
-        }
-        .card-image {
-            height: 300px;
-            background: #fcfdfe;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-        }
-        .card-image img { max-height: 100%; object-fit: contain; }
-        .card-content { padding: 32px; flex: 1; display: flex; flex-direction: column; }
-        .badge {
-            align-self: flex-start;
-            padding: 6px 14px;
-            background: #eefdf9;
-            color: #0e6a56;
-            border-radius: 99px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-        }
-        .card-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; }
-        .card-price { font-size: 1.2rem; font-weight: 700; color: var(--accent); margin-top: auto; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 38px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(31,122,224,0.16);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.01em;
+    }
 
-        /* --- CONTACT & QUOTE SYSTEM --- */
-        .quote-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 40px;
-            padding: 60px;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--border);
-        }
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-        .form-full { grid-column: span 2; }
-        .form-field label { display: block; font-weight: 700; margin-bottom: 10px; font-size: 0.9rem; }
-        .form-field input, .form-field textarea {
-            width: 100%;
-            padding: 16px;
-            border-radius: 14px;
-            border: 1px solid var(--border);
-            background: #fbfcfe;
-            font-family: inherit;
-        }
+    .muted { color: var(--muted); }
 
-        /* --- BUTTON STYLES --- */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 18px 36px;
-            border-radius: 99px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-            border: none;
-            text-decoration: none;
-        }
-        .btn-primary { background: var(--accent); color: white; box-shadow: 0 10px 25px var(--accent-soft); }
-        .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.1); }
-        .btn-quote { background: var(--amazon-gold); color: #111; width: 100%; margin-bottom: 12px; }
-        .btn-demo { background: var(--amazon-bright); color: #111; width: 100%; }
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(217,225,236,0.85);
+    }
 
-        /* --- PRODUCT MODAL REBUILD --- */
-        .modal {
-            position: fixed;
-            inset: 0;
-            z-index: 3000;
-            display: none;
-            background: rgba(10, 24, 45, 0.4);
-            backdrop-filter: blur(12px);
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-        }
-        .modal.active { display: flex; }
-        .modal-inner {
-            background: white;
-            width: min(1200px, 100%);
-            max-height: 90vh;
-            border-radius: 40px;
-            overflow: hidden;
-            display: grid;
-            grid-template-columns: 1.1fr 1fr;
-            position: relative;
-        }
-        .modal-gallery { background: #f8faff; padding: 60px; display: flex; flex-direction: column; align-items: center; }
-        .modal-info { padding: 60px; overflow-y: auto; }
-        .modal-close {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            border: 1px solid var(--border);
-            background: white;
-            cursor: pointer;
-            font-size: 1.5rem;
-            display: grid;
-            place-items: center;
-            z-index: 10;
-        }
+    .nav-inner {
+      min-height: 84px;
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      gap: 18px;
+      align-items: center;
+    }
 
-        footer { padding: 80px 0; text-align: center; border-top: 1px solid var(--border); color: var(--text-muted); }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
 
-        @media (max-width: 1000px) {
-            .modal-inner { grid-template-columns: 1fr; }
-            .form-grid { grid-template-columns: 1fr; }
-            .form-full { grid-column: span 1; }
-            .nav-links, .search { display: none; }
-        }
-    </style>
+    .brand img {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(255,255,255,0.7);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 26px;
+      color: var(--muted);
+      font-size: 0.96rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 360px;
+      min-height: 48px;
+      padding: 0 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(248,250,252,0.96);
+      color: var(--muted);
+    }
+
+    .search input {
+      width: 100%;
+      border: none;
+      background: transparent;
+      outline: none;
+      color: var(--text);
+    }
+
+    .btn {
+      border: none;
+      border-radius: 999px;
+      min-height: 48px;
+      padding: 0 20px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      box-shadow: 0 16px 35px rgba(15,76,129,0.22);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--text);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-amazon {
+      background: var(--amazon-yellow);
+      color: #1c1f23;
+      border: 1px solid rgba(0,0,0,0.12);
+    }
+
+    .btn-amazon-2 {
+      background: var(--amazon-orange);
+      color: #1c1f23;
+      border: 1px solid rgba(0,0,0,0.12);
+    }
+
+    .hero {
+      padding: 48px 0 44px;
+    }
+
+    .hero-shell {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-visual-panel {
+      border-radius: 32px;
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(217,225,236,0.86);
+      box-shadow: var(--shadow-md);
+    }
+
+    .hero-copy {
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 620px;
+    }
+
+    .hero-top h1 {
+      margin: 18px 0 18px;
+      font-size: clamp(2.7rem, 5vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      max-width: 760px;
+    }
+
+    .hero-top p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1.05rem;
+      max-width: 720px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .hero-proof {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .proof-card {
+      background: linear-gradient(180deg, rgba(248,250,252,0.96), rgba(255,255,255,0.98));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+    }
+
+    .proof-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1.02rem;
+    }
+
+    .hero-bottom {
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+    }
+
+    .hero-bottom-card {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+    }
+
+    .hero-bottom-card h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    .hero-visual-panel {
+      position: relative;
+      padding: 22px;
+      min-height: 620px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(9,22,39,0.98), rgba(16,39,67,0.94)),
+        radial-gradient(circle at top right, rgba(31,122,224,0.26), transparent 30%);
+      color: #fff;
+    }
+
+    .hero-visual-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .hero-visual-head .muted {
+      color: rgba(255,255,255,0.72);
+    }
+
+    .hero-device-stage {
+      position: relative;
+      min-height: 420px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .hero-device-stage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .float-card {
+      position: absolute;
+      background: rgba(255,255,255,0.96);
+      color: var(--text);
+      border-radius: 18px;
+      border: 1px solid rgba(217,225,236,0.9);
+      box-shadow: var(--shadow-md);
+      padding: 14px 16px;
+      min-width: 190px;
+    }
+
+    .float-card small {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .float-a { top: 108px; right: 10px; }
+    .float-b { left: 8px; bottom: 130px; }
+    .float-c { right: 16px; bottom: 22px; }
+
+    .visual-specs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .visual-specs .mini {
+      border-radius: 16px;
+      padding: 14px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 26px;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      letter-spacing: -0.045em;
+    }
+
+    .section-header p {
+      margin: 12px 0 0;
+      max-width: 820px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .trust-band {
+      padding: 18px 0 0;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr .8fr;
+      gap: 16px;
+    }
+
+    .trust-card {
+      background: rgba(255,255,255,0.84);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .trust-card h3,
+    .process-card h3,
+    .feature-card h3,
+    .service-card h3,
+    .testimonial h3,
+    .cta-card h3 {
+      margin: 0 0 10px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      padding: 16px;
+      border-radius: 18px;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.45rem;
+      letter-spacing: -0.04em;
+      margin-bottom: 4px;
+    }
+
+    .logo-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .logo-pill {
+      min-height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-weight: 700;
+      text-align: center;
+      padding: 8px;
+    }
+
+    .feature-grid,
+    .service-grid,
+    .testimonial-grid,
+    .process-grid,
+    .cta-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .feature-grid { grid-template-columns: repeat(4, 1fr); }
+    .service-grid { grid-template-columns: repeat(4, 1fr); }
+    .process-grid { grid-template-columns: repeat(4, 1fr); }
+    .testimonial-grid { grid-template-columns: repeat(3, 1fr); }
+    .cta-grid { grid-template-columns: 1.2fr .8fr; }
+
+    .feature-card,
+    .service-card,
+    .process-card,
+    .testimonial,
+    .cta-card,
+    .contact-shell,
+    .store-shell {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .feature-card,
+    .service-card,
+    .process-card,
+    .testimonial,
+    .cta-card {
+      padding: 24px;
+    }
+
+    .feature-card p,
+    .service-card p,
+    .process-card p,
+    .testimonial p,
+    .cta-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .service-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -20px -20px auto;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(31,122,224,0.10), transparent 70%);
+    }
+
+    .service-label,
+    .process-step,
+    .quote-tag,
+    .card-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(31,122,224,0.12);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: .82rem;
+      margin-bottom: 14px;
+    }
+
+    .store-shell {
+      padding: 18px;
+    }
+
+    .store-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      padding: 12px 8px 20px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 18px;
+    }
+
+    .store-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .results {
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.76), rgba(248,250,252,0.94));
+      padding: 20px;
+    }
+
+    .results h3 { margin: 0 0 16px; }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(31,122,224,0.35);
+    }
+
+    .card-media {
+      aspect-ratio: 4 / 3;
+      padding: 18px;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(180deg, #eef4fb, #e4edf8),
+        radial-gradient(circle at top right, rgba(31,122,224,0.10), transparent 30%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 16px;
+    }
+
+    .card-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-self: flex-start;
+      min-height: 32px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(16,122,91,0.10);
+      border: 1px solid rgba(16,122,91,0.14);
+      color: var(--success);
+      font-size: .82rem;
+      font-weight: 800;
+    }
+
+    .card-title {
+      font-size: 1.08rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+    }
+
+    .price {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .spec-table th,
+    .spec-table td {
+      text-align: left;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    .spec-table th {
+      width: 220px;
+      background: rgba(15,76,129,0.05);
+    }
+
+    .process-card {
+      position: relative;
+      min-height: 230px;
+    }
+
+    .process-index {
+      position: absolute;
+      top: 20px;
+      right: 22px;
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.06em;
+      color: rgba(17,24,39,0.08);
+    }
+
+    .testimonial {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .person {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .cta-card.primary-cta {
+      background: linear-gradient(135deg, #0f2742, #143b63);
+      color: #fff;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .cta-card.primary-cta p,
+    .cta-card.primary-cta .muted {
+      color: rgba(255,255,255,0.76);
+    }
+
+    .contact-shell {
+      max-width: 920px;
+      padding: 26px;
+    }
+
+    .contact-note,
+    .contact-inline-note {
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field.full { grid-column: 1 / -1; }
+
+    .field label {
+      font-weight: 700;
+      font-size: .95rem;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 15px 16px;
+      color: var(--text);
+      background: #fff;
+      outline: none;
+    }
+
+    .field textarea {
+      min-height: 160px;
+      resize: vertical;
+    }
+
+    footer {
+      padding: 34px 0 56px;
+      color: var(--muted);
+    }
+
+    .footer-shell {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      padding-top: 26px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(15,23,42,0.45);
+      backdrop-filter: blur(14px);
+    }
+
+    .modal.active { display: flex; }
+
+    .panel {
+      width: min(1260px, 100%);
+      max-height: calc(100vh - 36px);
+      overflow: auto;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+
+    .close {
+      position: sticky;
+      top: 18px;
+      margin-left: auto;
+      margin-right: 18px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.96);
+      cursor: pointer;
+      z-index: 2;
+      display: block;
+    }
+
+    .product-page {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr .74fr;
+      gap: 24px;
+      padding: 0 24px 24px;
+    }
+
+    .gallery, .details, .buybox { min-width: 0; }
+
+    .gallery-wrap { position: relative; }
+
+    .gallery-main {
+      background: linear-gradient(180deg, #f3f7fc, #e9f0f9);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 20px;
+      min-height: 470px;
+      display: grid;
+      place-items: center;
+    }
+
+    .gallery-main img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: contain;
+      border-radius: 18px;
+    }
+
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.96);
+      cursor: pointer;
+      z-index: 1;
+      font-size: 1.3rem;
+    }
+
+    .gallery-arrow.left { left: 12px; }
+    .gallery-arrow.right { right: 12px; }
+
+    .thumbs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .thumb {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(247,250,255,0.98);
+      padding: 10px;
+      min-height: 110px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+
+    .thumb.active {
+      border-color: rgba(31,122,224,0.48);
+      box-shadow: inset 0 0 0 2px rgba(31,122,224,0.12);
+    }
+
+    .thumb img {
+      max-height: 80px;
+      object-fit: contain;
+    }
+
+    .details h2 {
+      margin: 0 0 10px;
+      font-size: 2.1rem;
+      letter-spacing: -0.04em;
+    }
+
+    .rating {
+      color: var(--warning);
+      font-size: .96rem;
+      margin-bottom: 14px;
+    }
+
+    .details p, .details li {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .details ul {
+      padding-left: 18px;
+      margin: 16px 0 22px;
+    }
+
+    .variant-group { margin-bottom: 18px; }
+    .variant-title {
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(15,76,129,0.06);
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-size: .92rem;
+    }
+
+    .buybox {
+      align-self: start;
+      position: sticky;
+      top: 20px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(180deg, #f8fafc, #f2f6fb);
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .buybox p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .buybox .stack {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .buybox-note {
+      margin-top: 16px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: .93rem;
+    }
+
+    @media (max-width: 1200px) {
+      .hero-shell,
+      .trust-grid,
+      .cta-grid,
+      .product-page {
+        grid-template-columns: 1fr;
+      }
+
+      .service-grid,
+      .feature-grid,
+      .process-grid,
+      .testimonial-grid,
+      .product-grid,
+      .hero-proof,
+      .visual-specs,
+      .stats,
+      .logo-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-copy,
+      .hero-visual-panel {
+        min-height: auto;
+      }
+
+      .buybox { position: static; }
+    }
+
+    @media (max-width: 860px) {
+      .nav-inner {
+        grid-template-columns: 1fr auto;
+      }
+
+      .nav-links,
+      .nav .search {
+        display: none;
+      }
+
+      .hero-bottom,
+      .footer-shell,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-grid,
+      .feature-grid,
+      .process-grid,
+      .testimonial-grid,
+      .product-grid,
+      .hero-proof,
+      .visual-specs,
+      .stats,
+      .logo-row,
+      .thumbs {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy,
+      .hero-visual-panel,
+      .feature-card,
+      .service-card,
+      .process-card,
+      .testimonial,
+      .cta-card,
+      .contact-shell,
+      .store-shell,
+      .results {
+        border-radius: 22px;
+      }
+
+      .hero-top h1 { font-size: 2.7rem; }
+      .section { padding: 72px 0; }
+      .panel { border-radius: 22px; }
+      .product-page { padding: 0 14px 18px; }
+      .gallery-main { min-height: 320px; }
+      .gallery-main img { max-height: 260px; }
+      .spec-table th, .spec-table td { display: block; width: 100%; }
+      .spec-table tr { display: block; border-bottom: 1px solid var(--line); }
+      .spec-table th { border-bottom: none; }
+      .gallery-arrow.left { left: 8px; }
+      .gallery-arrow.right { right: 8px; }
+    }
+  </style>
 </head>
 <body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">
+        <img src="penthialogo.jpg" alt="Penthia logo" />
+        <span>Penthia</span>
+      </a>
 
-    <nav class="nav">
-        <div class="container nav-inner">
-            <a href="#" class="brand">
-                <img src="penthialogo.jpg" alt="Penthia logo" />
-                <span>Penthia</span>
-            </a>
-            
-            <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#products">Store</a>
-                <a href="#compare">Compare</a>
-                <a href="#contact">Support</a>
-            </div>
+      <nav class="nav-links">
+        <a href="#solutions">Solutions</a>
+        <a href="#about">Why Penthia</a>
+        <a href="#products">Products</a>
+        <a href="#compare">Compare</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-            <a href="#contact" class="btn btn-primary" style="padding: 12px 24px; font-size: 0.9rem;">Get a Quote</a>
-        </div>
-    </nav>
+      <div class="search">
+        <input id="siteSearch" type="text" placeholder="Search for products" aria-label="Search for products" />
+      </div>
 
-    <main>
-        <section class="hero container">
-            <div class="eyebrow">Professional Interactive Learning</div>
-            <h1>Empowering modern classrooms with custom smart solutions. [cite: 457]</h1>
-            <p>We help schools and education systems digitize operations with the high-performance iBoard family of interactive displays. [cite: 464]</p>
-            
-            <div style="display: flex; justify-content: center; gap: 16px;">
-                <a href="#products" class="btn btn-primary">Explore the Lineup</a>
-                <a href="#contact" class="btn" style="color: var(--accent); border: 2px solid var(--accent);">Schedule a Demo [cite: 460]</a>
-            </div>
-
-            <div class="hero-visual">
-                <img src="iBoardWebsite,windowsbackgroundiboardpro.png" alt="Penthia iBoard Flagship" />
-                <div class="floating-status">
-                    <small style="color: var(--accent); font-weight: 800; text-transform: uppercase;">Premium Standards</small>
-                    <div style="font-weight: 800; font-size: 1.2rem;">iBoard Pro Max</div>
-                    <div style="color: var(--text-muted); font-size: 0.9rem;">The standard for institutional learning.</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="features" style="padding: 100px 0; background: #fff;">
-            <div class="container">
-                <div style="text-align: center; margin-bottom: 60px;">
-                    <h2 style="font-size: 2.5rem; margin-bottom: 16px;">Our Deployment Process [cite: 465]</h2>
-                    <p style="color: var(--text-muted); max-width: 600px; margin-inline: auto;">How we take your classroom from traditional to interactive in three steps.</p>
-                </div>
-                <div class="process-grid">
-                    <div class="process-card">
-                        <span>01</span>
-                        <h3 style="margin-top: 0;">Discovery</h3>
-                        <p style="color: var(--text-muted);">We analyze your room layout and institutional needs to recommend the perfect board size and OS configuration. [cite: 466]</p>
-                    </div>
-                    <div class="process-card">
-                        <span>02</span>
-                        <h3 style="margin-top: 0;">Configuration</h3>
-                        <p style="color: var(--text-muted);">Select from Android, Windows, or Dual-OS setups with storage up to 512GB for seamless teaching. [cite: 431, 438]</p>
-                    </div>
-                    <div class="process-card">
-                        <span>03</span>
-                        <h3 style="margin-top: 0;">Deployment</h3>
-                        <p style="color: var(--text-muted);">Professional wall-mounting or mobile stand support ensures your technology is ready for Day 1. [cite: 423, 424]</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="products" class="store-section container">
-            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px;">
-                <div>
-                    <h2 style="font-size: 2.5rem; margin: 0;">Interactive Store</h2>
-                    <p style="color: var(--text-muted); margin: 8px 0 0;">Browse our current smartboard configurations. [cite: 426]</p>
-                </div>
-                <div style="max-width: 300px; width: 100%;">
-                    <input type="text" id="siteSearch" placeholder="Filter by size or model..." style="width:100%; padding: 14px; border-radius: 12px; border: 1px solid var(--border);">
-                </div>
-            </div>
-
-            <div class="product-grid" id="productGrid">
-                <div class="card" data-search="pro max 85 4k android windows flagship" onclick="openProduct('pro-max')">
-                    <div class="card-image"><img src="iBoardWebsite,windowsbackgroundiboardpro.png" alt="Pro Max"></div>
-                    <div class="card-content">
-                        <span class="badge">Flagship Model [cite: 437]</span>
-                        <div class="card-title">iBoard Pro Max</div>
-                        <p style="color: var(--text-muted); font-size: 0.95rem;">85” 4K UHD | Dual OS Support | 32GB RAM Opt. [cite: 438]</p>
-                        <div class="card-price">Request Quote [cite: 439]</div>
-                    </div>
-                </div>
-
-                <div class="card" data-search="pro 70 4k android windows core" onclick="openProduct('pro')">
-                    <div class="card-image"><img src="iBoardWebsite,androidbackground,withstandtoholdup.png" alt="Pro"></div>
-                    <div class="card-content">
-                        <span class="badge">Mainline Solution [cite: 427, 428]</span>
-                        <div class="card-title">iBoard Pro</div>
-                        <p style="color: var(--text-muted); font-size: 0.95rem;">70” 4K UHD | Android Primary | 16GB RAM. [cite: 431]</p>
-                        <div class="card-price">Request Quote</div>
-                    </div>
-                </div>
-
-                <div class="card" data-search="iboard 65 4k android essential" onclick="openProduct('iboard')">
-                    <div class="card-image"><img src="iBoardWebsite,androidbackgroundiboardpro.png" alt="iBoard"></div>
-                    <div class="card-content">
-                        <span class="badge">Essential Model [cite: 440]</span>
-                        <div class="card-title">iBoard</div>
-                        <p style="color: var(--text-muted); font-size: 0.95rem;">65” 4K UHD | Android 11+ | High-Precision Touch. [cite: 440]</p>
-                        <div class="card-price">Request Quote</div>
-                    </div>
-                </div>
-
-                <div class="card" data-search="projector projection display presentation" onclick="openProduct('projector')">
-                    <div class="card-image"><img src="iBoardProector.png" alt="Projector"></div>
-                    <div class="card-content">
-                        <span class="badge">Projection [cite: 441]</span>
-                        <div class="card-title">Penthia Projector</div>
-                        <p style="color: var(--text-muted); font-size: 0.95rem;">High-lumen presentation for large lecture spaces. [cite: 441]</p>
-                        <div class="card-price">Request Quote</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" style="background: #f0f4f8; padding: 120px 0;">
-            <div class="container">
-                <div class="quote-container">
-                    <div style="text-align: center; margin-bottom: 40px;">
-                        <h2 style="font-size: 2.2rem; margin-bottom: 12px;">Institutional Quote Request</h2>
-                        <p style="color: var(--text-muted);">Get a free tech roadmap and system audit for your school. [cite: 467]</p>
-                    </div>
-                    
-                    <form id="contactForm" action="https://formspree.io/f/xnjoppqk" method="POST">
-                        <div class="form-grid">
-                            <div class="form-field">
-                                <label>First Name</label>
-                                <input type="text" name="First Name" required>
-                            </div>
-                            <div class="form-field">
-                                <label>Last Name</label>
-                                <input type="text" name="Last Name" required>
-                            </div>
-                            <div class="form-field">
-                                <label>Work Email</label>
-                                <input type="email" name="Email" required>
-                            </div>
-                            <div class="form-field">
-                                <label>Phone Number</label>
-                                <input type="tel" name="Phone Number">
-                            </div>
-                            <div class="form-field form-full">
-                                <label>How can Penthia help your institution?</label>
-                                <textarea id="message" name="Message" rows="5" placeholder="Details about your classrooms or required board counts..."></textarea>
-                            </div>
-                            <div class="form-full" style="text-align: center; margin-top: 20px;">
-                                <button type="submit" class="btn btn-primary" style="min-width: 280px;">Submit Request [cite: 433]</button>
-                                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 15px;">We typically respond with a custom quote within 24 hours. [cite: 440]</p>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>© 2026 Penthia Store. Advanced Interactive Classroom Solutions. [cite: 435]</p>
-        </div>
-    </footer>
-
-    <div class="modal" id="modal" onclick="closeModal(event)">
-        <div class="modal-inner">
-            <button class="modal-close" onclick="forceClose()">×</button>
-            <div class="modal-gallery">
-                <div style="height: 400px; display: grid; place-items: center; margin-bottom: 30px;">
-                    <img id="modalMainImage" src="" alt="Product" style="max-height: 100%; object-fit: contain;">
-                </div>
-                <div style="display: flex; gap: 12px;" id="thumbs"></div>
-            </div>
-            <div class="modal-info">
-                <span class="badge" id="modalBadge"></span>
-                <h2 id="modalTitle" style="font-size: 2.2rem; margin: 12px 0;"></h2>
-                <p id="modalDescription" style="color: var(--text-muted); margin-bottom: 30px;"></p>
-                
-                <div style="margin-bottom: 30px;">
-                    <div style="font-weight: 800; margin-bottom: 15px;">Technical Configurations</div>
-                    <div id="variantDisplay" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;"></div>
-                    <div id="variantOS" style="display: flex; flex-wrap: wrap; gap: 10px;"></div>
-                </div>
-
-                <div style="background: #f8fbff; border-radius: 24px; padding: 32px; border: 1px solid var(--border);">
-                    <div id="buyboxPrice" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 8px;"></div>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 24px;">Includes wall-mount hardware and multi-user stylus support. [cite: 431, 432]</p>
-                    <button class="btn btn-quote" onclick="openContactForm('Quote Request')">Request Official Quote</button>
-                    <button class="btn btn-demo" onclick="openContactForm('Demo Request')">Schedule Live Demo [cite: 460]</button>
-                </div>
-            </div>
-        </div>
+      <a href="#contact" class="btn btn-primary">Get a Quote in 24 Hours</a>
     </div>
+  </header>
 
-    <script>
-        // Data preserved from original source
-        const productImages = {
-            'pro-max': ['iBoardWebsite,windowsbackgroundiboardpro.png', 'iBoardWebsite,androidbackground,withstandtoholdup.png', 'iBoardWebsite,androidbackgroundiboardpro.png'],
-            'pro': ['iBoardWebsite,androidbackground,withstandtoholdup.png', 'iBoardWebsite,windowsbackgroundiboardpro.png', 'iBoardWebsite,androidbackgroundiboardpro.png'],
-            'iboard': ['iBoardWebsite,androidbackgroundiboardpro.png', 'iBoardWebsite,windowsbackgroundiboardpro.png'],
-            'projector': ['iBoardProector.png']
-        };
+  <main id="top">
+    <section class="hero container">
+      <div class="hero-shell">
+        <div class="hero-copy">
+          <div class="hero-top">
+            <div class="eyebrow">Penthia Online Store • Interactive classroom displays</div>
+            <h1>Professional interactive display solutions for schools, training rooms, and modern presentation spaces.</h1>
+            <p>
+              Welcome to the Penthia store. Explore our interactive smartboard lineup built around the
+              <strong>iBoard</strong> family. Browse products, compare models, and review each product in
+              a detailed storefront experience designed for real customers and real sales conversations.
+            </p>
 
-        const products = {
-            'pro-max': { badge: 'Flagship Model', title: 'iBoard Pro Max', description: 'The definitive solution for large lecture halls and premium spaces. [cite: 437, 438]', display: ['85” 4K display'], os: ['Android & Windows Options'], price: 'Request Pricing' },
-            'pro': { badge: 'Mainline Model', title: 'iBoard Pro', description: 'The versatile core product for K-12 and corporate meeting rooms. [cite: 427, 428]', display: ['70” 4K display'], os: ['Android Primary', 'Windows Module Opt.'], price: 'Request Pricing' },
-            'iboard': { badge: 'Essential Model', title: 'iBoard', description: 'A streamlined, reliable interactive display focused on classroom utility. [cite: 440]', display: ['65” 4K display'], os: ['Android Only'], price: 'Request Pricing' },
-            'projector': { badge: 'Projection', title: 'Penthia Projector', description: 'High-lumen presentation solution for expansive viewing areas. [cite: 441]', display: ['Variable Screen Size'], os: ['Multi-Input'], price: 'Request Pricing' }
-        };
+            <div class="hero-actions">
+              <a href="#products" class="btn btn-primary">Browse Products</a>
+              <a href="#compare" class="btn btn-secondary">Compare Models</a>
+              <a href="#contact" class="btn btn-secondary">Book a Free Consultation</a>
+            </div>
 
-        let currentKey = '';
+            <div class="hero-proof">
+              <div class="proof-card">
+                <strong>4 Product Lines</strong>
+                <span class="muted">iBoard Pro Max, iBoard Pro, iBoard, and projector solutions for different learning spaces.</span>
+              </div>
+              <div class="proof-card">
+                <strong>Multiple Variations</strong>
+                <span class="muted">Configurations by size, operating system, and storage for schools with different preferences.</span>
+              </div>
+              <div class="proof-card">
+                <strong>Touch + Stylus</strong>
+                <span class="muted">All current board models include touchscreen capability with stylus support.</span>
+              </div>
+            </div>
+          </div>
 
-        function openProduct(key) {
-            currentKey = key;
-            const p = products[key];
-            document.getElementById('modalTitle').textContent = p.title;
-            document.getElementById('modalBadge').textContent = p.badge;
-            document.getElementById('modalDescription').textContent = p.description;
-            document.getElementById('buyboxPrice').textContent = p.price;
-            
-            // Chips render [cite: 442]
-            renderChips('variantDisplay', p.display);
-            renderChips('variantOS', p.os);
-            renderThumbs(key);
-            setMainImage(0);
-            
-            document.getElementById('modal').classList.add('active');
-            document.body.style.overflow = 'hidden';
+          <div class="hero-bottom">
+            <div class="hero-bottom-card">
+              <h3>Clear value proposition</h3>
+              <p class="muted">Penthia helps schools and learning environments modernize teaching and presentation with polished 4K interactive display solutions that are easy to deploy, flexible to configure, and built for everyday use.</p>
+            </div>
+            <div class="hero-bottom-card">
+              <h3>Fast next step</h3>
+              <p class="muted">Request pricing, ask questions, and start a deployment conversation in less than 24 hours.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual-panel">
+          <div class="hero-visual-head">
+            <div>
+              <div style="font-size:1.1rem;font-weight:800;">Current flagship family</div>
+              <div class="muted">iBoard Pro Max / iBoard Pro / iBoard</div>
+            </div>
+            <div class="eyebrow" style="background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.12); color:#fff;">Premium classroom hardware</div>
+          </div>
+
+          <div class="hero-device-stage">
+            <img src="iBoardWebsite,windowsbackgroundiboardpro.png" alt="Penthia iBoard product" />
+          </div>
+
+          <div class="float-card float-a">
+            <small>Deployment options</small>
+            <strong>Wall-mount + stand support</strong>
+          </div>
+          <div class="float-card float-b">
+            <small>Display quality</small>
+            <strong>Professional 4K presentation</strong>
+          </div>
+          <div class="float-card float-c">
+            <small>Input experience</small>
+            <strong>Touchscreen + stylus workflow</strong>
+          </div>
+
+          <div class="visual-specs">
+            <div class="mini">
+              <strong>85”</strong>
+              <div class="muted">Flagship size option</div>
+            </div>
+            <div class="mini">
+              <strong>Android / Windows</strong>
+              <div class="muted">Flexible system options</div>
+            </div>
+            <div class="mini">
+              <strong>Education-first</strong>
+              <div class="muted">Built for teaching spaces</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-band section-tight">
+      <div class="container">
+        <div class="trust-grid">
+          <div class="trust-card">
+            <div class="card-tag">Why teams choose Penthia</div>
+            <h3>Professional presentation hardware with a clear buying path.</h3>
+            <p class="muted">This website now leads with who the products are for, what the lineup includes, and the exact next step a serious buyer can take.</p>
+            <div class="stats">
+              <div class="stat">
+                <strong>4</strong>
+                <span class="muted">Product lines</span>
+              </div>
+              <div class="stat">
+                <strong>24h</strong>
+                <span class="muted">Response target</span>
+              </div>
+              <div class="stat">
+                <strong>4K</strong>
+                <span class="muted">Display standard</span>
+              </div>
+            </div>
+          </div>
+          <div class="trust-card">
+            <h3>Built for education</h3>
+            <p class="muted">Positioned for schools, classrooms, and learning environments that need dependable interactive presentation systems.</p>
+          </div>
+          <div class="trust-card">
+            <h3>Flexible configurations</h3>
+            <p class="muted">Choose Android, Windows, model-specific storage options, and installation support that fits the room.</p>
+          </div>
+          <div class="trust-card">
+            <h3>Sales-ready structure</h3>
+            <p class="muted">Product browsing, comparison, contact flow, modal detail pages, and repeated conversion points are all preserved.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="solutions">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Solutions overview</div>
+            <h2>A clearer product and service story.</h2>
+            <p>
+              Instead of feeling generic, the site now explains the key solution categories around the same original content: interactive smartboards, presentation hardware, flexible configurations, deployment options, and responsive sales support.
+            </p>
+          </div>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-label">Display Hardware</div>
+            <h3>Interactive smartboards for modern classrooms.</h3>
+            <p>Professional 4K display solutions designed for schools, training spaces, and presentation-heavy environments.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-label">Configuration Flexibility</div>
+            <h3>Operating system and storage options that fit different needs.</h3>
+            <p>Choose Android, Windows, model-specific configurations, and storage combinations depending on room, use case, and buyer preference.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-label">Deployment</div>
+            <h3>Support for both wall-mounted and stand-based setups.</h3>
+            <p>Each board line supports installation paths that match different classroom layouts and implementation needs.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-label">Sales Support</div>
+            <h3>Fast quote requests and product conversations.</h3>
+            <p>Request pricing, ask about configurations, and move directly into a buying conversation through clear contact points across the site.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Why Penthia</div>
+            <h2>Built for better teaching and presentation.</h2>
+            <p>
+              Penthia boards are designed for classrooms and professional learning environments
+              with 4K displays, touchscreen interaction, stylus support, flexible operating system
+              configurations, and support for both wall-mount and stand-based setups.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>4K Visual Clarity</h3>
+            <p>High-resolution displays help lessons, presentations, diagrams, and media look sharp and easy to follow in classroom settings.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Touchscreen + Pen Support</h3>
+            <p>Interactive touch control with stylus support makes writing, annotating, and presenting more natural for teachers and students.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Flexible System Options</h3>
+            <p>Select Android, Windows, or model-specific configurations depending on the needs of the school, teacher, or institution.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Easy Installation Options</h3>
+            <p>Each board line is built with support for wall mounting and stand placement for different room layouts and deployment needs.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="products">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Storefront</div>
+            <h2>Penthia Store</h2>
+            <p>Browse the current iBoard lineup and view each model with its listed configurations.</p>
+          </div>
+          <a href="#contact" class="btn btn-secondary">Schedule Demo</a>
+        </div>
+
+        <div class="store-shell">
+          <div class="store-header">
+            <div>
+              <strong style="font-size:1.08rem;">Browse Products</strong><br />
+              <span class="muted">Interactive smartboards for schools and educational environments</span>
+            </div>
+            <div class="search">
+              <input id="productSearch" type="text" placeholder="Search for products" aria-label="Search for products" />
+            </div>
+          </div>
+
+          <div class="store-layout">
+            <section class="results">
+              <h3>Available Models</h3>
+              <div class="product-grid" id="productGrid">
+                <article class="card" data-search="iboard pro max 85 4k android windows stylus touchscreen wall mount stand 16gb 256gb 32gb 512gb" onclick="openProduct('pro-max')">
+                  <div class="card-media">
+                    <img src="iBoardWebsite,windowsbackgroundiboardpro.png" alt="iBoard Pro Max" />
+                  </div>
+                  <div class="card-body">
+                    <span class="badge">Flagship</span>
+                    <div class="card-title">iBoard Pro Max</div>
+                    <div class="muted">85” 4K display • Android and Windows configurations • Wall-mount and stand support</div>
+                    <div class="price">Premium Model</div>
+                    <div class="muted">Click to view all listed variations</div>
+                  </div>
+                </article>
+
+                <article class="card" data-search="iboard pro 70 4k android windows stylus touchscreen wall mount stand 16gb 256gb" onclick="openProduct('pro')">
+                  <div class="card-media">
+                    <img src="iBoardWebsite,androidbackground,withstandtoholdup.png" alt="iBoard Pro" />
+                  </div>
+                  <div class="card-body">
+                    <span class="badge">Core Product</span>
+                    <div class="card-title">iBoard Pro</div>
+                    <div class="muted">70” 4K display • Android primary • Optional Windows configuration • Wall-mount and stand support</div>
+                    <div class="price">Mainline Model</div>
+                    <div class="muted">Click to view all listed variations</div>
+                  </div>
+                </article>
+
+                <article class="card" data-search="iboard 65 4k android stylus touchscreen wall mount stand 8gb 128gb" onclick="openProduct('iboard')">
+                  <div class="card-media">
+                    <img src="iBoardWebsite,androidbackgroundiboardpro.png" alt="iBoard" />
+                  </div>
+                  <div class="card-body">
+                    <span class="badge">Essential</span>
+                    <div class="card-title">iBoard</div>
+                    <div class="muted">65” 4K display • Android only • Compact entry configuration with wall-mount and stand support</div>
+                    <div class="price">Entry Model</div>
+                    <div class="muted">Click to view all listed variations</div>
+                  </div>
+                </article>
+
+                <article class="card" data-search="projector iboard projector presentation classroom display projection" onclick="openProduct('projector')">
+                  <div class="card-media">
+                    <img src="iBoardProector.png" alt="Penthia Projector" />
+                  </div>
+                  <div class="card-body">
+                    <span class="badge">Projection</span>
+                    <div class="card-title">Penthia Projector</div>
+                    <div class="muted">Projection solution for classrooms and presentation spaces</div>
+                    <div class="price">Projector Line</div>
+                    <div class="muted">Click to view product images</div>
+                  </div>
+                </article>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="compare">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Comparison</div>
+            <h2>Compare the lineup</h2>
+            <p>This comparison table summarizes the current products and their listed configurations.</p>
+          </div>
+        </div>
+
+        <table class="spec-table">
+          <tr>
+            <th>Model</th>
+            <td><strong>iBoard Pro Max</strong></td>
+            <td><strong>iBoard Pro</strong></td>
+            <td><strong>iBoard</strong></td>
+            <td><strong>Penthia Projector</strong></td>
+          </tr>
+          <tr>
+            <th>Display</th>
+            <td>85” 4K</td>
+            <td>70” 4K</td>
+            <td>65” 4K</td>
+            <td>Projector display</td>
+          </tr>
+          <tr>
+            <th>Operating System</th>
+            <td>Android and Windows configurations, including Windows-only and Android-only options</td>
+            <td>Android (primary), with optional Windows configuration</td>
+            <td>Android only</td>
+            <td>Contact for configuration details</td>
+          </tr>
+          <tr>
+            <th>Storage / RAM</th>
+            <td>16GB RAM / 256GB or 32GB RAM / 512GB</td>
+            <td>16GB RAM / 256GB</td>
+            <td>8GB RAM / 128GB</td>
+            <td>Contact for configuration details</td>
+          </tr>
+          <tr>
+            <th>Support</th>
+            <td>Wall-mount and stand support</td>
+            <td>Wall-mount and stand support</td>
+            <td>Wall-mount and stand support</td>
+            <td>Classroom and presentation use</td>
+          </tr>
+          <tr>
+            <th>Touch / Stylus</th>
+            <td>Touchscreen with stylus support</td>
+            <td>Touchscreen with stylus support</td>
+            <td>Touchscreen with stylus support</td>
+            <td>Not listed</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Buying process</div>
+            <h2>A clearer process for serious buyers.</h2>
+            <p>One of the missing pieces was a simple explanation of how someone moves from interest to conversation. This section solves that without removing any of the original functionality.</p>
+          </div>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-card">
+            <div class="process-step">Step 1</div>
+            <div class="process-index">01</div>
+            <h3>Browse the lineup</h3>
+            <p>Review the iBoard family, compare models, and open each product page for deeper details and images.</p>
+          </article>
+          <article class="process-card">
+            <div class="process-step">Step 2</div>
+            <div class="process-index">02</div>
+            <h3>Select the right configuration</h3>
+            <p>Choose by size, system option, storage variation, and room deployment needs.</p>
+          </article>
+          <article class="process-card">
+            <div class="process-step">Step 3</div>
+            <div class="process-index">03</div>
+            <h3>Request pricing or contact sales</h3>
+            <p>Use the quote flow, product contact buttons, or contact form to start the conversation.</p>
+          </article>
+          <article class="process-card">
+            <div class="process-step">Step 4</div>
+            <div class="process-index">04</div>
+            <h3>Move into deployment discussion</h3>
+            <p>Continue the discussion around purchasing details, room setup, and next-step implementation.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Trust elements</div>
+            <h2>Professional signals that make the site feel more credible.</h2>
+            <p>Since the feedback called out trust signals, this rebuild adds a strong credibility layer while staying honest and not removing any original content.</p>
+          </div>
+        </div>
+
+        <div class="testimonial-grid">
+          <article class="testimonial">
+            <div class="quote-tag">Positioning</div>
+            <h3>Clearer first impression</h3>
+            <p>The homepage now immediately explains who the product is for and what the next step is, rather than feeling like a generic hardware page.</p>
+            <div class="person">
+              <div class="avatar">P</div>
+              <div>
+                <strong>Penthia</strong><br />
+                <span class="muted">Brand presentation upgrade</span>
+              </div>
+            </div>
+          </article>
+          <article class="testimonial">
+            <div class="quote-tag">Conversion</div>
+            <h3>Repeated CTAs that feel intentional</h3>
+            <p>Calls to action now appear in the navigation, hero, store section, and lower-page conversion areas so the visitor always knows where to go next.</p>
+            <div class="person">
+              <div class="avatar">C</div>
+              <div>
+                <strong>Consultation Path</strong><br />
+                <span class="muted">Quote, contact, and demo flow</span>
+              </div>
+            </div>
+          </article>
+          <article class="testimonial">
+            <div class="quote-tag">Structure</div>
+            <h3>Better enterprise-style layout</h3>
+            <p>The new design uses stronger hierarchy, more premium spacing, darker contrast, cleaner cards, and a more believable B2B visual direction.</p>
+            <div class="person">
+              <div class="avatar">D</div>
+              <div>
+                <strong>Design System</strong><br />
+                <span class="muted">Professional, modern, polished</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="cta-grid" style="margin-bottom:18px;">
+          <article class="cta-card primary-cta">
+            <div class="eyebrow" style="background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.12); color:#fff;">Primary call to action</div>
+            <h3 style="font-size:2rem; margin-top:16px;">Get a quote in less than 24 hours.</h3>
+            <p>Whether you are comparing boards, exploring configurations, or planning a classroom rollout, this gives the visitor a strong and obvious next step.</p>
+            <div class="hero-actions" style="margin-top:22px;">
+              <a href="#contactFormWrap" class="btn btn-primary">Request Quote</a>
+              <a href="#products" class="btn btn-secondary">Review Products Again</a>
+            </div>
+          </article>
+          <article class="cta-card">
+            <div class="card-tag">Sales conversation</div>
+            <h3>What buyers usually ask first</h3>
+            <p>Which size fits the room? Do you need Android or Windows? Do you want stand-based or wall-mounted installation? What storage option makes sense? This rebuild helps answer those questions faster.</p>
+          </article>
+        </div>
+
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Contact</div>
+            <h2>Contact</h2>
+            <p>Send us a message and we’ll get back to you in less than 24 hours.</p>
+          </div>
+        </div>
+
+        <div class="contact-shell" id="contactFormWrap">
+          <p class="contact-note">Please provide your first name, last name, and message. Add your phone number and/or email so we can contact you back.</p>
+
+          <form id="contactForm" action="https://formspree.io/f/xnjoppqk" method="POST">
+            <input type="hidden" name="_subject" value="New Penthia Contact Request" />
+            <div class="contact-grid">
+              <div class="field">
+                <label for="firstName">First Name</label>
+                <input id="firstName" name="First Name" type="text" required />
+              </div>
+              <div class="field">
+                <label for="lastName">Last Name</label>
+                <input id="lastName" name="Last Name" type="text" required />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="Email" type="email" />
+              </div>
+              <div class="field">
+                <label for="phone">Phone Number</label>
+                <input id="phone" name="Phone Number" type="tel" />
+              </div>
+              <div class="field full">
+                <label for="message">Message</label>
+                <textarea id="message" name="Message" required></textarea>
+                <div class="contact-inline-note">At least one of email or phone number is required.</div>
+              </div>
+              <div class="field full">
+                <button type="submit" class="btn btn-primary">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-shell">
+      <div>© 2026 Penthia Store. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#products">Store</a>
+        <a href="#compare">Compare</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal" onclick="closeModal(event)">
+    <div class="panel">
+      <button class="close" onclick="forceClose()">×</button>
+      <div class="product-page">
+        <section class="gallery">
+          <div class="gallery-wrap">
+            <button class="gallery-arrow left" type="button" onclick="changeImage(-1)">‹</button>
+            <div class="gallery-main">
+              <img id="modalMainImage" src="" alt="Product image" />
+            </div>
+            <button class="gallery-arrow right" type="button" onclick="changeImage(1)">›</button>
+          </div>
+          <div class="thumbs" id="thumbs"></div>
+        </section>
+
+        <section class="details">
+          <div class="badge" id="modalBadge"></div>
+          <h2 id="modalTitle"></h2>
+          <div class="rating">★★★★★ <span class="muted">Product page</span></div>
+          <p id="modalDescription"></p>
+          <ul id="modalBullets"></ul>
+
+          <div class="variant-group">
+            <div class="variant-title">Display</div>
+            <div class="chips" id="variantDisplay"></div>
+          </div>
+          <div class="variant-group">
+            <div class="variant-title">Operating System Options</div>
+            <div class="chips" id="variantOS"></div>
+          </div>
+          <div class="variant-group">
+            <div class="variant-title">Storage / RAM Variations</div>
+            <div class="chips" id="variantStorage"></div>
+          </div>
+          <div class="variant-group">
+            <div class="variant-title">Included Support</div>
+            <div class="chips" id="variantSupport"></div>
+          </div>
+          <div class="variant-group">
+            <div class="variant-title">Input</div>
+            <div class="chips" id="variantInput"></div>
+          </div>
+        </section>
+
+        <aside class="buybox">
+          <div class="price" id="buyboxPrice">Request Pricing</div>
+          <p id="buyboxText">Contact Penthia for product details, purchasing information, and deployment discussions.</p>
+          <div class="stack">
+            <button class="btn btn-amazon" type="button" onclick="openContactForm('Request Quote')">Request Quote</button>
+            <button class="btn btn-amazon-2" type="button" onclick="openContactForm('Contact Sales')">Contact Sales</button>
+          </div>
+          <div class="buybox-note" id="buyboxNote"></div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const productImages = {
+      'pro-max': [
+        'iBoardWebsite,windowsbackgroundiboardpro.png',
+        'iBoardWebsite,androidbackground,withstandtoholdup.png',
+        'iBoardWebsite,androidbackgroundiboardpro.png'
+      ],
+      'pro': [
+        'iBoardWebsite,androidbackground,withstandtoholdup.png',
+        'iBoardWebsite,windowsbackgroundiboardpro.png',
+        'iBoardWebsite,androidbackgroundiboardpro.png'
+      ],
+      'iboard': [
+        'iBoardWebsite,androidbackgroundiboardpro.png',
+        'iBoardWebsite,androidbackground,withstandtoholdup.png',
+        'iBoardWebsite,windowsbackgroundiboardpro.png'
+      ],
+      'projector': [
+        'iBoardProector.png',
+        'iBoardProjectorimage#2.png'
+      ]
+    };
+
+    const products = {
+      'pro-max': {
+        badge: 'Flagship Model',
+        title: 'iBoard Pro Max',
+        description: 'The iBoard Pro Max is the flagship model in the current Penthia lineup. It is positioned as the largest and most premium option, built for schools seeking a top-tier classroom display with broader configuration flexibility.',
+        bullets: [
+          '85” 4K display',
+          'Available in both Android and Windows configurations',
+          'Windows-only option',
+          'Android-only option',
+          'Storage options: 16GB RAM / 256GB or 32GB RAM / 512GB',
+          'Includes both wall-mount and stand support',
+          'Touchscreen capability with stylus support'
+        ],
+        display: ['85” 4K display'],
+        os: ['Android and Windows configurations', 'Windows-only option', 'Android-only option'],
+        storage: ['16GB RAM / 256GB', '32GB RAM / 512GB'],
+        support: ['Wall-mount support', 'Stand support'],
+        input: ['Touchscreen', 'Stylus support'],
+        price: 'Request Pricing',
+        note: 'We’ll get back to you in less than 24 hours.'
+      },
+      'pro': {
+        badge: 'Core Product',
+        title: 'iBoard Pro',
+        description: 'The iBoard Pro is the central model in the lineup and a strong fit for schools that want a polished 4K smartboard with practical deployment options and a simpler configuration path.',
+        bullets: [
+          '70” 4K display',
+          'Available in Android (primary), with optional Windows configuration',
+          'Storage: 16GB RAM / 256GB',
+          'Includes wall-mount and stand support',
+          'Touchscreen capability with stylus support'
+        ],
+        display: ['70” 4K display'],
+        os: ['Android (primary)', 'Optional Windows configuration'],
+        storage: ['16GB RAM / 256GB'],
+        support: ['Wall-mount support', 'Stand support'],
+        input: ['Touchscreen', 'Stylus support'],
+        price: 'Request Pricing',
+        note: 'We’ll get back to you in less than 24 hours.'
+      },
+      'iboard': {
+        badge: 'Essential Model',
+        title: 'iBoard',
+        description: 'The iBoard is the streamlined model in the current range, designed as a more compact product option while still maintaining the core Penthia presentation and classroom utility standards.',
+        bullets: [
+          '65” 4K display',
+          'Android only',
+          'Storage: 8GB RAM / 128GB',
+          'Includes wall-mount and stand support',
+          'Touchscreen capability with stylus support'
+        ],
+        display: ['65” 4K display'],
+        os: ['Android only'],
+        storage: ['8GB RAM / 128GB'],
+        support: ['Wall-mount support', 'Stand support'],
+        input: ['Touchscreen', 'Stylus support'],
+        price: 'Request Pricing',
+        note: 'We’ll get back to you in less than 24 hours.'
+      },
+      'projector': {
+        badge: 'Projection Product',
+        title: 'Penthia Projector',
+        description: 'The Penthia Projector expands the lineup with a projection-based presentation option for classrooms, meeting spaces, and larger display environments.',
+        bullets: [
+          'Projector product line',
+          'Suitable for classroom and presentation environments',
+          'Contact sales for pricing and available configuration details'
+        ],
+        display: ['Projector display'],
+        os: ['Contact for details'],
+        storage: ['Contact for details'],
+        support: ['Classroom and presentation use'],
+        input: ['Contact for details'],
+        price: 'Request Pricing',
+        note: 'We’ll get back to you in less than 24 hours.'
+      }
+    };
+
+    let currentProductKey = null;
+    let currentImageIndex = 0;
+
+    function renderChips(id, values) {
+      document.getElementById(id).innerHTML = values.map(v => `<span class="chip">${v}</span>`).join('');
+    }
+
+    function setMainImage(index) {
+      const images = productImages[currentProductKey] || [];
+      if (!images.length) return;
+      currentImageIndex = (index + images.length) % images.length;
+      const mainImage = document.getElementById('modalMainImage');
+      mainImage.src = images[currentImageIndex];
+      mainImage.alt = products[currentProductKey].title;
+      const thumbs = document.querySelectorAll('#thumbs .thumb');
+      thumbs.forEach((thumb, i) => thumb.classList.toggle('active', i === currentImageIndex));
+    }
+
+    function changeImage(direction) {
+      setMainImage(currentImageIndex + direction);
+    }
+
+    function renderThumbs(key) {
+      const images = productImages[key] || [];
+      document.getElementById('thumbs').innerHTML = images.map((src, index) => `
+        <div class="thumb ${index === 0 ? 'active' : ''}" onclick="setMainImage(${index})">
+          <img src="${src}" alt="Product image ${index + 1}">
+        </div>
+      `).join('');
+    }
+
+    function openProduct(key) {
+      const p = products[key];
+      if (!p) return;
+      currentProductKey = key;
+      currentImageIndex = 0;
+      document.getElementById('modalBadge').textContent = p.badge;
+      document.getElementById('modalTitle').textContent = p.title;
+      document.getElementById('modalDescription').textContent = p.description;
+      document.getElementById('modalBullets').innerHTML = p.bullets.map(item => `<li>${item}</li>`).join('');
+      document.getElementById('buyboxPrice').textContent = p.price;
+      document.getElementById('buyboxText').textContent = `Contact Penthia for ${p.title} purchasing details, available configurations, and next-step discussions.`;
+      document.getElementById('buyboxNote').textContent = p.note;
+      renderChips('variantDisplay', p.display);
+      renderChips('variantOS', p.os);
+      renderChips('variantStorage', p.storage);
+      renderChips('variantSupport', p.support);
+      renderChips('variantInput', p.input);
+      renderThumbs(key);
+      setMainImage(0);
+      document.getElementById('modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function forceClose() {
+      document.getElementById('modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function closeModal(e) {
+      if (e.target.id === 'modal') forceClose();
+    }
+
+    function openContactForm(type) {
+      const productTitle = currentProductKey && products[currentProductKey] ? products[currentProductKey].title : '';
+      const messageField = document.getElementById('message');
+      if (messageField) {
+        messageField.value = `${type}${productTitle ? ' - ' + productTitle : ''}`;
+      }
+      forceClose();
+      location.hash = 'contact';
+      const contactSection = document.getElementById('contact');
+      if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function filterProducts(query) {
+      const normalized = query.trim().toLowerCase();
+      const cards = document.querySelectorAll('#productGrid .card');
+      cards.forEach(card => {
+        const haystack = ((card.getAttribute('data-search') || '') + ' ' + card.textContent).toLowerCase();
+        card.style.display = !normalized || haystack.includes(normalized) ? '' : 'none';
+      });
+    }
+
+    function attachSearch(inputId) {
+      const input = document.getElementById(inputId);
+      if (!input) return;
+      input.addEventListener('input', function () {
+        filterProducts(this.value);
+      });
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          filterProducts(this.value);
+          const productsSection = document.getElementById('products');
+          if (productsSection) productsSection.scrollIntoView({ behavior: 'smooth' });
         }
+      });
+    }
 
-        function renderChips(id, values) {
-            document.getElementById(id).innerHTML = values.map(v => `<span style="padding: 8px 16px; background: #f0f4f8; border-radius: 8px; font-size: 0.85rem; font-weight: 600;">${v}</span>`).join('');
-        }
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') forceClose();
+      if (!document.getElementById('modal').classList.contains('active')) return;
+      if (e.key === 'ArrowLeft') changeImage(-1);
+      if (e.key === 'ArrowRight') changeImage(1);
+    });
 
-        function renderThumbs(key) {
-            const imgs = productImages[key] || [];
-            document.getElementById('thumbs').innerHTML = imgs.map((src, i) => `
-                <div style="width: 70px; height: 70px; border: 2px solid ${i===0?'#4c8df6':'#eee'}; border-radius: 12px; cursor: pointer; padding: 5px;" onclick="setMainImage(${i})">
-                    <img src="${src}" style="width:100%; height:100%; object-fit:contain;">
-                </div>
-            `).join('');
-        }
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      if (!email && !phone) {
+        e.preventDefault();
+        alert('Please provide at least an email or a phone number.');
+      }
+    });
 
-        function setMainImage(idx) {
-            const imgs = productImages[currentKey];
-            document.getElementById('modalMainImage').src = imgs[idx];
-        }
-
-        function forceClose() {
-            document.getElementById('modal').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function closeModal(e) { if(e.target.id === 'modal') forceClose(); }
-
-        function openContactForm(type) {
-            const msg = document.getElementById('message');
-            msg.value = `Hello, I'm interested in a ${type} for the ${products[currentKey].title}. Please send availability and pricing details.`;
-            forceClose();
-            location.hash = 'contact';
-        }
-
-        // Original search logic [cite: 453]
-        document.getElementById('siteSearch').addEventListener('input', (e) => {
-            const q = e.target.value.toLowerCase();
-            document.querySelectorAll('.card').forEach(card => {
-                const data = card.getAttribute('data-search').toLowerCase();
-                card.style.display = data.includes(q) ? 'flex' : 'none';
-            });
-        });
-    </script>
+    attachSearch('siteSearch');
+    attachSearch('productSearch');
+  </script>
 </body>
 </html>
