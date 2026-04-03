@@ -13,8 +13,6 @@
       --ink-2: #12151d;
       --ink-3: #1a1e2a;
       --ink-4: #242838;
-      --surface: #1e2232;
-      --surface-2: #252a3a;
       --gold: #c9a84c;
       --gold-2: #e2c27a;
       --gold-pale: rgba(201,168,76,0.12);
@@ -22,20 +20,16 @@
       --muted: #7a849f;
       --muted-2: #9aa3bb;
       --white: #f4f1eb;
-      --white-2: #e8e3d9;
       --line: rgba(255,255,255,0.06);
       --line-2: rgba(255,255,255,0.10);
-      --glow: 0 0 60px rgba(201,168,76,0.08);
       --shadow: 0 24px 64px rgba(0,0,0,0.5);
-      --shadow-sm: 0 8px 24px rgba(0,0,0,0.3);
       --max: 1360px;
-      --r: 4px;
       --font-display: 'Cormorant Garamond', Georgia, serif;
       --font-body: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { font-size: 16px; }
 
     body {
       font-family: var(--font-body);
@@ -46,165 +40,156 @@
     }
 
     ::selection { background: var(--gold); color: var(--ink); }
-
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
     button { font: inherit; cursor: pointer; border: none; background: none; }
 
-    .container {
-      width: min(var(--max), calc(100% - 48px));
-      margin: 0 auto;
-    }
+    .container { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
 
-    /* ─── NOISE OVERLAY ─── */
     body::before {
       content: '';
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.4;
+      pointer-events: none; z-index: 9999; opacity: 0.4;
     }
 
     /* ─── NAV ─── */
     .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 900;
-      padding: 0;
-      transition: all 0.4s ease;
-    }
-
-    .nav.scrolled {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
       background: rgba(11,13,18,0.92);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--line-2);
     }
 
     .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      height: 80px;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 24px; height: 80px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-shrink: 0;
-    }
+    .brand { display: flex; align-items: center; gap: 14px; flex-shrink: 0; cursor: pointer; }
 
-    .brand-logo {
-      width: 38px;
-      height: 38px;
-      border-radius: 8px;
-      object-fit: cover;
-      border: 1px solid var(--gold-border);
-    }
+    .brand-logo { width: 38px; height: 38px; border-radius: 8px; object-fit: cover; border: 1px solid var(--gold-border); }
 
-    .brand-name {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      color: var(--white);
-    }
+    .brand-name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; letter-spacing: 0.08em; color: var(--white); }
+    .brand-name span { color: var(--gold); }
 
-    .brand-name span {
-      color: var(--gold);
-    }
-
-    .nav-center {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-    }
+    .nav-center { display: flex; align-items: center; gap: 4px; }
 
     .nav-link {
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      transition: color 0.2s;
-      position: relative;
+      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted);
+      transition: color 0.2s; position: relative;
+      padding: 8px 16px; border-radius: 2px;
+      cursor: pointer; border: none; background: none;
+      font-family: var(--font-body);
     }
 
     .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
+      content: ''; position: absolute;
+      bottom: 2px; left: 16px; right: 16px; height: 1px;
+      background: var(--gold); transform: scaleX(0); transition: transform 0.3s ease;
     }
 
     .nav-link:hover { color: var(--gold-2); }
     .nav-link:hover::after { transform: scaleX(1); }
+    .nav-link.active { color: var(--gold-2); }
+    .nav-link.active::after { transform: scaleX(1); }
 
     .nav-search {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--line-2);
-      border-radius: 2px;
-      padding: 10px 16px;
-      flex: 1;
-      max-width: 320px;
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--line-2);
+      border-radius: 2px; padding: 10px 16px; flex: 1; max-width: 320px;
     }
 
     .nav-search svg { flex-shrink: 0; opacity: 0.4; }
 
     .nav-search input {
-      border: none;
-      outline: none;
-      background: transparent;
-      color: var(--white);
-      font: inherit;
-      font-size: 0.88rem;
-      width: 100%;
+      border: none; outline: none; background: transparent;
+      color: var(--white); font: inherit; font-size: 0.88rem; width: 100%;
     }
 
     .nav-search input::placeholder { color: var(--muted); }
 
     .nav-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      background: var(--gold);
-      color: var(--ink);
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border-radius: 2px;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; background: var(--gold); color: var(--ink);
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; border-radius: 2px;
       transition: background 0.2s, transform 0.2s;
+      cursor: pointer; border: none; font-family: var(--font-body);
     }
 
     .nav-cta:hover { background: var(--gold-2); transform: translateY(-1px); }
 
-    /* ─── HERO ─── */
+    /* ─── PAGE SYSTEM ─── */
+    .page { display: none; min-height: 100vh; padding-top: 80px; }
+    .page.active { display: block; animation: pageIn 0.35s ease forwards; }
+
+    @keyframes pageIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── PAGE HEADER (shared across inner pages) ─── */
+    .page-hero { background: var(--ink-3); border-bottom: 1px solid var(--line-2); padding: 64px 0; }
+
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      font-weight: 300; line-height: 1; letter-spacing: -0.03em;
+      color: var(--white); margin-bottom: 16px;
+    }
+
+    .page-hero h1 em { font-style: italic; color: var(--gold-2); }
+
+    .page-hero p {
+      font-size: 1rem; line-height: 1.75;
+      color: var(--muted-2); max-width: 560px; font-weight: 300;
+    }
+
+    .page-hero-inner {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 48px;
+    }
+
+    .page-stat-row { display: flex; gap: 16px; flex-shrink: 0; flex-wrap: wrap; }
+
+    .page-stat {
+      text-align: center; padding: 20px 28px;
+      background: var(--ink-2); border: 1px solid var(--line-2); border-radius: 4px;
+    }
+
+    .page-stat-num {
+      font-family: var(--font-display); font-size: 2.4rem; font-weight: 300;
+      color: var(--gold-2); line-height: 1; margin-bottom: 4px;
+    }
+
+    .page-stat-label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+
+    /* ─── SHARED SECTION ─── */
+    .section { padding: 80px 0; }
+
+    .section-label { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .section-label-line { width: 24px; height: 1px; background: var(--gold); }
+    .section-label-text { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+
+    .section-title {
+      font-family: var(--font-display); font-size: clamp(2.4rem, 4vw, 4.2rem);
+      font-weight: 300; line-height: 1.05; letter-spacing: -0.02em;
+      color: var(--white); margin-bottom: 20px;
+    }
+
+    .section-title em { font-style: italic; color: var(--gold-2); }
+    .section-body { font-size: 1rem; line-height: 1.8; color: var(--muted-2); max-width: 560px; font-weight: 300; }
+
+    /* ─── HERO (home) ─── */
     .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      position: relative;
-      overflow: hidden;
+      min-height: calc(100vh - 80px); display: grid;
+      grid-template-columns: 1fr 1fr; position: relative; overflow: hidden;
     }
 
     .hero-bg {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background:
         radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 60%),
         radial-gradient(ellipse 50% 80% at 30% 20%, rgba(201,168,76,0.04) 0%, transparent 50%),
@@ -212,8 +197,7 @@
     }
 
     .hero-grid-lines {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background-image:
         linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
@@ -222,1023 +206,444 @@
     }
 
     .hero-left {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 120px 64px 80px;
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 64px;
     }
 
     .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 32px;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.2s forwards;
+      display: inline-flex; align-items: center; gap: 12px; margin-bottom: 32px;
+      opacity: 0; animation: fadeUp 0.8s ease 0.1s forwards;
     }
 
-    .eyebrow-line {
-      width: 32px;
-      height: 1px;
-      background: var(--gold);
-    }
+    .eyebrow-line { width: 32px; height: 1px; background: var(--gold); }
 
-    .eyebrow-text {
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 500;
-    }
+    .eyebrow-text { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
 
     .hero-headline {
-      font-family: var(--font-display);
-      font-size: clamp(3.5rem, 6vw, 6.5rem);
-      font-weight: 300;
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      color: var(--white);
-      margin-bottom: 28px;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.35s forwards;
+      font-family: var(--font-display); font-size: clamp(3.5rem, 6vw, 6.5rem);
+      font-weight: 300; line-height: 0.95; letter-spacing: -0.02em;
+      color: var(--white); margin-bottom: 28px;
+      opacity: 0; animation: fadeUp 0.8s ease 0.25s forwards;
     }
 
-    .hero-headline em {
-      font-style: italic;
-      color: var(--gold-2);
-    }
+    .hero-headline em { font-style: italic; color: var(--gold-2); }
 
     .hero-sub {
-      font-size: 1rem;
-      line-height: 1.8;
-      color: var(--muted-2);
-      max-width: 440px;
-      margin-bottom: 48px;
-      font-weight: 300;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.5s forwards;
+      font-size: 1rem; line-height: 1.8; color: var(--muted-2);
+      max-width: 440px; margin-bottom: 48px; font-weight: 300;
+      opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards;
     }
 
     .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.65s forwards;
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.8s ease 0.55s forwards;
     }
 
     .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 16px 32px;
-      background: var(--gold);
-      color: var(--ink);
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border-radius: 2px;
-      transition: all 0.25s;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 32px; background: var(--gold); color: var(--ink);
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; border-radius: 2px; transition: all 0.25s;
+      border: none; cursor: pointer; font-family: var(--font-body);
     }
 
     .btn-primary:hover { background: var(--gold-2); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,168,76,0.25); }
 
     .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 16px 32px;
-      border: 1px solid var(--line-2);
-      color: var(--muted-2);
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border-radius: 2px;
-      transition: all 0.25s;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 32px; border: 1px solid var(--line-2); color: var(--muted-2);
+      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; border-radius: 2px; transition: all 0.25s;
+      background: none; cursor: pointer; font-family: var(--font-body);
     }
 
     .btn-ghost:hover { border-color: var(--gold-border); color: var(--gold-2); }
 
     .hero-stats {
-      display: flex;
-      gap: 40px;
-      margin-top: 60px;
-      padding-top: 40px;
+      display: flex; gap: 40px; margin-top: 60px; padding-top: 40px;
       border-top: 1px solid var(--line);
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.8s forwards;
+      opacity: 0; animation: fadeUp 0.8s ease 0.7s forwards;
     }
 
-    .stat-num {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      font-weight: 300;
-      color: var(--gold-2);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .stat-label {
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
+    .stat-num { font-family: var(--font-display); font-size: 2.2rem; font-weight: 300; color: var(--gold-2); line-height: 1; margin-bottom: 4px; }
+    .stat-label { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
 
     .hero-right {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 100px 64px 80px;
+      position: relative; z-index: 2;
+      display: flex; align-items: center; justify-content: center; padding: 80px 64px;
     }
 
     .hero-display {
-      position: relative;
-      width: 100%;
-      max-width: 580px;
-      opacity: 0;
-      animation: fadeIn 1.2s ease 0.4s forwards;
+      position: relative; width: 100%; max-width: 580px;
+      opacity: 0; animation: fadeIn 1.2s ease 0.3s forwards;
     }
 
     .hero-display-frame {
-      position: relative;
-      border-radius: 8px;
-      overflow: hidden;
+      position: relative; border-radius: 8px; overflow: hidden;
       border: 1px solid rgba(201,168,76,0.15);
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,0.04),
-        0 40px 100px rgba(0,0,0,0.6),
-        0 0 80px rgba(201,168,76,0.06);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 40px 100px rgba(0,0,0,0.6), 0 0 80px rgba(201,168,76,0.06);
     }
 
-    .hero-display-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+    .hero-display-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     .hero-badge {
-      position: absolute;
-      bottom: -20px;
-      left: -20px;
-      background: var(--ink-3);
-      border: 1px solid var(--gold-border);
-      border-radius: 4px;
-      padding: 16px 20px;
-      box-shadow: var(--shadow);
+      position: absolute; bottom: -20px; left: -20px;
+      background: var(--ink-3); border: 1px solid var(--gold-border);
+      border-radius: 4px; padding: 16px 20px; box-shadow: var(--shadow);
     }
 
-    .hero-badge-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 4px;
-    }
-
-    .hero-badge-value {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--white);
-    }
+    .hero-badge-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .hero-badge-value { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--white); }
 
     .hero-tag {
-      position: absolute;
-      top: 24px;
-      right: -16px;
-      background: var(--gold);
-      color: var(--ink);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 8px 14px;
-      border-radius: 2px;
+      position: absolute; top: 24px; right: -16px;
+      background: var(--gold); color: var(--ink);
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; padding: 8px 14px; border-radius: 2px;
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* ─── SECTION BASICS ─── */
-    .section {
-      padding: 120px 0;
-    }
-
-    .section-label {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-
-    .section-label-line {
-      width: 24px;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    .section-label-text {
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 500;
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.4rem, 4vw, 4.2rem);
-      font-weight: 300;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: var(--white);
-      margin-bottom: 20px;
-    }
-
-    .section-title em {
-      font-style: italic;
-      color: var(--gold-2);
-    }
-
-    .section-body {
-      font-size: 1rem;
-      line-height: 1.8;
-      color: var(--muted-2);
-      max-width: 560px;
-      font-weight: 300;
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
     /* ─── ABOUT ─── */
-    .about { background: var(--ink-2); }
-
-    .about-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
+    #page-about { background: var(--ink-2); }
 
     .about-features {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--line-2);
-      border: 1px solid var(--line-2);
-      border-radius: 4px;
-      overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--line-2);
+      border: 1px solid var(--line-2); border-radius: 4px; overflow: hidden;
     }
 
-    .feature-tile {
-      background: var(--ink-2);
-      padding: 32px;
-      transition: background 0.3s;
-    }
-
+    .feature-tile { background: var(--ink-2); padding: 40px; transition: background 0.3s; }
     .feature-tile:hover { background: var(--ink-3); }
 
     .feature-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--gold-pale);
-      border: 1px solid var(--gold-border);
-      border-radius: 4px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 20px;
-      color: var(--gold);
+      width: 44px; height: 44px; background: var(--gold-pale);
+      border: 1px solid var(--gold-border); border-radius: 4px;
+      display: grid; place-items: center; margin-bottom: 24px; color: var(--gold);
     }
 
-    .feature-tile h3 {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 10px;
+    .feature-tile h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--white); margin-bottom: 12px; }
+    .feature-tile p { font-size: 0.92rem; line-height: 1.75; color: var(--muted); font-weight: 300; }
+
+    /* ─── STORE ─── */
+    #page-store { background: var(--ink); }
+
+    .store-search-bar {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--ink-3); border: 1px solid var(--line-2);
+      border-radius: 2px; padding: 12px 20px;
+      max-width: 340px; margin-bottom: 40px;
     }
 
-    .feature-tile p {
-      font-size: 0.9rem;
-      line-height: 1.7;
-      color: var(--muted);
-      font-weight: 300;
+    .store-search-bar svg { opacity: 0.4; flex-shrink: 0; }
+
+    .store-search-bar input {
+      border: none; outline: none; background: transparent;
+      color: var(--white); font: inherit; font-size: 0.9rem; width: 100%;
     }
 
-    /* ─── STORE SECTION ─── */
-    .store { background: var(--ink); }
-
-    .store-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 40px;
-      margin-bottom: 56px;
-    }
-
-    .store-search {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--ink-3);
-      border: 1px solid var(--line-2);
-      border-radius: 2px;
-      padding: 12px 20px;
-      min-width: 280px;
-    }
-
-    .store-search svg { opacity: 0.4; flex-shrink: 0; }
-
-    .store-search input {
-      border: none;
-      outline: none;
-      background: transparent;
-      color: var(--white);
-      font: inherit;
-      font-size: 0.9rem;
-      width: 100%;
-    }
-
-    .store-search input::placeholder { color: var(--muted); }
+    .store-search-bar input::placeholder { color: var(--muted); }
 
     .product-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--line-2);
-      border: 1px solid var(--line-2);
-      border-radius: 4px;
-      overflow: hidden;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--line-2);
+      border: 1px solid var(--line-2); border-radius: 4px; overflow: hidden;
     }
 
     .prod-card {
-      background: var(--ink-2);
-      cursor: pointer;
-      transition: background 0.3s;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      overflow: hidden;
+      background: var(--ink-2); cursor: pointer;
+      transition: background 0.3s; display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
     }
 
     .prod-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
       background: linear-gradient(90deg, var(--gold), var(--gold-2));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s ease;
+      transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
     }
 
     .prod-card:hover { background: var(--ink-3); }
     .prod-card:hover::before { transform: scaleX(1); }
 
-    .prod-media {
-      aspect-ratio: 16/10;
-      overflow: hidden;
-      background: var(--ink-3);
-      position: relative;
-    }
-
-    .prod-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-
+    .prod-media { aspect-ratio: 16/10; overflow: hidden; background: var(--ink-3); position: relative; }
+    .prod-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
     .prod-card:hover .prod-media img { transform: scale(1.04); }
 
     .prod-tag {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      background: var(--gold);
-      color: var(--ink);
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 5px 10px;
-      border-radius: 2px;
+      position: absolute; top: 14px; left: 14px;
+      background: var(--gold); color: var(--ink);
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; padding: 5px 10px; border-radius: 2px;
     }
 
-    .prod-body {
-      padding: 24px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .prod-name {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: -0.01em;
-    }
-
-    .prod-desc {
-      font-size: 0.85rem;
-      line-height: 1.65;
-      color: var(--muted);
-      font-weight: 300;
-      flex: 1;
-    }
+    .prod-body { padding: 24px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .prod-name { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--white); letter-spacing: -0.01em; }
+    .prod-desc { font-size: 0.85rem; line-height: 1.65; color: var(--muted); font-weight: 300; flex: 1; }
 
     .prod-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 16px;
-      border-top: 1px solid var(--line);
-      margin-top: 4px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 16px; border-top: 1px solid var(--line); margin-top: 4px;
     }
 
-    .prod-price {
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 500;
-    }
+    .prod-price { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
 
     .prod-arrow {
-      width: 32px;
-      height: 32px;
-      border: 1px solid var(--line-2);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      color: var(--muted);
-      transition: all 0.25s;
+      width: 32px; height: 32px; border: 1px solid var(--line-2); border-radius: 50%;
+      display: grid; place-items: center; color: var(--muted); transition: all 0.25s;
     }
 
-    .prod-card:hover .prod-arrow {
-      border-color: var(--gold-border);
-      background: var(--gold-pale);
-      color: var(--gold-2);
-    }
+    .prod-card:hover .prod-arrow { border-color: var(--gold-border); background: var(--gold-pale); color: var(--gold-2); }
 
     /* ─── COMPARE ─── */
-    .compare { background: var(--ink-2); }
+    #page-compare { background: var(--ink-2); }
 
-    .compare-table-wrap {
-      overflow-x: auto;
-      border: 1px solid var(--line-2);
-      border-radius: 4px;
-    }
+    .compare-table-wrap { overflow-x: auto; border: 1px solid var(--line-2); border-radius: 4px; }
 
-    .compare-table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 800px;
-    }
-
-    .compare-table thead {
-      background: var(--ink-3);
-    }
+    .compare-table { width: 100%; border-collapse: collapse; min-width: 800px; }
+    .compare-table thead { background: var(--ink-3); }
 
     .compare-table th {
-      padding: 20px 24px;
-      text-align: left;
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-weight: 500;
-      border-bottom: 1px solid var(--line-2);
+      padding: 20px 24px; text-align: left;
+      font-size: 0.78rem; letter-spacing: 0.12em;
+      text-transform: uppercase; font-weight: 500; border-bottom: 1px solid var(--line-2);
     }
 
     .compare-table th:first-child { color: var(--muted); width: 200px; }
+
     .compare-table th:not(:first-child) {
-      color: var(--gold);
-      font-family: var(--font-display);
-      font-size: 1rem;
-      text-transform: none;
-      letter-spacing: 0;
-      font-weight: 600;
+      color: var(--gold); font-family: var(--font-display);
+      font-size: 1rem; text-transform: none; letter-spacing: 0; font-weight: 600;
     }
 
     .compare-table td {
-      padding: 18px 24px;
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: var(--muted-2);
-      border-bottom: 1px solid var(--line);
-      font-weight: 300;
-      vertical-align: top;
+      padding: 18px 24px; font-size: 0.9rem; line-height: 1.6;
+      color: var(--muted-2); border-bottom: 1px solid var(--line);
+      font-weight: 300; vertical-align: top;
     }
 
-    .compare-table td:first-child {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
+    .compare-table td:first-child { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
     .compare-table tbody tr:hover td { background: rgba(201,168,76,0.02); }
     .compare-table tbody tr:last-child td { border-bottom: none; }
+    .compare-check { color: var(--gold); font-size: 1.1rem; }
 
-    .compare-check {
-      color: var(--gold);
-      font-size: 1.1rem;
+    .compare-cta {
+      margin-top: 48px; padding: 32px;
+      background: var(--ink-3); border: 1px solid var(--line-2); border-radius: 4px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
     }
+
+    .compare-cta-text h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 300; color: var(--white); margin-bottom: 8px; }
+    .compare-cta-text p { font-size: 0.9rem; color: var(--muted-2); font-weight: 300; }
+    .compare-cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
     /* ─── CONTACT ─── */
-    .contact { background: var(--ink); }
+    #page-contact { background: var(--ink); }
 
-    .contact-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
 
     .contact-info-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      padding: 24px 0;
-      border-bottom: 1px solid var(--line);
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 24px 0; border-bottom: 1px solid var(--line);
     }
 
     .contact-info-item:first-of-type { border-top: 1px solid var(--line); }
 
     .contact-info-icon {
-      width: 36px;
-      height: 36px;
-      background: var(--gold-pale);
-      border: 1px solid var(--gold-border);
-      border-radius: 2px;
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-      color: var(--gold);
-      margin-top: 2px;
+      width: 36px; height: 36px; background: var(--gold-pale);
+      border: 1px solid var(--gold-border); border-radius: 2px;
+      display: grid; place-items: center; flex-shrink: 0; color: var(--gold); margin-top: 2px;
     }
 
-    .contact-info-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 4px;
-    }
+    .contact-info-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .contact-info-value { font-size: 0.95rem; color: var(--muted-2); font-weight: 300; line-height: 1.6; }
 
-    .contact-info-value {
-      font-size: 0.95rem;
-      color: var(--muted-2);
-      font-weight: 300;
-      line-height: 1.6;
-    }
-
-    /* ─── FORM ─── */
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .form-field {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-field { display: flex; flex-direction: column; gap: 8px; }
     .form-field.full { grid-column: 1 / -1; }
 
-    .form-field label {
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 500;
-    }
+    .form-field label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
 
     .form-field input,
     .form-field textarea {
-      background: var(--ink-3);
-      border: 1px solid var(--line-2);
-      border-radius: 2px;
-      padding: 14px 16px;
-      font: inherit;
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: var(--white);
-      outline: none;
-      transition: border-color 0.2s;
-      width: 100%;
+      background: var(--ink-3); border: 1px solid var(--line-2); border-radius: 2px;
+      padding: 14px 16px; font: inherit; font-size: 0.9rem; font-weight: 300;
+      color: var(--white); outline: none; transition: border-color 0.2s; width: 100%;
     }
 
-    .form-field input:focus,
-    .form-field textarea:focus {
-      border-color: var(--gold-border);
-    }
-
-    .form-field input::placeholder,
-    .form-field textarea::placeholder { color: var(--muted); }
-
-    .form-field textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .form-note {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 4px;
-    }
+    .form-field input:focus, .form-field textarea:focus { border-color: var(--gold-border); }
+    .form-field input::placeholder, .form-field textarea::placeholder { color: var(--muted); }
+    .form-field textarea { min-height: 140px; resize: vertical; }
+    .form-note { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
 
     /* ─── FOOTER ─── */
-    footer {
-      background: var(--ink-2);
-      border-top: 1px solid var(--line-2);
-      padding: 40px 0;
-    }
+    footer { background: var(--ink-2); border-top: 1px solid var(--line-2); padding: 40px 0; }
 
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .footer-brand {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-    }
-
-    .footer-copy {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-    }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .footer-brand { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; letter-spacing: 0.08em; color: var(--muted); }
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 24px; }
 
     .footer-link {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      transition: color 0.2s;
+      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); transition: color 0.2s; cursor: pointer;
+      border: none; background: none; font-family: var(--font-body);
     }
 
     .footer-link:hover { color: var(--gold-2); }
 
     /* ─── MODAL ─── */
     .modal {
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(16px);
+      position: fixed; inset: 0; z-index: 2000;
+      display: none; align-items: center; justify-content: center;
+      padding: 20px; background: rgba(0,0,0,0.85); backdrop-filter: blur(16px);
     }
 
     .modal.active { display: flex; }
 
     .modal-panel {
-      width: min(1280px, 100%);
-      max-height: calc(100vh - 40px);
-      overflow-y: auto;
-      background: var(--ink-2);
-      border: 1px solid var(--line-2);
-      border-radius: 4px;
+      width: min(1280px, 100%); max-height: calc(100vh - 40px);
+      overflow-y: auto; background: var(--ink-2);
+      border: 1px solid var(--line-2); border-radius: 4px;
       box-shadow: 0 40px 100px rgba(0,0,0,0.7);
-      position: relative;
-      scrollbar-width: thin;
-      scrollbar-color: var(--gold-border) transparent;
+      scrollbar-width: thin; scrollbar-color: var(--gold-border) transparent;
     }
 
     .modal-close {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      display: flex;
-      justify-content: flex-end;
-      padding: 16px 20px 0;
-      background: var(--ink-2);
+      position: sticky; top: 0; z-index: 10;
+      display: flex; justify-content: flex-end; padding: 16px 20px 0; background: var(--ink-2);
     }
 
     .close-btn {
-      width: 42px;
-      height: 42px;
-      border: 1px solid var(--line-2);
-      border-radius: 2px;
-      background: var(--ink-3);
-      color: var(--muted-2);
-      display: grid;
-      place-items: center;
-      font-size: 1.4rem;
-      cursor: pointer;
-      transition: all 0.2s;
+      width: 42px; height: 42px; border: 1px solid var(--line-2); border-radius: 2px;
+      background: var(--ink-3); color: var(--muted-2);
+      display: grid; place-items: center; font-size: 1.4rem; cursor: pointer; transition: all 0.2s;
     }
 
     .close-btn:hover { border-color: var(--gold-border); color: var(--gold-2); }
 
-    .modal-product {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr 0.75fr;
-      gap: 0;
-    }
+    .modal-product { display: grid; grid-template-columns: 1.1fr 1fr 0.75fr; }
 
-    /* Gallery */
-    .modal-gallery {
-      padding: 24px;
-      border-right: 1px solid var(--line);
-    }
+    .modal-gallery { padding: 24px; border-right: 1px solid var(--line); }
 
     .gallery-main-wrap {
-      position: relative;
-      border-radius: 4px;
-      overflow: hidden;
-      background: var(--ink-3);
-      border: 1px solid var(--line-2);
-      min-height: 420px;
-      display: grid;
-      place-items: center;
+      position: relative; border-radius: 4px; overflow: hidden;
+      background: var(--ink-3); border: 1px solid var(--line-2);
+      min-height: 420px; display: grid; place-items: center;
     }
 
-    .gallery-main-img {
-      width: 100%;
-      max-height: 420px;
-      object-fit: contain;
-      padding: 16px;
-    }
+    .gallery-main-img { width: 100%; max-height: 420px; object-fit: contain; padding: 16px; }
 
     .gal-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 40px;
-      height: 40px;
-      border: 1px solid var(--line-2);
-      background: rgba(11,13,18,0.85);
-      border-radius: 2px;
-      color: var(--muted-2);
-      display: grid;
-      place-items: center;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: all 0.2s;
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 40px; height: 40px; border: 1px solid var(--line-2);
+      background: rgba(11,13,18,0.85); border-radius: 2px;
+      color: var(--muted-2); display: grid; place-items: center;
+      font-size: 1.2rem; cursor: pointer; transition: all 0.2s;
     }
 
     .gal-arrow:hover { border-color: var(--gold-border); color: var(--gold-2); }
     .gal-arrow.left { left: 10px; }
     .gal-arrow.right { right: 10px; }
 
-    .gallery-thumbs {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-top: 12px;
-    }
+    .gallery-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
 
     .gallery-thumb {
-      border: 1px solid var(--line);
-      background: var(--ink-3);
-      border-radius: 2px;
-      padding: 8px;
-      min-height: 90px;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      transition: border-color 0.2s;
+      border: 1px solid var(--line); background: var(--ink-3); border-radius: 2px;
+      padding: 8px; min-height: 90px; display: grid; place-items: center;
+      cursor: pointer; transition: border-color 0.2s;
     }
 
     .gallery-thumb.active { border-color: var(--gold); }
     .gallery-thumb img { max-height: 70px; object-fit: contain; }
 
-    /* Details */
-    .modal-details {
-      padding: 24px;
-      border-right: 1px solid var(--line);
-    }
+    .modal-details { padding: 24px; border-right: 1px solid var(--line); }
 
     .modal-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      background: var(--gold-pale);
-      border: 1px solid var(--gold-border);
-      border-radius: 2px;
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 500;
-      margin-bottom: 16px;
+      display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px;
+      background: var(--gold-pale); border: 1px solid var(--gold-border); border-radius: 2px;
+      font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: 16px;
     }
 
-    .modal-title {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      font-weight: 300;
-      color: var(--white);
-      letter-spacing: -0.02em;
-      margin-bottom: 8px;
-    }
+    .modal-title { font-family: var(--font-display); font-size: 2.2rem; font-weight: 300; color: var(--white); letter-spacing: -0.02em; margin-bottom: 8px; }
+    .modal-rating { font-size: 0.88rem; color: var(--gold); margin-bottom: 16px; }
+    .modal-desc { font-size: 0.9rem; line-height: 1.75; color: var(--muted-2); font-weight: 300; margin-bottom: 20px; }
 
-    .modal-rating {
-      font-size: 0.88rem;
-      color: var(--gold);
-      margin-bottom: 16px;
-    }
-
-    .modal-desc {
-      font-size: 0.9rem;
-      line-height: 1.75;
-      color: var(--muted-2);
-      font-weight: 300;
-      margin-bottom: 20px;
-    }
-
-    .modal-bullets {
-      list-style: none;
-      margin-bottom: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+    .modal-bullets { list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px; }
 
     .modal-bullets li {
-      font-size: 0.88rem;
-      color: var(--muted-2);
-      font-weight: 300;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
+      font-size: 0.88rem; color: var(--muted-2); font-weight: 300;
+      display: flex; align-items: flex-start; gap: 10px;
     }
 
-    .modal-bullets li::before {
-      content: '—';
-      color: var(--gold);
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
+    .modal-bullets li::before { content: '—'; color: var(--gold); flex-shrink: 0; margin-top: 1px; }
 
     .variant-section { margin-bottom: 18px; }
+    .variant-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; font-weight: 500; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { padding: 7px 14px; border: 1px solid var(--line-2); border-radius: 2px; font-size: 0.82rem; color: var(--muted-2); font-weight: 300; }
 
-    .variant-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .chip {
-      padding: 7px 14px;
-      border: 1px solid var(--line-2);
-      border-radius: 2px;
-      font-size: 0.82rem;
-      color: var(--muted-2);
-      font-weight: 300;
-    }
-
-    /* Buybox */
-    .modal-buybox {
-      padding: 24px;
-      position: sticky;
-      top: 0;
-      align-self: start;
-    }
-
-    .buybox-price {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      font-weight: 300;
-      color: var(--gold-2);
-      margin-bottom: 8px;
-    }
-
-    .buybox-sub {
-      font-size: 0.85rem;
-      line-height: 1.7;
-      color: var(--muted);
-      font-weight: 300;
-      margin-bottom: 24px;
-    }
-
-    .buybox-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .modal-buybox { padding: 24px; position: sticky; top: 0; align-self: start; }
+    .buybox-price { font-family: var(--font-display); font-size: 1.8rem; font-weight: 300; color: var(--gold-2); margin-bottom: 8px; }
+    .buybox-sub { font-size: 0.85rem; line-height: 1.7; color: var(--muted); font-weight: 300; margin-bottom: 24px; }
+    .buybox-actions { display: flex; flex-direction: column; gap: 10px; }
 
     .buybox-btn-primary {
-      padding: 15px 20px;
-      background: var(--gold);
-      color: var(--ink);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border-radius: 2px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-align: center;
+      padding: 15px 20px; background: var(--gold); color: var(--ink);
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; text-align: center;
     }
 
     .buybox-btn-primary:hover { background: var(--gold-2); }
 
     .buybox-btn-ghost {
-      padding: 15px 20px;
-      border: 1px solid var(--gold-border);
-      color: var(--gold-2);
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border-radius: 2px;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-align: center;
-      background: transparent;
+      padding: 15px 20px; border: 1px solid var(--gold-border); color: var(--gold-2);
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: 2px; cursor: pointer; transition: all 0.2s; text-align: center; background: transparent;
     }
 
     .buybox-btn-ghost:hover { background: var(--gold-pale); }
 
     .buybox-note {
-      margin-top: 20px;
-      padding: 16px;
-      background: var(--ink-3);
-      border: 1px solid var(--line);
-      border-radius: 2px;
-      font-size: 0.82rem;
-      line-height: 1.7;
-      color: var(--muted);
+      margin-top: 20px; padding: 16px; background: var(--ink-3);
+      border: 1px solid var(--line); border-radius: 2px;
+      font-size: 0.82rem; line-height: 1.7; color: var(--muted);
     }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1100px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-left { padding: 140px 40px 60px; }
+      .hero-left { padding: 60px 40px; }
       .hero-right { padding: 40px; }
-      .about-inner { grid-template-columns: 1fr; gap: 60px; }
       .contact-inner { grid-template-columns: 1fr; gap: 60px; }
       .product-grid { grid-template-columns: repeat(2, 1fr); }
       .modal-product { grid-template-columns: 1fr; }
       .modal-gallery, .modal-details { border-right: none; border-bottom: 1px solid var(--line); }
       .modal-buybox { position: static; }
+      .page-hero-inner { flex-direction: column; }
+      .page-stat-row { flex-wrap: wrap; }
     }
 
     @media (max-width: 760px) {
       .nav-center, .nav-search { display: none; }
-      .hero-left { padding: 120px 24px 60px; }
+      .hero-left { padding: 40px 24px 60px; }
       .hero-right { display: none; }
-      .section { padding: 80px 0; }
+      .section { padding: 60px 0; }
       .about-features { grid-template-columns: 1fr; }
       .product-grid { grid-template-columns: 1fr; }
-      .store-header { flex-direction: column; align-items: flex-start; }
-      .compare-table th, .compare-table td { padding: 14px 16px; }
       .gallery-thumbs { grid-template-columns: repeat(2, 1fr); }
       .form-grid { grid-template-columns: 1fr; }
       .form-field.full { grid-column: 1; }
       .footer-inner { flex-direction: column; text-align: center; }
       .footer-links { justify-content: center; }
       .hero-stats { gap: 24px; }
+      .page-hero { padding: 40px 0; }
+      .compare-cta { flex-direction: column; }
     }
 
-    /* Scrollbar */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--ink); }
     ::-webkit-scrollbar-thumb { background: var(--ink-4); border-radius: 3px; }
@@ -1248,18 +653,19 @@
 <body>
 
   <!-- NAV -->
-  <header class="nav" id="nav">
+  <header class="nav">
     <div class="container nav-inner">
-      <a class="brand" href="#top">
+      <div class="brand" onclick="navigate('home')">
         <img class="brand-logo" src="penthialogo.jpg" alt="Penthia" />
         <span class="brand-name">Pen<span>thia</span></span>
-      </a>
+      </div>
 
       <nav class="nav-center">
-        <a class="nav-link" href="#about">About</a>
-        <a class="nav-link" href="#store">Store</a>
-        <a class="nav-link" href="#compare">Compare</a>
-        <a class="nav-link" href="#contact">Contact</a>
+        <button class="nav-link" id="nav-home"    onclick="navigate('home')">Home</button>
+        <button class="nav-link" id="nav-about"   onclick="navigate('about')">About</button>
+        <button class="nav-link" id="nav-store"   onclick="navigate('store')">Store</button>
+        <button class="nav-link" id="nav-compare" onclick="navigate('compare')">Compare</button>
+        <button class="nav-link" id="nav-contact" onclick="navigate('contact')">Contact</button>
       </nav>
 
       <div class="nav-search">
@@ -1267,17 +673,16 @@
         <input id="siteSearch" type="text" placeholder="Search products…" aria-label="Search" />
       </div>
 
-      <a class="nav-cta" href="#store">
+      <button class="nav-cta" onclick="navigate('store')">
         Shop Now
         <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+      </button>
     </div>
   </header>
 
-  <main id="top">
-
-    <!-- HERO -->
-    <section class="hero" id="hero">
+  <!-- ══════════════════════════ HOME ══════════════════════════ -->
+  <div class="page" id="page-home">
+    <section class="hero">
       <div class="hero-bg"></div>
       <div class="hero-grid-lines"></div>
 
@@ -1286,36 +691,19 @@
           <span class="eyebrow-line"></span>
           <span class="eyebrow-text">Penthia Interactive Displays — 2026 Lineup</span>
         </div>
-
-        <h1 class="hero-headline">
-          Professional<br>displays for<br><em>modern learning.</em>
-        </h1>
-
-        <p class="hero-sub">
-          Precision-engineered interactive smartboards for classrooms and professional environments. Explore the iBoard family — designed for teaching, presenting, and inspiring.
-        </p>
-
+        <h1 class="hero-headline">Professional<br>displays for<br><em>modern learning.</em></h1>
+        <p class="hero-sub">Precision-engineered interactive smartboards for classrooms and professional environments. Explore the iBoard family — designed for teaching, presenting, and inspiring.</p>
         <div class="hero-actions">
-          <a class="btn-primary" href="#store">
+          <button class="btn-primary" onclick="navigate('store')">
             Browse Products
             <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a class="btn-ghost" href="#compare">Compare Models</a>
+          </button>
+          <button class="btn-ghost" onclick="navigate('compare')">Compare Models</button>
         </div>
-
         <div class="hero-stats">
-          <div>
-            <div class="stat-num">4K</div>
-            <div class="stat-label">Display Quality</div>
-          </div>
-          <div>
-            <div class="stat-num">85"</div>
-            <div class="stat-label">Max Display Size</div>
-          </div>
-          <div>
-            <div class="stat-num">4</div>
-            <div class="stat-label">Product Lines</div>
-          </div>
+          <div><div class="stat-num">4K</div><div class="stat-label">Display Quality</div></div>
+          <div><div class="stat-num">85"</div><div class="stat-label">Max Display Size</div></div>
+          <div><div class="stat-num">4</div><div class="stat-label">Product Lines</div></div>
         </div>
       </div>
 
@@ -1333,167 +721,175 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section class="section about" id="about">
+    <footer>
+      <div class="container footer-inner">
+        <span class="footer-brand">Penthia</span>
+        <span class="footer-copy">© 2026 Penthia Store. All rights reserved.</span>
+        <div class="footer-links">
+          <button class="footer-link" onclick="navigate('about')">About</button>
+          <button class="footer-link" onclick="navigate('store')">Store</button>
+          <button class="footer-link" onclick="navigate('compare')">Compare</button>
+          <button class="footer-link" onclick="navigate('contact')">Contact</button>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ══════════════════════════ ABOUT ══════════════════════════ -->
+  <div class="page" id="page-about">
+    <div class="page-hero">
       <div class="container">
-        <div class="about-inner">
+        <div class="page-hero-inner">
           <div>
-            <div class="section-label">
-              <span class="section-label-line"></span>
-              <span class="section-label-text">Why Penthia</span>
-            </div>
-            <h2 class="section-title">Built for <em>better</em> teaching.</h2>
-            <p class="section-body">
-              Every Penthia display is engineered for the realities of modern classrooms — sharp visuals, responsive touch, flexible configurations, and installation options that adapt to any space.
-            </p>
+            <div class="section-label"><span class="section-label-line"></span><span class="section-label-text">About Penthia</span></div>
+            <h1>Built for <em>better</em> teaching.</h1>
+            <p>Every Penthia display is engineered for the realities of modern classrooms — sharp visuals, responsive touch, flexible configurations, and installation options that adapt to any space.</p>
           </div>
-
-          <div class="about-features">
-            <div class="feature-tile">
-              <div class="feature-icon">
-                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-              </div>
-              <h3>4K Visual Clarity</h3>
-              <p>Ultra-high resolution ensures every detail — from diagrams to video — is crisp and clear for every student in the room.</p>
-            </div>
-
-            <div class="feature-tile">
-              <div class="feature-icon">
-                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
-              </div>
-              <h3>Touch + Stylus</h3>
-              <p>Natural interaction through precise touchscreen control and full stylus support — write, annotate, and present effortlessly.</p>
-            </div>
-
-            <div class="feature-tile">
-              <div class="feature-icon">
-                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 2v4M16 2v4"/></svg>
-              </div>
-              <h3>Flexible OS Options</h3>
-              <p>Choose Android, Windows, or combined configurations. Each model is tailored to match real institutional requirements.</p>
-            </div>
-
-            <div class="feature-tile">
-              <div class="feature-icon">
-                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73L13 2.27a2 2 0 00-2 0L4 6.27A2 2 0 003 8v8a2 2 0 001 1.73l7 4.04a2 2 0 002 0l7-4.04A2 2 0 0021 16z"/></svg>
-              </div>
-              <h3>Easy Installation</h3>
-              <p>Every board supports wall mounting and stand placement — designed for any room layout or deployment environment.</p>
-            </div>
+          <div class="page-stat-row">
+            <div class="page-stat"><div class="page-stat-num">4K</div><div class="page-stat-label">Display</div></div>
+            <div class="page-stat"><div class="page-stat-num">85"</div><div class="page-stat-label">Max Size</div></div>
+            <div class="page-stat"><div class="page-stat-num">4</div><div class="page-stat-label">Models</div></div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- STORE -->
-    <section class="section store" id="store">
+    <div class="section">
       <div class="container">
-        <div class="store-header">
-          <div>
-            <div class="section-label">
-              <span class="section-label-line"></span>
-              <span class="section-label-text">Product Lineup</span>
-            </div>
-            <h2 class="section-title">The iBoard <em>family.</em></h2>
+        <div class="section-label" style="margin-bottom:16px;"><span class="section-label-line"></span><span class="section-label-text">Core Features</span></div>
+        <h2 class="section-title" style="margin-bottom:40px;">Why choose <em>Penthia.</em></h2>
+        <div class="about-features">
+          <div class="feature-tile">
+            <div class="feature-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+            <h3>4K Visual Clarity</h3>
+            <p>Ultra-high resolution ensures every detail — from diagrams to video — is crisp and clear for every student in the room.</p>
           </div>
-          <div class="store-search">
-            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-            <input id="productSearch" type="text" placeholder="Search models…" aria-label="Filter products" />
+          <div class="feature-tile">
+            <div class="feature-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></div>
+            <h3>Touch + Stylus Input</h3>
+            <p>Natural interaction through precise touchscreen control and full stylus support — write, annotate, and present effortlessly.</p>
           </div>
+          <div class="feature-tile">
+            <div class="feature-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 2v4M16 2v4"/></svg></div>
+            <h3>Flexible OS Options</h3>
+            <p>Choose Android, Windows, or combined configurations. Each model is tailored to match real institutional requirements.</p>
+          </div>
+          <div class="feature-tile">
+            <div class="feature-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73L13 2.27a2 2 0 00-2 0L4 6.27A2 2 0 003 8v8a2 2 0 001 1.73l7 4.04a2 2 0 002 0l7-4.04A2 2 0 0021 16z"/></svg></div>
+            <h3>Easy Installation</h3>
+            <p>Every board supports wall mounting and stand placement — designed for any room layout or deployment environment.</p>
+          </div>
+          <div class="feature-tile">
+            <div class="feature-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <h3>Built to Last</h3>
+            <p>Penthia displays are engineered for daily classroom use — robust hardware built to perform consistently across full school years.</p>
+          </div>
+          <div class="feature-tile">
+            <div class="feature-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <h3>Educator-First Design</h3>
+            <p>Every specification decision — from screen size to OS flexibility — is made with real classroom environments and teachers in mind.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container footer-inner">
+        <span class="footer-brand">Penthia</span>
+        <span class="footer-copy">© 2026 Penthia Store. All rights reserved.</span>
+        <div class="footer-links">
+          <button class="footer-link" onclick="navigate('home')">Home</button>
+          <button class="footer-link" onclick="navigate('store')">Store</button>
+          <button class="footer-link" onclick="navigate('compare')">Compare</button>
+          <button class="footer-link" onclick="navigate('contact')">Contact</button>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ══════════════════════════ STORE ══════════════════════════ -->
+  <div class="page" id="page-store">
+    <div class="page-hero">
+      <div class="container">
+        <div class="section-label" style="margin-bottom:16px;"><span class="section-label-line"></span><span class="section-label-text">Product Lineup</span></div>
+        <h1>The iBoard <em>family.</em></h1>
+        <p>Browse the complete current lineup. Click any model to view full specifications, configurations, and purchasing options.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="container">
+        <div class="store-search-bar">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input id="productSearch" type="text" placeholder="Search models…" aria-label="Filter products" />
         </div>
 
         <div class="product-grid" id="productGrid">
-
-          <article class="prod-card"
-            data-search="iboard pro max 85 4k android windows stylus touchscreen wall mount stand 16gb 256gb 32gb 512gb flagship"
-            onclick="openProduct('pro-max')">
-            <div class="prod-media">
-              <img src="iBoardWebsite,windowsbackgroundiboardpro.png" alt="iBoard Pro Max" />
-              <span class="prod-tag">Flagship</span>
-            </div>
+          <article class="prod-card" data-search="iboard pro max 85 4k android windows stylus touchscreen wall mount stand 16gb 256gb 32gb 512gb flagship" onclick="openProduct('pro-max')">
+            <div class="prod-media"><img src="iBoardWebsite,windowsbackgroundiboardpro.png" alt="iBoard Pro Max" /><span class="prod-tag">Flagship</span></div>
             <div class="prod-body">
               <div class="prod-name">iBoard Pro Max</div>
               <div class="prod-desc">85" 4K display with Android and Windows configurations. Maximum storage and performance for demanding environments.</div>
-              <div class="prod-footer">
-                <span class="prod-price">Request Pricing</span>
-                <span class="prod-arrow">
-                  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </span>
-              </div>
+              <div class="prod-footer"><span class="prod-price">Request Pricing</span><span class="prod-arrow"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
             </div>
           </article>
 
-          <article class="prod-card"
-            data-search="iboard pro 70 4k android windows stylus touchscreen wall mount stand 16gb 256gb core"
-            onclick="openProduct('pro')">
-            <div class="prod-media">
-              <img src="iBoardWebsite,androidbackground,withstandtoholdup.png" alt="iBoard Pro" />
-              <span class="prod-tag">Core</span>
-            </div>
+          <article class="prod-card" data-search="iboard pro 70 4k android windows stylus touchscreen wall mount stand 16gb 256gb core" onclick="openProduct('pro')">
+            <div class="prod-media"><img src="iBoardWebsite,androidbackground,withstandtoholdup.png" alt="iBoard Pro" /><span class="prod-tag">Core</span></div>
             <div class="prod-body">
               <div class="prod-name">iBoard Pro</div>
               <div class="prod-desc">70" 4K display. Android primary with optional Windows configuration — versatile and polished for any classroom.</div>
-              <div class="prod-footer">
-                <span class="prod-price">Request Pricing</span>
-                <span class="prod-arrow">
-                  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </span>
-              </div>
+              <div class="prod-footer"><span class="prod-price">Request Pricing</span><span class="prod-arrow"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
             </div>
           </article>
 
-          <article class="prod-card"
-            data-search="iboard 65 4k android stylus touchscreen wall mount stand 8gb 128gb essential entry"
-            onclick="openProduct('iboard')">
-            <div class="prod-media">
-              <img src="iBoardWebsite,androidbackgroundiboardpro.png" alt="iBoard" />
-              <span class="prod-tag">Essential</span>
-            </div>
+          <article class="prod-card" data-search="iboard 65 4k android stylus touchscreen wall mount stand 8gb 128gb essential entry" onclick="openProduct('iboard')">
+            <div class="prod-media"><img src="iBoardWebsite,androidbackgroundiboardpro.png" alt="iBoard" /><span class="prod-tag">Essential</span></div>
             <div class="prod-body">
               <div class="prod-name">iBoard</div>
               <div class="prod-desc">65" 4K display. Android-focused entry model with full touch and stylus support, wall-mount and stand ready.</div>
-              <div class="prod-footer">
-                <span class="prod-price">Request Pricing</span>
-                <span class="prod-arrow">
-                  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </span>
-              </div>
+              <div class="prod-footer"><span class="prod-price">Request Pricing</span><span class="prod-arrow"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
             </div>
           </article>
 
-          <article class="prod-card"
-            data-search="projector penthia classroom presentation projection display"
-            onclick="openProduct('projector')">
-            <div class="prod-media">
-              <img src="iBoardProector.png" alt="Penthia Projector" />
-              <span class="prod-tag">Projection</span>
-            </div>
+          <article class="prod-card" data-search="projector penthia classroom presentation projection display" onclick="openProduct('projector')">
+            <div class="prod-media"><img src="iBoardProector.png" alt="Penthia Projector" /><span class="prod-tag">Projection</span></div>
             <div class="prod-body">
               <div class="prod-name">Penthia Projector</div>
               <div class="prod-desc">Projection solution for classrooms and presentation spaces where a traditional display isn't ideal.</div>
-              <div class="prod-footer">
-                <span class="prod-price">Request Pricing</span>
-                <span class="prod-arrow">
-                  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </span>
-              </div>
+              <div class="prod-footer"><span class="prod-price">Request Pricing</span><span class="prod-arrow"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
             </div>
           </article>
-
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- COMPARE -->
-    <section class="section compare" id="compare">
-      <div class="container">
-        <div class="section-label">
-          <span class="section-label-line"></span>
-          <span class="section-label-text">Side by Side</span>
+    <footer>
+      <div class="container footer-inner">
+        <span class="footer-brand">Penthia</span>
+        <span class="footer-copy">© 2026 Penthia Store. All rights reserved.</span>
+        <div class="footer-links">
+          <button class="footer-link" onclick="navigate('home')">Home</button>
+          <button class="footer-link" onclick="navigate('about')">About</button>
+          <button class="footer-link" onclick="navigate('compare')">Compare</button>
+          <button class="footer-link" onclick="navigate('contact')">Contact</button>
         </div>
-        <h2 class="section-title">Compare the <em>lineup.</em></h2>
-        <p class="section-body" style="margin-bottom:48px;">A full breakdown of specifications across all current Penthia models to help you choose the right display for your environment.</p>
+      </div>
+    </footer>
+  </div>
 
+  <!-- ══════════════════════════ COMPARE ══════════════════════════ -->
+  <div class="page" id="page-compare">
+    <div class="page-hero">
+      <div class="container">
+        <div class="section-label" style="margin-bottom:16px;"><span class="section-label-line"></span><span class="section-label-text">Side by Side</span></div>
+        <h1>Compare the <em>lineup.</em></h1>
+        <p>A full breakdown of specifications across all current Penthia models to help you choose the right display for your environment.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="container">
         <div class="compare-table-wrap">
           <table class="compare-table">
             <thead>
@@ -1508,10 +904,7 @@
             <tbody>
               <tr>
                 <td>Display</td>
-                <td>85" 4K</td>
-                <td>70" 4K</td>
-                <td>65" 4K</td>
-                <td>Projection display</td>
+                <td>85" 4K</td><td>70" 4K</td><td>65" 4K</td><td>Projection display</td>
               </tr>
               <tr>
                 <td>Operating System</td>
@@ -1529,10 +922,7 @@
               </tr>
               <tr>
                 <td>Mounting</td>
-                <td>Wall-mount + Stand</td>
-                <td>Wall-mount + Stand</td>
-                <td>Wall-mount + Stand</td>
-                <td>Classroom & presentation use</td>
+                <td>Wall-mount + Stand</td><td>Wall-mount + Stand</td><td>Wall-mount + Stand</td><td>Classroom & presentation use</td>
               </tr>
               <tr>
                 <td>Touch / Stylus</td>
@@ -1544,51 +934,68 @@
             </tbody>
           </table>
         </div>
-      </div>
-    </section>
 
-    <!-- CONTACT -->
-    <section class="section contact" id="contact">
+        <div class="compare-cta">
+          <div class="compare-cta-text">
+            <h3>Ready to choose a model?</h3>
+            <p>View full product details or contact us to discuss the right configuration for your school.</p>
+          </div>
+          <div class="compare-cta-actions">
+            <button class="btn-primary" onclick="navigate('store')">View All Products <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            <button class="btn-ghost" onclick="navigate('contact')">Contact Sales</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container footer-inner">
+        <span class="footer-brand">Penthia</span>
+        <span class="footer-copy">© 2026 Penthia Store. All rights reserved.</span>
+        <div class="footer-links">
+          <button class="footer-link" onclick="navigate('home')">Home</button>
+          <button class="footer-link" onclick="navigate('about')">About</button>
+          <button class="footer-link" onclick="navigate('store')">Store</button>
+          <button class="footer-link" onclick="navigate('contact')">Contact</button>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ══════════════════════════ CONTACT ══════════════════════════ -->
+  <div class="page" id="page-contact">
+    <div class="page-hero">
+      <div class="container">
+        <div class="section-label" style="margin-bottom:16px;"><span class="section-label-line"></span><span class="section-label-text">Get In Touch</span></div>
+        <h1>Let's start a <em>conversation.</em></h1>
+        <p>Whether you're ready to purchase, need more information, or want to discuss a deployment — we respond within 24 hours.</p>
+      </div>
+    </div>
+
+    <div class="section">
       <div class="container">
         <div class="contact-inner">
           <div>
-            <div class="section-label">
-              <span class="section-label-line"></span>
-              <span class="section-label-text">Get In Touch</span>
-            </div>
-            <h2 class="section-title">Let's start a <em>conversation.</em></h2>
-            <p class="section-body" style="margin-bottom:40px;">
-              Whether you're ready to purchase, need more information, or want to discuss a deployment — we respond within 24 hours.
-            </p>
+            <div class="section-label" style="margin-bottom:20px;"><span class="section-label-line"></span><span class="section-label-text">Contact Information</span></div>
 
             <div class="contact-info-item">
-              <div class="contact-info-icon">
-                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.22 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l.61-.61a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 15.92v1z"/></svg>
-              </div>
-              <div>
-                <div class="contact-info-label">Response Time</div>
-                <div class="contact-info-value">We reply to all inquiries within 24 hours.</div>
-              </div>
+              <div class="contact-info-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.22 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l.61-.61a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 15.92v1z"/></svg></div>
+              <div><div class="contact-info-label">Response Time</div><div class="contact-info-value">We reply to all inquiries within 24 hours.</div></div>
             </div>
 
             <div class="contact-info-item">
-              <div class="contact-info-icon">
-                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2zM16 21H8M12 17v4"/></svg>
-              </div>
-              <div>
-                <div class="contact-info-label">Product Demos</div>
-                <div class="contact-info-value">Ask about scheduling a live demonstration for your team or institution.</div>
-              </div>
+              <div class="contact-info-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2zM16 21H8M12 17v4"/></svg></div>
+              <div><div class="contact-info-label">Product Demos</div><div class="contact-info-value">Ask about scheduling a live demonstration for your team or institution.</div></div>
             </div>
 
             <div class="contact-info-item">
-              <div class="contact-info-icon">
-                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-              </div>
-              <div>
-                <div class="contact-info-label">Purchasing</div>
-                <div class="contact-info-value">Pricing is available upon request for all models and configurations.</div>
-              </div>
+              <div class="contact-info-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+              <div><div class="contact-info-label">Purchasing</div><div class="contact-info-value">Pricing is available upon request for all models and configurations.</div></div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+              <div><div class="contact-info-label">Deployment Support</div><div class="contact-info-value">We offer guidance on deployment, installation, and classroom setup for all models.</div></div>
             </div>
           </div>
 
@@ -1628,32 +1035,27 @@
           </div>
         </div>
       </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <span class="footer-brand">Penthia</span>
-      <span class="footer-copy">© 2026 Penthia Store. All rights reserved.</span>
-      <div class="footer-links">
-        <a class="footer-link" href="#about">About</a>
-        <a class="footer-link" href="#store">Store</a>
-        <a class="footer-link" href="#compare">Compare</a>
-        <a class="footer-link" href="#contact">Contact</a>
-      </div>
     </div>
-  </footer>
 
-  <!-- PRODUCT MODAL -->
-  <div class="modal" id="modal" onclick="handleModalClick(event)">
-    <div class="modal-panel" id="modalPanel">
-      <div class="modal-close">
-        <button class="close-btn" onclick="closeModal()">×</button>
+    <footer>
+      <div class="container footer-inner">
+        <span class="footer-brand">Penthia</span>
+        <span class="footer-copy">© 2026 Penthia Store. All rights reserved.</span>
+        <div class="footer-links">
+          <button class="footer-link" onclick="navigate('home')">Home</button>
+          <button class="footer-link" onclick="navigate('about')">About</button>
+          <button class="footer-link" onclick="navigate('store')">Store</button>
+          <button class="footer-link" onclick="navigate('compare')">Compare</button>
+        </div>
       </div>
-      <div class="modal-product">
+    </footer>
+  </div>
 
-        <!-- Gallery -->
+  <!-- ══════════════════════════ MODAL ══════════════════════════ -->
+  <div class="modal" id="modal" onclick="handleModalClick(event)">
+    <div class="modal-panel">
+      <div class="modal-close"><button class="close-btn" onclick="closeModal()">×</button></div>
+      <div class="modal-product">
         <section class="modal-gallery">
           <div class="gallery-main-wrap">
             <button class="gal-arrow left" onclick="changeImage(-1)">‹</button>
@@ -1663,37 +1065,19 @@
           <div class="gallery-thumbs" id="galleryThumbs"></div>
         </section>
 
-        <!-- Details -->
         <section class="modal-details">
           <div class="modal-badge" id="modalBadge"></div>
           <h2 class="modal-title" id="modalTitle"></h2>
           <div class="modal-rating">★★★★★</div>
           <p class="modal-desc" id="modalDesc"></p>
           <ul class="modal-bullets" id="modalBullets"></ul>
-
-          <div class="variant-section">
-            <div class="variant-label">Display</div>
-            <div class="chips" id="variantDisplay"></div>
-          </div>
-          <div class="variant-section">
-            <div class="variant-label">Operating System</div>
-            <div class="chips" id="variantOS"></div>
-          </div>
-          <div class="variant-section">
-            <div class="variant-label">RAM / Storage</div>
-            <div class="chips" id="variantStorage"></div>
-          </div>
-          <div class="variant-section">
-            <div class="variant-label">Mounting</div>
-            <div class="chips" id="variantSupport"></div>
-          </div>
-          <div class="variant-section">
-            <div class="variant-label">Input</div>
-            <div class="chips" id="variantInput"></div>
-          </div>
+          <div class="variant-section"><div class="variant-label">Display</div><div class="chips" id="variantDisplay"></div></div>
+          <div class="variant-section"><div class="variant-label">Operating System</div><div class="chips" id="variantOS"></div></div>
+          <div class="variant-section"><div class="variant-label">RAM / Storage</div><div class="chips" id="variantStorage"></div></div>
+          <div class="variant-section"><div class="variant-label">Mounting</div><div class="chips" id="variantSupport"></div></div>
+          <div class="variant-section"><div class="variant-label">Input</div><div class="chips" id="variantInput"></div></div>
         </section>
 
-        <!-- Buybox -->
         <aside class="modal-buybox">
           <div class="buybox-price" id="buyboxPrice">Request Pricing</div>
           <p class="buybox-sub" id="buyboxSub"></p>
@@ -1703,111 +1087,60 @@
           </div>
           <div class="buybox-note" id="buyboxNote"></div>
         </aside>
-
       </div>
     </div>
   </div>
 
   <script>
-    // ─── DATA ───
+    // ─── PRODUCT DATA ───
     const productImages = {
-      'pro-max': [
-        'iBoardWebsite,windowsbackgroundiboardpro.png',
-        'iBoardWebsite,androidbackground,withstandtoholdup.png',
-        'iBoardWebsite,androidbackgroundiboardpro.png'
-      ],
-      'pro': [
-        'iBoardWebsite,androidbackground,withstandtoholdup.png',
-        'iBoardWebsite,windowsbackgroundiboardpro.png',
-        'iBoardWebsite,androidbackgroundiboardpro.png'
-      ],
-      'iboard': [
-        'iBoardWebsite,androidbackgroundiboardpro.png',
-        'iBoardWebsite,androidbackground,withstandtoholdup.png',
-        'iBoardWebsite,windowsbackgroundiboardpro.png'
-      ],
-      'projector': [
-        'iBoardProector.png',
-        'iBoardProjectorimage#2.png'
-      ]
+      'pro-max': ['iBoardWebsite,windowsbackgroundiboardpro.png','iBoardWebsite,androidbackground,withstandtoholdup.png','iBoardWebsite,androidbackgroundiboardpro.png'],
+      'pro':     ['iBoardWebsite,androidbackground,withstandtoholdup.png','iBoardWebsite,windowsbackgroundiboardpro.png','iBoardWebsite,androidbackgroundiboardpro.png'],
+      'iboard':  ['iBoardWebsite,androidbackgroundiboardpro.png','iBoardWebsite,androidbackground,withstandtoholdup.png','iBoardWebsite,windowsbackgroundiboardpro.png'],
+      'projector':['iBoardProector.png','iBoardProjectorimage#2.png']
     };
 
     const products = {
-      'pro-max': {
-        badge: 'Flagship Model',
-        title: 'iBoard Pro Max',
-        desc: 'The iBoard Pro Max is the flagship model in the Penthia lineup — the largest, most capable display built for schools that want the highest-tier classroom experience with maximum configuration flexibility.',
-        bullets: [
-          '85" 4K display',
-          'Android and Windows configurations available',
-          'Windows-only and Android-only options',
-          'Storage: 16GB RAM / 256GB or 32GB RAM / 512GB',
-          'Wall-mount and stand support included',
-          'Touchscreen with full stylus support'
-        ],
-        display: ['85" 4K'],
-        os: ['Android + Windows', 'Windows only', 'Android only'],
-        storage: ['16GB RAM / 256GB', '32GB RAM / 512GB'],
-        support: ['Wall-mount', 'Stand'],
-        input: ['Touchscreen', 'Stylus'],
-        note: 'Contact us and we\'ll respond within 24 hours with pricing, configuration options, and next steps.'
-      },
-      'pro': {
-        badge: 'Core Model',
-        title: 'iBoard Pro',
-        desc: 'The iBoard Pro is the central model in the lineup — a polished 4K smartboard with practical deployment options. A strong choice for schools that need flexibility without complexity.',
-        bullets: [
-          '70" 4K display',
-          'Android primary, optional Windows configuration',
-          'Storage: 16GB RAM / 256GB',
-          'Wall-mount and stand support included',
-          'Touchscreen with full stylus support'
-        ],
-        display: ['70" 4K'],
-        os: ['Android (primary)', 'Optional Windows'],
-        storage: ['16GB RAM / 256GB'],
-        support: ['Wall-mount', 'Stand'],
-        input: ['Touchscreen', 'Stylus'],
-        note: 'Contact us and we\'ll respond within 24 hours with pricing and configuration details.'
-      },
-      'iboard': {
-        badge: 'Essential Model',
-        title: 'iBoard',
-        desc: 'The iBoard is the streamlined entry model in the lineup — compact, capable, and practical. All the core classroom functionality in a focused 65" Android package.',
-        bullets: [
-          '65" 4K display',
-          'Android only',
-          'Storage: 8GB RAM / 128GB',
-          'Wall-mount and stand support included',
-          'Touchscreen with full stylus support'
-        ],
-        display: ['65" 4K'],
-        os: ['Android only'],
-        storage: ['8GB RAM / 128GB'],
-        support: ['Wall-mount', 'Stand'],
-        input: ['Touchscreen', 'Stylus'],
-        note: 'Contact us and we\'ll respond within 24 hours.'
-      },
-      'projector': {
-        badge: 'Projection',
-        title: 'Penthia Projector',
-        desc: 'The Penthia Projector expands the lineup with a projection-based display option for classrooms, meeting spaces, and larger environments where traditional boards are not ideal.',
-        bullets: [
-          'Projection-based display solution',
-          'Designed for classroom and presentation environments',
-          'Contact sales for configuration details and pricing'
-        ],
-        display: ['Projection display'],
-        os: ['Contact for details'],
-        storage: ['Contact for details'],
-        support: ['Classroom & presentation use'],
-        input: ['Contact for details'],
-        note: 'Pricing and configuration details available on request.'
-      }
+      'pro-max': { badge:'Flagship Model', title:'iBoard Pro Max', desc:'The iBoard Pro Max is the flagship model in the Penthia lineup — the largest, most capable display built for schools that want the highest-tier classroom experience with maximum configuration flexibility.', bullets:['85" 4K display','Android and Windows configurations available','Windows-only and Android-only options','Storage: 16GB RAM / 256GB or 32GB RAM / 512GB','Wall-mount and stand support included','Touchscreen with full stylus support'], display:['85" 4K'], os:['Android + Windows','Windows only','Android only'], storage:['16GB RAM / 256GB','32GB RAM / 512GB'], support:['Wall-mount','Stand'], input:['Touchscreen','Stylus'], note:"Contact us and we'll respond within 24 hours with pricing, configuration options, and next steps." },
+      'pro':     { badge:'Core Model', title:'iBoard Pro', desc:'The iBoard Pro is the central model in the lineup — a polished 4K smartboard with practical deployment options. A strong choice for schools that need flexibility without complexity.', bullets:['70" 4K display','Android primary, optional Windows configuration','Storage: 16GB RAM / 256GB','Wall-mount and stand support included','Touchscreen with full stylus support'], display:['70" 4K'], os:['Android (primary)','Optional Windows'], storage:['16GB RAM / 256GB'], support:['Wall-mount','Stand'], input:['Touchscreen','Stylus'], note:"Contact us and we'll respond within 24 hours with pricing and configuration details." },
+      'iboard':  { badge:'Essential Model', title:'iBoard', desc:'The iBoard is the streamlined entry model in the lineup — compact, capable, and practical. All the core classroom functionality in a focused 65" Android package.', bullets:['65" 4K display','Android only','Storage: 8GB RAM / 128GB','Wall-mount and stand support included','Touchscreen with full stylus support'], display:['65" 4K'], os:['Android only'], storage:['8GB RAM / 128GB'], support:['Wall-mount','Stand'], input:['Touchscreen','Stylus'], note:"Contact us and we'll respond within 24 hours." },
+      'projector':{ badge:'Projection', title:'Penthia Projector', desc:'The Penthia Projector expands the lineup with a projection-based display option for classrooms, meeting spaces, and larger environments where traditional boards are not ideal.', bullets:['Projection-based display solution','Designed for classroom and presentation environments','Contact sales for configuration details and pricing'], display:['Projection display'], os:['Contact for details'], storage:['Contact for details'], support:['Classroom & presentation use'], input:['Contact for details'], note:'Pricing and configuration details available on request.' }
     };
 
-    let currentKey = null;
-    let currentImgIndex = 0;
+    let currentKey = null, currentImgIndex = 0;
+
+    // ─── SPA ROUTER ───
+    const PAGES = ['home','about','store','compare','contact'];
+
+    function navigate(page) {
+      if (!PAGES.includes(page)) page = 'home';
+      PAGES.forEach(p => {
+        document.getElementById('page-' + p).classList.remove('active');
+        document.getElementById('nav-' + p).classList.remove('active');
+      });
+      document.getElementById('page-' + page).classList.add('active');
+      document.getElementById('nav-' + page).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      history.pushState({ page }, '', '#' + page);
+    }
+
+    window.addEventListener('popstate', e => {
+      const page = e.state?.page || location.hash.replace('#','') || 'home';
+      navigate(page);
+    });
+
+    // Init on load
+    (function() {
+      const hash = location.hash.replace('#','');
+      const page = PAGES.includes(hash) ? hash : 'home';
+      PAGES.forEach(p => {
+        document.getElementById('page-' + p).classList.remove('active');
+        document.getElementById('nav-' + p).classList.remove('active');
+      });
+      document.getElementById('page-' + page).classList.add('active');
+      document.getElementById('nav-' + page).classList.add('active');
+      history.replaceState({ page }, '', '#' + page);
+    })();
 
     // ─── MODAL ───
     function setChips(id, values) {
@@ -1819,9 +1152,7 @@
       if (!imgs.length) return;
       currentImgIndex = (index + imgs.length) % imgs.length;
       document.getElementById('modalMainImg').src = imgs[currentImgIndex];
-      document.querySelectorAll('.gallery-thumb').forEach((t, i) => {
-        t.classList.toggle('active', i === currentImgIndex);
-      });
+      document.querySelectorAll('.gallery-thumb').forEach((t, i) => t.classList.toggle('active', i === currentImgIndex));
     }
 
     function changeImage(dir) { setImage(currentImgIndex + dir); }
@@ -1829,18 +1160,13 @@
     function renderThumbs(key) {
       const imgs = productImages[key] || [];
       document.getElementById('galleryThumbs').innerHTML = imgs.map((src, i) =>
-        `<div class="gallery-thumb ${i === 0 ? 'active' : ''}" onclick="setImage(${i})">
-          <img src="${src}" alt="Product view ${i + 1}" />
-        </div>`
+        `<div class="gallery-thumb ${i===0?'active':''}" onclick="setImage(${i})"><img src="${src}" alt="View ${i+1}"></div>`
       ).join('');
     }
 
     function openProduct(key) {
-      const p = products[key];
-      if (!p) return;
-      currentKey = key;
-      currentImgIndex = 0;
-
+      const p = products[key]; if (!p) return;
+      currentKey = key; currentImgIndex = 0;
       document.getElementById('modalBadge').textContent = p.badge;
       document.getElementById('modalTitle').textContent = p.title;
       document.getElementById('modalDesc').textContent = p.desc;
@@ -1848,16 +1174,12 @@
       document.getElementById('buyboxPrice').textContent = 'Request Pricing';
       document.getElementById('buyboxSub').textContent = `Contact Penthia for ${p.title} purchasing details, available configurations, and deployment discussions.`;
       document.getElementById('buyboxNote').textContent = p.note;
-
       setChips('variantDisplay', p.display);
       setChips('variantOS', p.os);
       setChips('variantStorage', p.storage);
       setChips('variantSupport', p.support);
       setChips('variantInput', p.input);
-
-      renderThumbs(key);
-      setImage(0);
-
+      renderThumbs(key); setImage(0);
       document.getElementById('modal').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
@@ -1867,16 +1189,14 @@
       document.body.style.overflow = '';
     }
 
-    function handleModalClick(e) {
-      if (e.target.id === 'modal') closeModal();
-    }
+    function handleModalClick(e) { if (e.target.id === 'modal') closeModal(); }
 
     function openContactForm(type) {
       const title = currentKey && products[currentKey] ? products[currentKey].title : '';
       const msg = document.getElementById('message');
       if (msg) msg.value = `${type}${title ? ' — ' + title : ''}`;
       closeModal();
-      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+      navigate('contact');
     }
 
     // ─── KEYBOARD ───
@@ -1888,43 +1208,31 @@
     });
 
     // ─── SEARCH ───
-    function filterProducts(query) {
-      const q = query.trim().toLowerCase();
+    function filterProducts(q) {
+      q = q.trim().toLowerCase();
       document.querySelectorAll('#productGrid .prod-card').forEach(card => {
         const hay = ((card.dataset.search || '') + ' ' + card.textContent).toLowerCase();
         card.style.display = !q || hay.includes(q) ? '' : 'none';
       });
     }
 
-    function bindSearch(id, scroll) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      el.addEventListener('input', () => filterProducts(el.value));
-      el.addEventListener('keydown', e => {
-        if (e.key !== 'Enter') return;
-        e.preventDefault();
-        filterProducts(el.value);
-        if (scroll) document.getElementById('store').scrollIntoView({ behavior: 'smooth' });
-      });
-    }
+    document.getElementById('siteSearch').addEventListener('input', function() {
+      filterProducts(this.value);
+      if (this.value.trim()) navigate('store');
+    });
 
-    bindSearch('siteSearch', true);
-    bindSearch('productSearch', false);
+    document.getElementById('siteSearch').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') { e.preventDefault(); navigate('store'); filterProducts(this.value); }
+    });
+
+    document.getElementById('productSearch').addEventListener('input', function() { filterProducts(this.value); });
 
     // ─── FORM ───
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       const email = document.getElementById('email').value.trim();
       const phone = document.getElementById('phone').value.trim();
-      if (!email && !phone) {
-        e.preventDefault();
-        alert('Please provide at least an email or phone number so we can reach you.');
-      }
+      if (!email && !phone) { e.preventDefault(); alert('Please provide at least an email or phone number so we can reach you.'); }
     });
-
-    // ─── NAV SCROLL ───
-    window.addEventListener('scroll', () => {
-      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
-    }, { passive: true });
   </script>
 
 </body>
