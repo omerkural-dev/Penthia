@@ -615,7 +615,7 @@
       font-size: 0.82rem; line-height: 1.7; color: var(--muted);
     }
 
-    /* ─── RESPONSIVE ─── */
+    /* ─── RESPONSIVE (existing) ─── */
     @media (max-width: 1100px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-left { padding: 60px 40px; }
@@ -650,6 +650,101 @@
     ::-webkit-scrollbar-track { background: var(--ink); }
     ::-webkit-scrollbar-thumb { background: var(--ink-4); border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--gold-border); }
+
+    /* ════════════════════════════════════════
+       MOBILE BOTTOM NAVIGATION BAR
+       Only shown on screens ≤ 760px
+       Desktop layout is completely untouched
+    ════════════════════════════════════════ */
+    .mobile-nav {
+      display: none; /* hidden on desktop */
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 950;
+      background: rgba(11,13,18,0.97);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-top: 1px solid var(--line-2);
+      /* Respect iPhone home indicator */
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    .mobile-nav-inner {
+      display: flex;
+      align-items: stretch;
+      height: 60px;
+    }
+
+    .mobile-nav-btn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-family: var(--font-body);
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0 4px;
+      position: relative;
+      transition: color 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Gold indicator line at the top of active tab */
+    .mobile-nav-btn::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 0; height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-2));
+      border-radius: 0 0 3px 3px;
+      transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .mobile-nav-btn.active {
+      color: var(--gold-2);
+    }
+
+    .mobile-nav-btn.active::after {
+      width: 56%;
+    }
+
+    .mobile-nav-btn svg {
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s;
+      opacity: 0.6;
+    }
+
+    .mobile-nav-btn.active svg {
+      transform: translateY(-1px);
+      opacity: 1;
+    }
+
+    /* Mobile-only overrides */
+    @media (max-width: 760px) {
+      /* Show the bottom nav */
+      .mobile-nav { display: block; }
+
+      /* Push page content above the bottom nav + safe area */
+      .page {
+        padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
+      }
+
+      /* Hide the desktop "Shop Now" CTA in the top nav on mobile
+         (keep brand logo visible) */
+      .nav-cta { display: none; }
+
+      /* Slightly reduce store search bar width constraint on mobile */
+      .store-search-bar { max-width: 100%; }
+
+      /* Tighter page-hero text on small screens */
+      .page-hero h1 { font-size: clamp(2rem, 9vw, 3rem); }
+    }
   </style>
 </head>
 <body>
@@ -1093,6 +1188,53 @@
     </div>
   </div>
 
+  <!-- ══════════════════════════ MOBILE NAV ══════════════════════════ -->
+  <!-- Only visible on screens ≤ 760px via CSS. Desktop untouched. -->
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <div class="mobile-nav-inner">
+
+      <button class="mobile-nav-btn" id="mnav-home" onclick="navigate('home')" aria-label="Home">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        Home
+      </button>
+
+      <button class="mobile-nav-btn" id="mnav-about" onclick="navigate('about')" aria-label="About">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="8" x2="12" y2="12"/>
+          <line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+        About
+      </button>
+
+      <button class="mobile-nav-btn" id="mnav-store" onclick="navigate('store')" aria-label="Store">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <rect x="2" y="3" width="20" height="14" rx="2"/>
+          <path d="M8 21h8M12 17v4"/>
+        </svg>
+        Store
+      </button>
+
+      <button class="mobile-nav-btn" id="mnav-compare" onclick="navigate('compare')" aria-label="Compare">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>
+        </svg>
+        Compare
+      </button>
+
+      <button class="mobile-nav-btn" id="mnav-contact" onclick="navigate('contact')" aria-label="Contact">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+        </svg>
+        Contact
+      </button>
+
+    </div>
+  </nav>
+
   <script>
     // ─── PRODUCT DATA ───
     const productImages = {
@@ -1119,9 +1261,16 @@
       PAGES.forEach(p => {
         document.getElementById('page-' + p).classList.remove('active');
         document.getElementById('nav-' + p).classList.remove('active');
+        // Also sync the mobile nav
+        const mBtn = document.getElementById('mnav-' + p);
+        if (mBtn) mBtn.classList.remove('active');
       });
       document.getElementById('page-' + page).classList.add('active');
       document.getElementById('nav-' + page).classList.add('active');
+      // Activate matching mobile nav button
+      const mActiveBtn = document.getElementById('mnav-' + page);
+      if (mActiveBtn) mActiveBtn.classList.add('active');
+
       window.scrollTo({ top: 0, behavior: 'instant' });
       history.pushState({ page }, '', '#' + page);
     }
@@ -1138,9 +1287,13 @@
       PAGES.forEach(p => {
         document.getElementById('page-' + p).classList.remove('active');
         document.getElementById('nav-' + p).classList.remove('active');
+        const mBtn = document.getElementById('mnav-' + p);
+        if (mBtn) mBtn.classList.remove('active');
       });
       document.getElementById('page-' + page).classList.add('active');
       document.getElementById('nav-' + page).classList.add('active');
+      const mActiveBtn = document.getElementById('mnav-' + page);
+      if (mActiveBtn) mActiveBtn.classList.add('active');
       history.replaceState({ page }, '', '#' + page);
     })();
 
