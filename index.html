@@ -88,10 +88,7 @@
             "item": {
               "@type": "Product",
               "name": "Penthia Vertex Elite",
-              "brand": {
-                "@type": "Brand",
-                "name": "Penthia"
-              },
+              "brand": { "@type": "Brand", "name": "Penthia" },
               "description": "Premium flagship 4K interactive display with touchscreen, stylus support, Android 15, and Windows OPS included as standard.",
               "category": "Interactive Smartboard",
               "image": "https://penthiasolutions.com/iBoardWebsite,windowsbackgroundiboardpro.png"
@@ -103,10 +100,7 @@
             "item": {
               "@type": "Product",
               "name": "Penthia Vertex Pro",
-              "brand": {
-                "@type": "Brand",
-                "name": "Penthia"
-              },
+              "brand": { "@type": "Brand", "name": "Penthia" },
               "description": "Flexible 4K interactive display with Android 14, optional Windows OPS expansion, touchscreen, and stylus support.",
               "category": "Interactive Smartboard",
               "image": "https://penthiasolutions.com/iBoardWebsite,androidbackground,withstandtoholdup.png"
@@ -118,10 +112,7 @@
             "item": {
               "@type": "Product",
               "name": "Penthia Vertex Standard",
-              "brand": {
-                "@type": "Brand",
-                "name": "Penthia"
-              },
+              "brand": { "@type": "Brand", "name": "Penthia" },
               "description": "Streamlined 65 inch 4K Android interactive display designed for dependable classroom use.",
               "category": "Interactive Smartboard",
               "image": "https://penthiasolutions.com/iBoardWebsite,androidbackgroundiboardpro.png"
@@ -133,10 +124,7 @@
             "item": {
               "@type": "Product",
               "name": "Penthia Projector",
-              "brand": {
-                "@type": "Brand",
-                "name": "Penthia"
-              },
+              "brand": { "@type": "Brand", "name": "Penthia" },
               "description": "Projection solution for classrooms and presentation environments where a traditional interactive board is not ideal.",
               "category": "Projection Display",
               "image": "https://penthiasolutions.com/iBoardProector.png"
@@ -208,9 +196,7 @@
     }
 
     .brand { display: flex; align-items: center; gap: 14px; flex-shrink: 0; cursor: pointer; }
-
     .brand-logo { width: 55px; height: 55px; border-radius: 8px; object-fit: cover; border: 1px solid var(--gold-border); }
-
     .brand-name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; letter-spacing: 0.08em; color: var(--white); }
     .brand-name span { color: var(--gold); }
 
@@ -358,7 +344,6 @@
     }
 
     .eyebrow-line { width: 32px; height: 1px; background: var(--gold); }
-
     .eyebrow-text { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
 
     .hero-headline {
@@ -447,8 +432,104 @@
     @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
+    /* HOME IMAGE STRIP */
+    .home-image-strip {
+      background: var(--ink-2);
+      border-top: 1px solid var(--line-2);
+      border-bottom: 1px solid var(--line-2);
+      padding: 80px 0;
+    }
+
+    .home-image-strip-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--line-2);
+      border: 1px solid var(--line-2);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .strip-image-block {
+      position: relative;
+      overflow: hidden;
+      background: var(--ink-3);
+    }
+
+    .strip-image-block img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+
+    .strip-image-block:hover img { transform: scale(1.03); }
+
+    .strip-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(11,13,18,0.82) 0%, rgba(11,13,18,0.1) 55%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .strip-image-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px 32px;
+    }
+
+    .strip-image-caption-label {
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: 6px;
+    }
+
+    .strip-image-caption-title {
+      font-family: var(--font-display); font-size: 1.6rem; font-weight: 300;
+      color: var(--white); line-height: 1.15;
+    }
+
     /* ABOUT */
     #page-about { background: var(--ink-2); }
+
+    /* ABOUT HERO IMAGE */
+    .about-hero-image-wrap {
+      width: 100%;
+      border: 1px solid var(--line-2);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 56px;
+      position: relative;
+    }
+
+    .about-hero-image-wrap img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-hero-image-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(11,13,18,0.55) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .about-hero-image-text {
+      position: absolute;
+      top: 50%; left: 40px;
+      transform: translateY(-50%);
+    }
+
+    .about-hero-image-text .section-label { margin-bottom: 12px; }
+
+    .about-hero-image-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 300; color: var(--white); line-height: 1.1;
+    }
+
+    .about-hero-image-text h2 em { font-style: italic; color: var(--gold-2); }
 
     .about-features {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -536,6 +617,49 @@
     }
 
     .prod-card:hover .prod-arrow { border-color: var(--gold-border); background: var(--gold-pale); color: var(--gold-2); }
+
+    /* STORE FEATURE BANNER */
+    .store-feature-banner {
+      margin-top: 64px;
+      border: 1px solid var(--line-2);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .store-feature-banner img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .store-feature-banner-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(11,13,18,0.88) 0%, rgba(11,13,18,0.3) 65%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .store-feature-banner-content {
+      position: absolute;
+      top: 50%; left: 48px;
+      transform: translateY(-50%);
+      max-width: 480px;
+    }
+
+    .store-feature-banner-content .section-label { margin-bottom: 14px; }
+
+    .store-feature-banner-content h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 300; color: var(--white); line-height: 1.1; margin-bottom: 14px;
+    }
+
+    .store-feature-banner-content h3 em { font-style: italic; color: var(--gold-2); }
+
+    .store-feature-banner-content p {
+      font-size: 0.92rem; line-height: 1.75; color: var(--muted-2); font-weight: 300; margin-bottom: 24px;
+    }
 
     /* COMPARE */
     #page-compare { background: var(--ink-2); }
@@ -766,6 +890,8 @@
       .modal-buybox { position: static; }
       .page-hero-inner { flex-direction: column; }
       .page-stat-row { flex-wrap: wrap; }
+      .home-image-strip-inner { grid-template-columns: 1fr; }
+      .store-feature-banner-content { left: 28px; max-width: 360px; }
     }
 
     @media (max-width: 760px) {
@@ -783,6 +909,13 @@
       .hero-stats { gap: 24px; }
       .page-hero { padding: 40px 0; }
       .compare-cta { flex-direction: column; }
+      .strip-image-block img { height: 260px; }
+      .about-hero-image-wrap img { height: 240px; }
+      .about-hero-image-text { left: 20px; }
+      .store-feature-banner img { height: 240px; }
+      .store-feature-banner-content { left: 20px; max-width: 260px; }
+      .store-feature-banner-content h3 { font-size: 1.4rem; }
+      .store-feature-banner-content p { display: none; }
     }
 
     ::-webkit-scrollbar { width: 6px; }
@@ -840,31 +973,19 @@
       transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    .mobile-nav-btn.active {
-      color: var(--gold-2);
-    }
-
-    .mobile-nav-btn.active::after {
-      width: 56%;
-    }
+    .mobile-nav-btn.active { color: var(--gold-2); }
+    .mobile-nav-btn.active::after { width: 56%; }
 
     .mobile-nav-btn svg {
       transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s;
       opacity: 0.6;
     }
 
-    .mobile-nav-btn.active svg {
-      transform: translateY(-1px);
-      opacity: 1;
-    }
+    .mobile-nav-btn.active svg { transform: translateY(-1px); opacity: 1; }
 
     @media (max-width: 760px) {
       .mobile-nav { display: block; }
-
-      .page {
-        padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
-      }
-
+      .page { padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px)); }
       .nav-cta { display: none; }
       .store-search-bar { max-width: 100%; }
       .page-hero h1 { font-size: clamp(2rem, 9vw, 3rem); }
@@ -900,6 +1021,7 @@
     </div>
   </header>
 
+  <!-- HOME PAGE -->
   <div class="page" id="page-home">
     <section class="hero">
       <div class="hero-bg"></div>
@@ -940,6 +1062,33 @@
       </div>
     </section>
 
+    <!-- IMAGE STRIP SECTION -->
+    <div class="home-image-strip">
+      <div class="container">
+        <div class="home-image-strip-inner">
+
+          <div class="strip-image-block">
+            <img src="penthiaimageboard.png" alt="Penthia interactive display in classroom environment" />
+            <div class="strip-image-overlay"></div>
+            <div class="strip-image-caption">
+              <div class="strip-image-caption-label">In the Classroom</div>
+              <div class="strip-image-caption-title">Built for real teaching environments.</div>
+            </div>
+          </div>
+
+          <div class="strip-image-block">
+            <img src="penthiaimage2.png" alt="Penthia Vertex display technology" />
+            <div class="strip-image-overlay"></div>
+            <div class="strip-image-caption">
+              <div class="strip-image-caption-label">Vertex Family</div>
+              <div class="strip-image-caption-title">A display for every need.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
     <footer>
       <div class="container footer-inner">
         <span class="footer-brand">Penthia</span>
@@ -954,6 +1103,7 @@
     </footer>
   </div>
 
+  <!-- ABOUT PAGE -->
   <div class="page" id="page-about">
     <div class="page-hero">
       <div class="container">
@@ -974,6 +1124,17 @@
 
     <div class="section">
       <div class="container">
+
+        <!-- ABOUT HERO IMAGE using penthiaimageboard.png -->
+        <div class="about-hero-image-wrap">
+          <img src="penthiaimageboard.png" alt="Penthia interactive display board in a learning environment" />
+          <div class="about-hero-image-overlay"></div>
+          <div class="about-hero-image-text">
+            <div class="section-label"><span class="section-label-line"></span><span class="section-label-text">The Penthia Experience</span></div>
+            <h2>Where technology<br>meets <em>teaching.</em></h2>
+          </div>
+        </div>
+
         <div class="section-label" style="margin-bottom:16px;"><span class="section-label-line"></span><span class="section-label-text">Core Features</span></div>
         <h2 class="section-title" style="margin-bottom:40px;">Why choose <em>Penthia.</em></h2>
         <div class="about-features">
@@ -1025,6 +1186,7 @@
     </footer>
   </div>
 
+  <!-- STORE PAGE -->
   <div class="page" id="page-store">
     <div class="page-hero">
       <div class="container">
@@ -1080,6 +1242,22 @@
           </article>
 
         </div>
+
+        <!-- STORE FEATURE BANNER using penthiaimage2.png -->
+        <div class="store-feature-banner">
+          <img src="penthiaimage2.png" alt="Penthia interactive display in use" />
+          <div class="store-feature-banner-overlay"></div>
+          <div class="store-feature-banner-content">
+            <div class="section-label"><span class="section-label-line"></span><span class="section-label-text">See It In Action</span></div>
+            <h3>Designed for<br><em>every classroom.</em></h3>
+            <p>From focused Android boards to full Windows-integrated setups, the Vertex family has a configuration for every teaching environment and budget.</p>
+            <button class="btn-primary" onclick="navigate('contact')">
+              Get in Touch
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -1097,6 +1275,7 @@
     </footer>
   </div>
 
+  <!-- COMPARE PAGE -->
   <div class="page" id="page-compare">
     <div class="page-hero">
       <div class="container">
@@ -1200,6 +1379,7 @@
     </footer>
   </div>
 
+  <!-- CONTACT PAGE -->
   <div class="page" id="page-contact">
     <div class="page-hero">
       <div class="container">
@@ -1288,6 +1468,7 @@
     </footer>
   </div>
 
+  <!-- PRODUCT MODAL -->
   <div class="modal" id="modal" onclick="handleModalClick(event)">
     <div class="modal-panel">
       <div class="modal-close"><button class="close-btn" onclick="closeModal()">×</button></div>
@@ -1327,48 +1508,29 @@
     </div>
   </div>
 
+  <!-- MOBILE NAV -->
   <nav class="mobile-nav" aria-label="Mobile navigation">
     <div class="mobile-nav-inner">
-
       <button class="mobile-nav-btn" id="mnav-home" onclick="navigate('home')" aria-label="Home">
-        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-          <polyline points="9 22 9 12 15 12 15 22"/>
-        </svg>
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         Home
       </button>
-
       <button class="mobile-nav-btn" id="mnav-about" onclick="navigate('about')" aria-label="About">
-        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-          <circle cx="12" cy="12" r="10"/>
-          <line x1="12" y1="8" x2="12" y2="12"/>
-          <line x1="12" y1="16" x2="12.01" y2="16"/>
-        </svg>
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         About
       </button>
-
       <button class="mobile-nav-btn" id="mnav-store" onclick="navigate('store')" aria-label="Store">
-        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-          <rect x="2" y="3" width="20" height="14" rx="2"/>
-          <path d="M8 21h8M12 17v4"/>
-        </svg>
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
         Store
       </button>
-
       <button class="mobile-nav-btn" id="mnav-compare" onclick="navigate('compare')" aria-label="Compare">
-        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-          <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>
-        </svg>
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
         Compare
       </button>
-
       <button class="mobile-nav-btn" id="mnav-contact" onclick="navigate('contact')" aria-label="Contact">
-        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-          <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
-        </svg>
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
         Contact
       </button>
-
     </div>
   </nav>
 
@@ -1472,7 +1634,6 @@
       document.getElementById('nav-' + page).classList.add('active');
       const mActiveBtn = document.getElementById('mnav-' + page);
       if (mActiveBtn) mActiveBtn.classList.add('active');
-
       window.scrollTo({ top: 0, behavior: 'instant' });
       history.pushState({ page }, '', '#' + page);
     }
