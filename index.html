@@ -632,15 +632,16 @@
     .store-feature-banner img {
       width: 100%;
       height: 340px;
-      object-fit: contain;
-      object-position: center;
+      object-fit: cover;
+      object-position: right center;
       display: block;
     }
 
     .store-feature-banner-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to right, rgba(11,13,18,0.88) 0%, rgba(11,13,18,0.3) 65%, transparent 100%);
+      background: linear-gradient(to right, rgba(11,13,18,0.94) 0%, rgba(11,13,18,0.88) 38%, rgba(11,13,18,0.50) 68%, transparent 100%);
       pointer-events: none;
+      z-index: 1;
     }
 
     .store-feature-banner-content {
@@ -648,6 +649,7 @@
       top: 50%; left: 48px;
       transform: translateY(-50%);
       max-width: 480px;
+      z-index: 2;
     }
 
     .store-feature-banner-content .section-label { margin-bottom: 14px; }
@@ -915,7 +917,7 @@
       .strip-image-block img { height: 260px; }
       .about-hero-image-wrap img { height: 240px; }
       .about-hero-image-text { left: 20px; }
-      .store-feature-banner img { height: 240px; }
+      .store-feature-banner img { height: 240px; object-position: 72% center; }
       .store-feature-banner-content { left: 20px; max-width: 260px; }
       .store-feature-banner-content h3 { font-size: 1.4rem; }
       .store-feature-banner-content p { display: none; }
@@ -1500,7 +1502,7 @@
 
         <aside class="modal-buybox">
           <div class="buybox-price" id="buyboxPrice">Request Pricing</div>
-          <p class="buyboxSub" id="buyboxSub"></p>
+          <p class="buybox-sub" id="buyboxSub"></p>
           <div class="buybox-actions">
             <button class="buybox-btn-primary" onclick="openContactForm('Request Quote')">Request a Quote</button>
             <button class="buybox-btn-ghost" onclick="openContactForm('Contact Sales')">Contact Sales</button>
