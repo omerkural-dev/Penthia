@@ -459,7 +459,7 @@
     .strip-image-block img {
       width: 100%;
       height: 420px;
-      object-fit: contain;
+      object-fit: cover;
       object-position: center;
       display: block;
       transition: transform 0.7s ease;
@@ -488,6 +488,81 @@
     .strip-image-caption-title {
       font-family: var(--font-display); font-size: 1.6rem; font-weight: 300;
       color: var(--white); line-height: 1.15;
+    }
+
+    /* HOME SCIENCE LAB SHOWCASE */
+    .home-lab-showcase {
+      background: var(--ink);
+      padding: 80px 0;
+      border-bottom: 1px solid var(--line-2);
+    }
+
+    .home-lab-showcase-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 1px;
+      background: var(--line-2);
+      border: 1px solid var(--line-2);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .lab-showcase-main {
+      position: relative;
+      overflow: hidden;
+      background: var(--ink-3);
+    }
+
+    .lab-showcase-main img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+
+    .lab-showcase-main:hover img { transform: scale(1.03); }
+
+    .lab-showcase-main-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(11,13,18,0.80) 0%, rgba(11,13,18,0.08) 50%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .lab-showcase-main-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 32px 36px;
+    }
+
+    .lab-showcase-secondary {
+      position: relative;
+      overflow: hidden;
+      background: var(--ink-3);
+    }
+
+    .lab-showcase-secondary img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+
+    .lab-showcase-secondary:hover img { transform: scale(1.03); }
+
+    .lab-showcase-secondary-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(11,13,18,0.85) 0%, rgba(11,13,18,0.15) 50%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .lab-showcase-secondary-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 32px 36px;
     }
 
     /* ABOUT */
@@ -532,6 +607,47 @@
     }
 
     .about-hero-image-text h2 em { font-style: italic; color: var(--gold-2); }
+
+    /* ABOUT SCIENCE LAB BANNER */
+    .about-lab-banner {
+      margin-bottom: 56px;
+      border: 1px solid var(--line-2);
+      border-radius: 4px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--line-2);
+    }
+
+    .about-lab-banner-block {
+      position: relative;
+      overflow: hidden;
+      background: var(--ink-3);
+    }
+
+    .about-lab-banner-block img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+
+    .about-lab-banner-block:hover img { transform: scale(1.03); }
+
+    .about-lab-banner-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(11,13,18,0.78) 0%, rgba(11,13,18,0.08) 55%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .about-lab-banner-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 24px 28px;
+    }
 
     .about-features {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -897,6 +1013,8 @@
       .page-stat-row { flex-wrap: wrap; }
       .home-image-strip-inner { grid-template-columns: 1fr; }
       .store-feature-banner-content { left: 28px; max-width: 360px; }
+      .home-lab-showcase-inner { grid-template-columns: 1fr; }
+      .about-lab-banner { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 760px) {
@@ -921,6 +1039,9 @@
       .store-feature-banner-content { left: 20px; max-width: 260px; }
       .store-feature-banner-content h3 { font-size: 1.4rem; }
       .store-feature-banner-content p { display: none; }
+      .lab-showcase-main img,
+      .lab-showcase-secondary img { height: 280px; }
+      .about-lab-banner-block img { height: 240px; }
     }
 
     ::-webkit-scrollbar { width: 6px; }
@@ -1094,6 +1215,35 @@
       </div>
     </div>
 
+    <!-- SCIENCE LAB SHOWCASE SECTION -->
+    <div class="home-lab-showcase">
+      <div class="container">
+        <div class="section-label" style="margin-bottom:20px;"><span class="section-label-line"></span><span class="section-label-text">Penthia in Practice</span></div>
+        <h2 class="section-title" style="margin-bottom:40px;">Where science<br>meets <em>discovery.</em></h2>
+        <div class="home-lab-showcase-inner">
+
+          <div class="lab-showcase-main">
+            <img src="penthiaboardinsciencelab.png" alt="Penthia interactive board installed in a school science laboratory" />
+            <div class="lab-showcase-main-overlay"></div>
+            <div class="lab-showcase-main-caption">
+              <div class="strip-image-caption-label">Science Lab</div>
+              <div class="strip-image-caption-title">Precision displays for every subject.</div>
+            </div>
+          </div>
+
+          <div class="lab-showcase-secondary">
+            <img src="penthiaboard,studentinsciencelabinfrontofpenthiaboard.png" alt="Student engaged with a Penthia interactive board in a science lab" />
+            <div class="lab-showcase-secondary-overlay"></div>
+            <div class="lab-showcase-secondary-caption">
+              <div class="strip-image-caption-label">Student Engagement</div>
+              <div class="strip-image-caption-title">Designed to inspire the next generation.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
     <footer>
       <div class="container footer-inner">
         <span class="footer-brand">Penthia</span>
@@ -1137,6 +1287,26 @@
           <div class="about-hero-image-text">
             <div class="section-label"><span class="section-label-line"></span><span class="section-label-text">The Penthia Experience</span></div>
             <h2>Where technology<br>meets <em>teaching.</em></h2>
+          </div>
+        </div>
+
+        <!-- SCIENCE LAB BANNER using the two new images -->
+        <div class="about-lab-banner">
+          <div class="about-lab-banner-block">
+            <img src="penthiaboardinsciencelab.png" alt="Penthia board installed in a school science lab" />
+            <div class="about-lab-banner-overlay"></div>
+            <div class="about-lab-banner-caption">
+              <div class="strip-image-caption-label">Real Environments</div>
+              <div class="strip-image-caption-title" style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 300; color: var(--white); line-height: 1.15;">From science labs to every classroom.</div>
+            </div>
+          </div>
+          <div class="about-lab-banner-block">
+            <img src="penthiaboard,studentinsciencelabinfrontofpenthiaboard.png" alt="Student interacting with Penthia board in science lab" />
+            <div class="about-lab-banner-overlay"></div>
+            <div class="about-lab-banner-caption">
+              <div class="strip-image-caption-label">Student-Centred Learning</div>
+              <div class="strip-image-caption-title" style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 300; color: var(--white); line-height: 1.15;">Displays that put students at the centre.</div>
+            </div>
           </div>
         </div>
 
