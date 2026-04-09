@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -28,9 +27,9 @@
   <meta name="twitter:description" content="Explore Penthia interactive displays, including the Vertex Elite, Vertex Pro, Vertex Standard, and projector solutions." />
   <meta name="twitter:image" content="https://penthiasolutions.com/penthialogo.jpg" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet" />
 
   <script type="application/ld+json">
   {
@@ -158,7 +157,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; }
+    html { font-size: 16px; scroll-behavior: smooth; }
 
     body {
       font-family: var(--font-body);
@@ -179,10 +178,11 @@
       content: '';
       position: fixed; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 9999; opacity: 0.4;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
     }
 
-    /* NAV */
     .nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 900;
       background: rgba(11,13,18,0.92);
@@ -191,30 +191,71 @@
     }
 
     .nav-inner {
-      display: flex; align-items: center;
-      justify-content: space-between; gap: 24px; height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      height: 80px;
     }
 
-    .brand { display: flex; align-items: center; gap: 14px; flex-shrink: 0; cursor: pointer; }
-    .brand-logo { width: 55px; height: 55px; border-radius: 8px; object-fit: cover; border: 1px solid var(--gold-border); }
-    .brand-name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; letter-spacing: 0.08em; color: var(--white); }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .brand-logo {
+      width: 55px;
+      height: 55px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid var(--gold-border);
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--white);
+    }
+
     .brand-name span { color: var(--gold); }
 
-    .nav-center { display: flex; align-items: center; gap: 4px; }
+    .nav-center {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
 
     .nav-link {
-      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--muted);
-      transition: color 0.2s; position: relative;
-      padding: 8px 16px; border-radius: 2px;
-      cursor: pointer; border: none; background: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+      position: relative;
+      padding: 8px 16px;
+      border-radius: 2px;
+      cursor: pointer;
+      border: none;
+      background: none;
       font-family: var(--font-body);
     }
 
     .nav-link::after {
-      content: ''; position: absolute;
-      bottom: 2px; left: 16px; right: 16px; height: 1px;
-      background: var(--gold); transform: scaleX(0); transition: transform 0.3s ease;
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 16px;
+      right: 16px;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
     }
 
     .nav-link:hover { color: var(--gold-2); }
@@ -223,100 +264,188 @@
     .nav-link.active::after { transform: scaleX(1); }
 
     .nav-search {
-      display: flex; align-items: center; gap: 10px;
-      background: rgba(255,255,255,0.04); border: 1px solid var(--line-2);
-      border-radius: 2px; padding: 10px 16px; flex: 1; max-width: 320px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line-2);
+      border-radius: 2px;
+      padding: 10px 16px;
+      flex: 1;
+      max-width: 320px;
     }
 
     .nav-search svg { flex-shrink: 0; opacity: 0.4; }
 
     .nav-search input {
-      border: none; outline: none; background: transparent;
-      color: var(--white); font: inherit; font-size: 0.88rem; width: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--white);
+      font: inherit;
+      font-size: 0.88rem;
+      width: 100%;
     }
 
     .nav-search input::placeholder { color: var(--muted); }
 
     .nav-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 24px; background: var(--gold); color: var(--ink);
-      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; border-radius: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: var(--gold);
+      color: var(--ink);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 2px;
       transition: background 0.2s, transform 0.2s;
-      cursor: pointer; border: none; font-family: var(--font-body);
+      cursor: pointer;
+      border: none;
+      font-family: var(--font-body);
     }
 
-    .nav-cta:hover { background: var(--gold-2); transform: translateY(-1px); }
+    .nav-cta:hover {
+      background: var(--gold-2);
+      transform: translateY(-1px);
+    }
 
-    /* PAGE SYSTEM */
-    .page { display: none; min-height: 100vh; padding-top: 80px; }
-    .page.active { display: block; animation: pageIn 0.35s ease forwards; }
+    .page {
+      display: none;
+      min-height: 100vh;
+      padding-top: 80px;
+    }
+
+    .page.active {
+      display: block;
+      animation: pageIn 0.35s ease forwards;
+    }
 
     @keyframes pageIn {
       from { opacity: 0; transform: translateY(14px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* PAGE HEADER */
-    .page-hero { background: var(--ink-3); border-bottom: 1px solid var(--line-2); padding: 64px 0; }
+    .page-hero {
+      background: var(--ink-3);
+      border-bottom: 1px solid var(--line-2);
+      padding: 64px 0;
+    }
 
     .page-hero h1 {
       font-family: var(--font-display);
       font-size: clamp(2.8rem, 5vw, 5rem);
-      font-weight: 300; line-height: 1; letter-spacing: -0.03em;
-      color: var(--white); margin-bottom: 16px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: 16px;
     }
 
     .page-hero h1 em { font-style: italic; color: var(--gold-2); }
 
     .page-hero p {
-      font-size: 1rem; line-height: 1.75;
-      color: var(--muted-2); max-width: 560px; font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--muted-2);
+      max-width: 560px;
+      font-weight: 300;
     }
 
     .page-hero-inner {
-      display: flex; align-items: flex-start;
-      justify-content: space-between; gap: 48px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 48px;
     }
 
-    .page-stat-row { display: flex; gap: 16px; flex-shrink: 0; flex-wrap: wrap; }
+    .page-stat-row {
+      display: flex;
+      gap: 16px;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
 
     .page-stat {
-      text-align: center; padding: 20px 28px;
-      background: var(--ink-2); border: 1px solid var(--line-2); border-radius: 4px;
+      text-align: center;
+      padding: 20px 28px;
+      background: var(--ink-2);
+      border: 1px solid var(--line-2);
+      border-radius: 4px;
     }
 
     .page-stat-num {
-      font-family: var(--font-display); font-size: 2.4rem; font-weight: 300;
-      color: var(--gold-2); line-height: 1; margin-bottom: 4px;
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--gold-2);
+      line-height: 1;
+      margin-bottom: 4px;
     }
 
-    .page-stat-label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .page-stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
 
-    /* SHARED SECTION */
     .section { padding: 80px 0; }
 
-    .section-label { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
-    .section-label-line { width: 24px; height: 1px; background: var(--gold); }
-    .section-label-text { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .section-label-line {
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-label-text {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+    }
 
     .section-title {
-      font-family: var(--font-display); font-size: clamp(2.4rem, 4vw, 4.2rem);
-      font-weight: 300; line-height: 1.05; letter-spacing: -0.02em;
-      color: var(--white); margin-bottom: 20px;
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 20px;
     }
 
     .section-title em { font-style: italic; color: var(--gold-2); }
-    .section-body { font-size: 1rem; line-height: 1.8; color: var(--muted-2); max-width: 560px; font-weight: 300; }
 
-    /* HERO */
+    .section-body {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--muted-2);
+      max-width: 560px;
+      font-weight: 300;
+    }
+
     .hero {
-      min-height: calc(100vh - 80px); display: grid;
-      grid-template-columns: 1fr 1fr; position: relative; overflow: hidden;
+      min-height: calc(100vh - 80px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
     }
 
     .hero-bg {
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: 0;
       background:
         radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 60%),
         radial-gradient(ellipse 50% 80% at 30% 20%, rgba(201,168,76,0.04) 0%, transparent 50%),
@@ -324,7 +453,8 @@
     }
 
     .hero-grid-lines {
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: 0;
       background-image:
         linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
@@ -333,106 +463,224 @@
     }
 
     .hero-left {
-      position: relative; z-index: 2;
-      display: flex; flex-direction: column; justify-content: center;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       padding: 80px 64px;
     }
 
     .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 12px; margin-bottom: 32px;
-      opacity: 0; animation: fadeUp 0.8s ease 0.1s forwards;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.1s forwards;
     }
 
     .eyebrow-line { width: 32px; height: 1px; background: var(--gold); }
-    .eyebrow-text { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+
+    .eyebrow-text {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+    }
 
     .hero-headline {
-      font-family: var(--font-display); font-size: clamp(3.5rem, 6vw, 6.5rem);
-      font-weight: 300; line-height: 0.95; letter-spacing: -0.02em;
-      color: var(--white); margin-bottom: 28px;
-      opacity: 0; animation: fadeUp 0.8s ease 0.25s forwards;
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 6vw, 6.5rem);
+      font-weight: 300;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.25s forwards;
     }
 
     .hero-headline em { font-style: italic; color: var(--gold-2); }
 
     .hero-sub {
-      font-size: 1rem; line-height: 1.8; color: var(--muted-2);
-      max-width: 440px; margin-bottom: 48px; font-weight: 300;
-      opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--muted-2);
+      max-width: 440px;
+      margin-bottom: 48px;
+      font-weight: 300;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.4s forwards;
     }
 
     .hero-actions {
-      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
-      opacity: 0; animation: fadeUp 0.8s ease 0.55s forwards;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.55s forwards;
     }
 
     .btn-primary {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 16px 32px; background: var(--gold); color: var(--ink);
-      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; border-radius: 2px; transition: all 0.25s;
-      border: none; cursor: pointer; font-family: var(--font-body);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      background: var(--gold);
+      color: var(--ink);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: all 0.25s;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-body);
     }
 
-    .btn-primary:hover { background: var(--gold-2); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,168,76,0.25); }
+    .btn-primary:hover {
+      background: var(--gold-2);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(201,168,76,0.25);
+    }
 
     .btn-ghost {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 16px 32px; border: 1px solid var(--line-2); color: var(--muted-2);
-      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.12em;
-      text-transform: uppercase; border-radius: 2px; transition: all 0.25s;
-      background: none; cursor: pointer; font-family: var(--font-body);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border: 1px solid var(--line-2);
+      color: var(--muted-2);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: all 0.25s;
+      background: none;
+      cursor: pointer;
+      font-family: var(--font-body);
     }
 
-    .btn-ghost:hover { border-color: var(--gold-border); color: var(--gold-2); }
+    .btn-ghost:hover {
+      border-color: var(--gold-border);
+      color: var(--gold-2);
+    }
 
     .hero-stats {
-      display: flex; gap: 40px; margin-top: 60px; padding-top: 40px;
+      display: flex;
+      gap: 40px;
+      margin-top: 60px;
+      padding-top: 40px;
       border-top: 1px solid var(--line);
-      opacity: 0; animation: fadeUp 0.8s ease 0.7s forwards;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.7s forwards;
     }
 
-    .stat-num { font-family: var(--font-display); font-size: 2.2rem; font-weight: 300; color: var(--gold-2); line-height: 1; margin-bottom: 4px; }
-    .stat-label { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--gold-2);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
 
     .hero-right {
-      position: relative; z-index: 2;
-      display: flex; align-items: center; justify-content: center; padding: 80px 64px;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 64px;
     }
 
     .hero-display {
-      position: relative; width: 100%; max-width: 580px;
-      opacity: 0; animation: fadeIn 1.2s ease 0.3s forwards;
+      position: relative;
+      width: 100%;
+      max-width: 580px;
+      opacity: 0;
+      animation: fadeIn 1.2s ease 0.3s forwards;
     }
 
     .hero-display-frame {
-      position: relative; border-radius: 8px; overflow: hidden;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
       border: 1px solid rgba(201,168,76,0.15);
       box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 40px 100px rgba(0,0,0,0.6), 0 0 80px rgba(201,168,76,0.06);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
     }
 
-    .hero-display-frame img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; }
+    .hero-display-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+    }
 
     .hero-badge {
-      position: absolute; bottom: -20px; left: -20px;
-      background: var(--ink-3); border: 1px solid var(--gold-border);
-      border-radius: 4px; padding: 16px 20px; box-shadow: var(--shadow);
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: var(--ink-3);
+      border: 1px solid var(--gold-border);
+      border-radius: 4px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow);
     }
 
-    .hero-badge-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
-    .hero-badge-value { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--white); }
+    .hero-badge-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .hero-badge-value {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+    }
 
     .hero-tag {
-      position: absolute; top: 24px; right: -16px;
-      background: var(--gold); color: var(--ink);
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em;
-      text-transform: uppercase; padding: 8px 14px; border-radius: 2px;
+      position: absolute;
+      top: 24px;
+      right: -16px;
+      background: var(--gold);
+      color: var(--ink);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border-radius: 2px;
     }
 
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-    /* HOME IMAGE STRIP */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     .home-image-strip {
       background: var(--ink-2);
       border-top: 1px solid var(--line-2);
@@ -476,99 +724,31 @@
 
     .strip-image-caption {
       position: absolute;
-      bottom: 0; left: 0; right: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
       padding: 28px 32px;
     }
 
     .strip-image-caption-label {
-      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--gold); font-weight: 500; margin-bottom: 6px;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 6px;
     }
 
     .strip-image-caption-title {
-      font-family: var(--font-display); font-size: 1.6rem; font-weight: 300;
-      color: var(--white); line-height: 1.15;
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.15;
     }
 
-    /* HOME SCIENCE LAB SHOWCASE */
-    .home-lab-showcase {
-      background: var(--ink);
-      padding: 80px 0;
-      border-bottom: 1px solid var(--line-2);
-    }
-
-    .home-lab-showcase-inner {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 1px;
-      background: var(--line-2);
-      border: 1px solid var(--line-2);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .lab-showcase-main {
-      position: relative;
-      overflow: hidden;
-      background: var(--ink-3);
-    }
-
-    .lab-showcase-main img {
-      width: 100%;
-      height: 520px;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-      transition: transform 0.7s ease;
-    }
-
-    .lab-showcase-main:hover img { transform: scale(1.03); }
-
-    .lab-showcase-main-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(11,13,18,0.80) 0%, rgba(11,13,18,0.08) 50%, transparent 100%);
-      pointer-events: none;
-    }
-
-    .lab-showcase-main-caption {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 32px 36px;
-    }
-
-    .lab-showcase-secondary {
-      position: relative;
-      overflow: hidden;
-      background: var(--ink-3);
-    }
-
-    .lab-showcase-secondary img {
-      width: 100%;
-      height: 520px;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      transition: transform 0.7s ease;
-    }
-
-    .lab-showcase-secondary:hover img { transform: scale(1.03); }
-
-    .lab-showcase-secondary-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(11,13,18,0.85) 0%, rgba(11,13,18,0.15) 50%, transparent 100%);
-      pointer-events: none;
-    }
-
-    .lab-showcase-secondary-caption {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 32px 36px;
-    }
-
-    /* ABOUT */
     #page-about { background: var(--ink-2); }
 
-    /* ABOUT HERO IMAGE */
     .about-hero-image-wrap {
       width: 100%;
       border: 1px solid var(--line-2);
@@ -581,20 +761,22 @@
     .about-hero-image-wrap img {
       width: 100%;
       height: 400px;
-      object-fit: contain;
+      object-fit: cover;
       object-position: center;
       display: block;
     }
 
     .about-hero-image-overlay {
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: 0;
       background: linear-gradient(to right, rgba(11,13,18,0.55) 0%, transparent 60%);
       pointer-events: none;
     }
 
     .about-hero-image-text {
       position: absolute;
-      top: 50%; left: 40px;
+      top: 50%;
+      left: 40px;
       transform: translateY(-50%);
     }
 
@@ -603,140 +785,209 @@
     .about-hero-image-text h2 {
       font-family: var(--font-display);
       font-size: clamp(1.8rem, 3vw, 2.8rem);
-      font-weight: 300; color: var(--white); line-height: 1.1;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
     }
 
     .about-hero-image-text h2 em { font-style: italic; color: var(--gold-2); }
 
-    /* ABOUT SCIENCE LAB BANNER */
-    .about-lab-banner {
-      margin-bottom: 56px;
-      border: 1px solid var(--line-2);
-      border-radius: 4px;
-      overflow: hidden;
+    .about-features {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1px;
       background: var(--line-2);
-    }
-
-    .about-lab-banner-block {
-      position: relative;
+      border: 1px solid var(--line-2);
+      border-radius: 4px;
       overflow: hidden;
-      background: var(--ink-3);
     }
 
-    .about-lab-banner-block img {
-      width: 100%;
-      height: 340px;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-      transition: transform 0.7s ease;
+    .feature-tile {
+      background: var(--ink-2);
+      padding: 40px;
+      transition: background 0.3s;
     }
 
-    .about-lab-banner-block:hover img { transform: scale(1.03); }
-
-    .about-lab-banner-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(11,13,18,0.78) 0%, rgba(11,13,18,0.08) 55%, transparent 100%);
-      pointer-events: none;
-    }
-
-    .about-lab-banner-caption {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 24px 28px;
-    }
-
-    .about-features {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1px; background: var(--line-2);
-      border: 1px solid var(--line-2); border-radius: 4px; overflow: hidden;
-    }
-
-    .feature-tile { background: var(--ink-2); padding: 40px; transition: background 0.3s; }
     .feature-tile:hover { background: var(--ink-3); }
 
     .feature-icon {
-      width: 44px; height: 44px; background: var(--gold-pale);
-      border: 1px solid var(--gold-border); border-radius: 4px;
-      display: grid; place-items: center; margin-bottom: 24px; color: var(--gold);
+      width: 44px;
+      height: 44px;
+      background: var(--gold-pale);
+      border: 1px solid var(--gold-border);
+      border-radius: 4px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 24px;
+      color: var(--gold);
     }
 
-    .feature-tile h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--white); margin-bottom: 12px; }
-    .feature-tile p { font-size: 0.92rem; line-height: 1.75; color: var(--muted); font-weight: 300; }
+    .feature-tile h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
 
-    /* STORE */
+    .feature-tile p {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
     #page-store { background: var(--ink); }
 
     .store-search-bar {
-      display: flex; align-items: center; gap: 12px;
-      background: var(--ink-3); border: 1px solid var(--line-2);
-      border-radius: 2px; padding: 12px 20px;
-      max-width: 340px; margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--ink-3);
+      border: 1px solid var(--line-2);
+      border-radius: 2px;
+      padding: 12px 20px;
+      max-width: 340px;
+      margin-bottom: 40px;
     }
 
     .store-search-bar svg { opacity: 0.4; flex-shrink: 0; }
 
     .store-search-bar input {
-      border: none; outline: none; background: transparent;
-      color: var(--white); font: inherit; font-size: 0.9rem; width: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--white);
+      font: inherit;
+      font-size: 0.9rem;
+      width: 100%;
     }
 
     .store-search-bar input::placeholder { color: var(--muted); }
 
     .product-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 1px; background: var(--line-2);
-      border: 1px solid var(--line-2); border-radius: 4px; overflow: hidden;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line-2);
+      border: 1px solid var(--line-2);
+      border-radius: 4px;
+      overflow: hidden;
     }
 
     .prod-card {
-      background: var(--ink-2); cursor: pointer;
-      transition: background 0.3s; display: flex; flex-direction: column;
-      position: relative; overflow: hidden;
+      background: var(--ink-2);
+      cursor: pointer;
+      transition: background 0.3s;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
     }
 
     .prod-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
       background: linear-gradient(90deg, var(--gold), var(--gold-2));
-      transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
     }
 
     .prod-card:hover { background: var(--ink-3); }
     .prod-card:hover::before { transform: scaleX(1); }
 
-    .prod-media { aspect-ratio: 16/10; overflow: hidden; background: var(--ink-3); position: relative; }
-    .prod-media img { width: 100%; height: 100%; object-fit: contain; object-position: center; transition: transform 0.6s ease; }
+    .prod-media {
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      background: var(--ink-3);
+      position: relative;
+    }
+
+    .prod-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      transition: transform 0.6s ease;
+    }
+
     .prod-card:hover .prod-media img { transform: scale(1.04); }
 
     .prod-tag {
-      position: absolute; top: 14px; left: 14px;
-      background: var(--gold); color: var(--ink);
-      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em;
-      text-transform: uppercase; padding: 5px 10px; border-radius: 2px;
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--gold);
+      color: var(--ink);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 2px;
     }
 
-    .prod-body { padding: 24px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
-    .prod-name { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--white); letter-spacing: -0.01em; }
-    .prod-desc { font-size: 0.85rem; line-height: 1.65; color: var(--muted); font-weight: 300; flex: 1; }
+    .prod-body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .prod-name {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+
+    .prod-desc {
+      font-size: 0.85rem;
+      line-height: 1.65;
+      color: var(--muted);
+      font-weight: 300;
+      flex: 1;
+    }
 
     .prod-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      padding-top: 16px; border-top: 1px solid var(--line); margin-top: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      margin-top: 4px;
     }
 
-    .prod-price { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+    .prod-price {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+    }
 
     .prod-arrow {
-      width: 32px; height: 32px; border: 1px solid var(--line-2); border-radius: 50%;
-      display: grid; place-items: center; color: var(--muted); transition: all 0.25s;
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--line-2);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      transition: all 0.25s;
     }
 
-    .prod-card:hover .prod-arrow { border-color: var(--gold-border); background: var(--gold-pale); color: var(--gold-2); }
+    .prod-card:hover .prod-arrow {
+      border-color: var(--gold-border);
+      background: var(--gold-pale);
+      color: var(--gold-2);
+    }
 
-    /* STORE FEATURE BANNER */
     .store-feature-banner {
       margin-top: 64px;
       border: 1px solid var(--line-2);
@@ -754,7 +1005,8 @@
     }
 
     .store-feature-banner-overlay {
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: 0;
       background: linear-gradient(to right, rgba(11,13,18,0.94) 0%, rgba(11,13,18,0.88) 38%, rgba(11,13,18,0.50) 68%, transparent 100%);
       pointer-events: none;
       z-index: 1;
@@ -762,7 +1014,8 @@
 
     .store-feature-banner-content {
       position: absolute;
-      top: 50%; left: 48px;
+      top: 50%;
+      left: 48px;
       transform: translateY(-50%);
       max-width: 480px;
       z-index: 2;
@@ -773,286 +1026,571 @@
     .store-feature-banner-content h3 {
       font-family: var(--font-display);
       font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 300; color: var(--white); line-height: 1.1; margin-bottom: 14px;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 14px;
     }
 
     .store-feature-banner-content h3 em { font-style: italic; color: var(--gold-2); }
 
     .store-feature-banner-content p {
-      font-size: 0.92rem; line-height: 1.75; color: var(--muted-2); font-weight: 300; margin-bottom: 24px;
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--muted-2);
+      font-weight: 300;
+      margin-bottom: 24px;
     }
 
-    /* COMPARE */
     #page-compare { background: var(--ink-2); }
 
-    .compare-table-wrap { overflow-x: auto; border: 1px solid var(--line-2); border-radius: 4px; }
+    .compare-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line-2);
+      border-radius: 4px;
+    }
 
-    .compare-table { width: 100%; border-collapse: collapse; min-width: 800px; }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 800px;
+    }
+
     .compare-table thead { background: var(--ink-3); }
 
     .compare-table th {
-      padding: 20px 24px; text-align: left;
-      font-size: 0.78rem; letter-spacing: 0.12em;
-      text-transform: uppercase; font-weight: 500; border-bottom: 1px solid var(--line-2);
+      padding: 20px 24px;
+      text-align: left;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      border-bottom: 1px solid var(--line-2);
     }
 
-    .compare-table th:first-child { color: var(--muted); width: 200px; }
+    .compare-table th:first-child {
+      color: var(--muted);
+      width: 200px;
+    }
 
     .compare-table th:not(:first-child) {
-      color: var(--gold); font-family: var(--font-display);
-      font-size: 1rem; text-transform: none; letter-spacing: 0; font-weight: 600;
+      color: var(--gold);
+      font-family: var(--font-display);
+      font-size: 1rem;
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 600;
     }
 
     .compare-table td {
-      padding: 18px 24px; font-size: 0.9rem; line-height: 1.6;
-      color: var(--muted-2); border-bottom: 1px solid var(--line);
-      font-weight: 300; vertical-align: top;
+      padding: 18px 24px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--muted-2);
+      border-bottom: 1px solid var(--line);
+      font-weight: 300;
+      vertical-align: top;
     }
 
-    .compare-table td:first-child { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+    .compare-table td:first-child {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
     .compare-table tbody tr:hover td { background: rgba(201,168,76,0.02); }
     .compare-table tbody tr:last-child td { border-bottom: none; }
-    .compare-check { color: var(--gold); font-size: 1.1rem; }
 
-    .compare-cta {
-      margin-top: 48px; padding: 32px;
-      background: var(--ink-3); border: 1px solid var(--line-2); border-radius: 4px;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 24px; flex-wrap: wrap;
+    .compare-check {
+      color: var(--gold);
+      font-size: 1.1rem;
     }
 
-    .compare-cta-text h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 300; color: var(--white); margin-bottom: 8px; }
-    .compare-cta-text p { font-size: 0.9rem; color: var(--muted-2); font-weight: 300; }
-    .compare-cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .compare-cta {
+      margin-top: 48px;
+      padding: 32px;
+      background: var(--ink-3);
+      border: 1px solid var(--line-2);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
 
-    /* CONTACT */
+    .compare-cta-text h3 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .compare-cta-text p {
+      font-size: 0.9rem;
+      color: var(--muted-2);
+      font-weight: 300;
+    }
+
+    .compare-cta-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
     #page-contact { background: var(--ink); }
 
-    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
 
     .contact-info-item {
-      display: flex; align-items: flex-start; gap: 16px;
-      padding: 24px 0; border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
     }
 
     .contact-info-item:first-of-type { border-top: 1px solid var(--line); }
 
     .contact-info-icon {
-      width: 36px; height: 36px; background: var(--gold-pale);
-      border: 1px solid var(--gold-border); border-radius: 2px;
-      display: grid; place-items: center; flex-shrink: 0; color: var(--gold); margin-top: 2px;
+      width: 36px;
+      height: 36px;
+      background: var(--gold-pale);
+      border: 1px solid var(--gold-border);
+      border-radius: 2px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      color: var(--gold);
+      margin-top: 2px;
     }
 
-    .contact-info-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
-    .contact-info-value { font-size: 0.95rem; color: var(--muted-2); font-weight: 300; line-height: 1.6; }
+    .contact-info-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
 
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .form-field { display: flex; flex-direction: column; gap: 8px; }
+    .contact-info-value {
+      font-size: 0.95rem;
+      color: var(--muted-2);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
     .form-field.full { grid-column: 1 / -1; }
 
-    .form-field label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+    .form-field label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+    }
 
     .form-field input,
     .form-field textarea {
-      background: var(--ink-3); border: 1px solid var(--line-2); border-radius: 2px;
-      padding: 14px 16px; font: inherit; font-size: 0.9rem; font-weight: 300;
-      color: var(--white); outline: none; transition: border-color 0.2s; width: 100%;
+      background: var(--ink-3);
+      border: 1px solid var(--line-2);
+      border-radius: 2px;
+      padding: 14px 16px;
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
     }
 
-    .form-field input:focus, .form-field textarea:focus { border-color: var(--gold-border); }
-    .form-field input::placeholder, .form-field textarea::placeholder { color: var(--muted); }
-    .form-field textarea { min-height: 140px; resize: vertical; }
-    .form-note { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: var(--gold-border);
+    }
 
-    /* FOOTER */
-    footer { background: var(--ink-2); border-top: 1px solid var(--line-2); padding: 40px 0; }
+    .form-field input::placeholder,
+    .form-field textarea::placeholder {
+      color: var(--muted);
+    }
 
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .footer-brand { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; letter-spacing: 0.08em; color: var(--muted); }
-    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+    .form-field textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .form-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    footer {
+      background: var(--ink-2);
+      border-top: 1px solid var(--line-2);
+      padding: 40px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
     .footer-links { display: flex; gap: 24px; }
 
     .footer-link {
-      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--muted); transition: color 0.2s; cursor: pointer;
-      border: none; background: none; font-family: var(--font-body);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: var(--font-body);
     }
 
     .footer-link:hover { color: var(--gold-2); }
 
-    /* MODAL */
     .modal {
-      position: fixed; inset: 0; z-index: 2000;
-      display: none; align-items: center; justify-content: center;
-      padding: 20px; background: rgba(0,0,0,0.85); backdrop-filter: blur(16px);
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(16px);
     }
 
     .modal.active { display: flex; }
 
     .modal-panel {
-      width: min(1280px, 100%); max-height: calc(100vh - 40px);
-      overflow-y: auto; background: var(--ink-2);
-      border: 1px solid var(--line-2); border-radius: 4px;
+      width: min(1280px, 100%);
+      max-height: calc(100vh - 40px);
+      overflow-y: auto;
+      background: var(--ink-2);
+      border: 1px solid var(--line-2);
+      border-radius: 4px;
       box-shadow: 0 40px 100px rgba(0,0,0,0.7);
-      scrollbar-width: thin; scrollbar-color: var(--gold-border) transparent;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold-border) transparent;
     }
 
     .modal-close {
-      position: sticky; top: 0; z-index: 10;
-      display: flex; justify-content: flex-end; padding: 16px 20px 0; background: var(--ink-2);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: flex-end;
+      padding: 16px 20px 0;
+      background: var(--ink-2);
     }
 
     .close-btn {
-      width: 42px; height: 42px; border: 1px solid var(--line-2); border-radius: 2px;
-      background: var(--ink-3); color: var(--muted-2);
-      display: grid; place-items: center; font-size: 1.4rem; cursor: pointer; transition: all 0.2s;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line-2);
+      border-radius: 2px;
+      background: var(--ink-3);
+      color: var(--muted-2);
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: all 0.2s;
     }
 
-    .close-btn:hover { border-color: var(--gold-border); color: var(--gold-2); }
+    .close-btn:hover {
+      border-color: var(--gold-border);
+      color: var(--gold-2);
+    }
 
-    .modal-product { display: grid; grid-template-columns: 1.1fr 1fr 0.75fr; }
+    .modal-product {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 0.75fr;
+    }
 
-    .modal-gallery { padding: 24px; border-right: 1px solid var(--line); }
+    .modal-gallery {
+      padding: 24px;
+      border-right: 1px solid var(--line);
+    }
 
     .gallery-main-wrap {
-      position: relative; border-radius: 4px; overflow: hidden;
-      background: var(--ink-3); border: 1px solid var(--line-2);
-      min-height: 420px; display: grid; place-items: center;
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--ink-3);
+      border: 1px solid var(--line-2);
+      min-height: 420px;
+      display: grid;
+      place-items: center;
     }
 
-    .gallery-main-img { width: 100%; max-height: 420px; object-fit: contain; padding: 16px; }
+    .gallery-main-img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: contain;
+      padding: 16px;
+    }
 
     .gal-arrow {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      width: 40px; height: 40px; border: 1px solid var(--line-2);
-      background: rgba(11,13,18,0.85); border-radius: 2px;
-      color: var(--muted-2); display: grid; place-items: center;
-      font-size: 1.2rem; cursor: pointer; transition: all 0.2s;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--line-2);
+      background: rgba(11,13,18,0.85);
+      border-radius: 2px;
+      color: var(--muted-2);
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.2s;
     }
 
-    .gal-arrow:hover { border-color: var(--gold-border); color: var(--gold-2); }
+    .gal-arrow:hover {
+      border-color: var(--gold-border);
+      color: var(--gold-2);
+    }
+
     .gal-arrow.left { left: 10px; }
     .gal-arrow.right { right: 10px; }
 
-    .gallery-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
+    .gallery-thumbs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
 
     .gallery-thumb {
-      border: 1px solid var(--line); background: var(--ink-3); border-radius: 2px;
-      padding: 8px; min-height: 90px; display: grid; place-items: center;
-      cursor: pointer; transition: border-color 0.2s;
+      border: 1px solid var(--line);
+      background: var(--ink-3);
+      border-radius: 2px;
+      padding: 8px;
+      min-height: 90px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: border-color 0.2s;
     }
 
     .gallery-thumb.active { border-color: var(--gold); }
     .gallery-thumb img { max-height: 70px; object-fit: contain; }
 
-    .modal-details { padding: 24px; border-right: 1px solid var(--line); }
+    .modal-details {
+      padding: 24px;
+      border-right: 1px solid var(--line);
+    }
 
     .modal-badge {
-      display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px;
-      background: var(--gold-pale); border: 1px solid var(--gold-border); border-radius: 2px;
-      font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--gold); font-weight: 500; margin-bottom: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--gold-pale);
+      border: 1px solid var(--gold-border);
+      border-radius: 2px;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 16px;
     }
 
-    .modal-title { font-family: var(--font-display); font-size: 2.2rem; font-weight: 300; color: var(--white); letter-spacing: -0.02em; margin-bottom: 8px; }
-    .modal-rating { font-size: 0.88rem; color: var(--gold); margin-bottom: 16px; }
-    .modal-desc { font-size: 0.9rem; line-height: 1.75; color: var(--muted-2); font-weight: 300; margin-bottom: 20px; }
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
 
-    .modal-bullets { list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px; }
+    .modal-rating {
+      font-size: 0.88rem;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .modal-desc {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: var(--muted-2);
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    .modal-bullets {
+      list-style: none;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
 
     .modal-bullets li {
-      font-size: 0.88rem; color: var(--muted-2); font-weight: 300;
-      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.88rem;
+      color: var(--muted-2);
+      font-weight: 300;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
     }
 
-    .modal-bullets li::before { content: '-'; color: var(--gold); flex-shrink: 0; margin-top: 1px; }
+    .modal-bullets li::before {
+      content: '-';
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
 
     .variant-section { margin-bottom: 18px; }
-    .variant-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; font-weight: 500; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-    .chip { padding: 7px 14px; border: 1px solid var(--line-2); border-radius: 2px; font-size: 0.82rem; color: var(--muted-2); font-weight: 300; }
 
-    .modal-buybox { padding: 24px; position: sticky; top: 0; align-self: start; }
-    .buybox-price { font-family: var(--font-display); font-size: 1.8rem; font-weight: 300; color: var(--gold-2); margin-bottom: 8px; }
-    .buybox-sub { font-size: 0.85rem; line-height: 1.7; color: var(--muted); font-weight: 300; margin-bottom: 24px; }
-    .buybox-actions { display: flex; flex-direction: column; gap: 10px; }
+    .variant-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      padding: 7px 14px;
+      border: 1px solid var(--line-2);
+      border-radius: 2px;
+      font-size: 0.82rem;
+      color: var(--muted-2);
+      font-weight: 300;
+    }
+
+    .modal-buybox {
+      padding: 24px;
+      position: sticky;
+      top: 0;
+      align-self: start;
+    }
+
+    .buybox-price {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--gold-2);
+      margin-bottom: 8px;
+    }
+
+    .buybox-sub {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 24px;
+    }
+
+    .buybox-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
     .buybox-btn-primary {
-      padding: 15px 20px; background: var(--gold); color: var(--ink);
-      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-      border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; text-align: center;
+      padding: 15px 20px;
+      background: var(--gold);
+      color: var(--ink);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
     }
 
     .buybox-btn-primary:hover { background: var(--gold-2); }
 
     .buybox-btn-ghost {
-      padding: 15px 20px; border: 1px solid var(--gold-border); color: var(--gold-2);
-      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
-      border-radius: 2px; cursor: pointer; transition: all 0.2s; text-align: center; background: transparent;
+      padding: 15px 20px;
+      border: 1px solid var(--gold-border);
+      color: var(--gold-2);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      background: transparent;
     }
 
     .buybox-btn-ghost:hover { background: var(--gold-pale); }
 
     .buybox-note {
-      margin-top: 20px; padding: 16px; background: var(--ink-3);
-      border: 1px solid var(--line); border-radius: 2px;
-      font-size: 0.82rem; line-height: 1.7; color: var(--muted);
+      margin-top: 20px;
+      padding: 16px;
+      background: var(--ink-3);
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: var(--muted);
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 1100px) {
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-left { padding: 60px 40px; }
-      .hero-right { padding: 40px; }
-      .contact-inner { grid-template-columns: 1fr; gap: 60px; }
-      .product-grid { grid-template-columns: repeat(2, 1fr); }
-      .modal-product { grid-template-columns: 1fr; }
-      .modal-gallery, .modal-details { border-right: none; border-bottom: 1px solid var(--line); }
-      .modal-buybox { position: static; }
-      .page-hero-inner { flex-direction: column; }
-      .page-stat-row { flex-wrap: wrap; }
-      .home-image-strip-inner { grid-template-columns: 1fr; }
-      .store-feature-banner-content { left: 28px; max-width: 360px; }
-      .home-lab-showcase-inner { grid-template-columns: 1fr; }
-      .about-lab-banner { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 760px) {
-      .nav-center, .nav-search { display: none; }
-      .hero-left { padding: 40px 24px 60px; }
-      .hero-right { display: none; }
-      .section { padding: 60px 0; }
-      .about-features { grid-template-columns: 1fr; }
-      .product-grid { grid-template-columns: 1fr; }
-      .gallery-thumbs { grid-template-columns: repeat(2, 1fr); }
-      .form-grid { grid-template-columns: 1fr; }
-      .form-field.full { grid-column: 1; }
-      .footer-inner { flex-direction: column; text-align: center; }
-      .footer-links { justify-content: center; }
-      .hero-stats { gap: 24px; }
-      .page-hero { padding: 40px 0; }
-      .compare-cta { flex-direction: column; }
-      .strip-image-block img { height: 260px; }
-      .about-hero-image-wrap img { height: 240px; }
-      .about-hero-image-text { left: 20px; }
-      .store-feature-banner img { height: 240px; object-position: 72% 25%; }
-      .store-feature-banner-content { left: 20px; max-width: 260px; }
-      .store-feature-banner-content h3 { font-size: 1.4rem; }
-      .store-feature-banner-content p { display: none; }
-      .lab-showcase-main img,
-      .lab-showcase-secondary img { height: 280px; }
-      .about-lab-banner-block img { height: 240px; }
-    }
-
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--ink); }
-    ::-webkit-scrollbar-thumb { background: var(--ink-4); border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--gold-border); }
-
-    /* MOBILE BOTTOM NAVIGATION BAR */
     .mobile-nav {
       display: none;
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 950;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 950;
       background: rgba(11,13,18,0.97);
       backdrop-filter: blur(24px) saturate(180%);
       -webkit-backdrop-filter: blur(24px) saturate(180%);
@@ -1091,9 +1629,11 @@
     .mobile-nav-btn::after {
       content: '';
       position: absolute;
-      top: 0; left: 50%;
+      top: 0;
+      left: 50%;
       transform: translateX(-50%);
-      width: 0; height: 2px;
+      width: 0;
+      height: 2px;
       background: linear-gradient(90deg, var(--gold), var(--gold-2));
       border-radius: 0 0 3px 3px;
       transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -1107,15 +1647,75 @@
       opacity: 0.6;
     }
 
-    .mobile-nav-btn.active svg { transform: translateY(-1px); opacity: 1; }
+    .mobile-nav-btn.active svg {
+      transform: translateY(-1px);
+      opacity: 1;
+    }
+
+    @media (max-width: 1100px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-left { padding: 60px 40px; }
+      .hero-right { padding: 40px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 60px; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .modal-product { grid-template-columns: 1fr; }
+      .modal-gallery, .modal-details {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .modal-buybox { position: static; }
+      .page-hero-inner { flex-direction: column; }
+      .page-stat-row { flex-wrap: wrap; }
+      .home-image-strip-inner { grid-template-columns: 1fr; }
+      .store-feature-banner-content { left: 28px; max-width: 360px; }
+    }
 
     @media (max-width: 760px) {
+      .nav-center, .nav-search { display: none; }
+      .hero-left { padding: 40px 24px 60px; }
+      .hero-right { display: none; }
+      .section { padding: 60px 0; }
+      .about-features { grid-template-columns: 1fr; }
+      .product-grid { grid-template-columns: 1fr; }
+      .gallery-thumbs { grid-template-columns: repeat(2, 1fr); }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-field.full { grid-column: 1; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; flex-wrap: wrap; }
+      .hero-stats { gap: 24px; }
+      .page-hero { padding: 40px 0; }
+      .compare-cta { flex-direction: column; }
+      .strip-image-block img { height: 260px; }
+      .about-hero-image-wrap img { height: 240px; }
+      .about-hero-image-text { left: 20px; }
+      .store-feature-banner img {
+        height: 240px;
+        object-position: 72% 25%;
+      }
+
+      .store-feature-banner-content {
+        left: 20px;
+        max-width: 260px;
+      }
+
+      .store-feature-banner-content h3 { font-size: 1.4rem; }
+      .store-feature-banner-content p { display: none; }
       .mobile-nav { display: block; }
       .page { padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px)); }
       .nav-cta { display: none; }
       .store-search-bar { max-width: 100%; }
       .page-hero h1 { font-size: clamp(2rem, 9vw, 3rem); }
     }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--ink); }
+    ::-webkit-scrollbar-thumb { background: var(--ink-4); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--gold-border); }
   </style>
 </head>
 <body>
@@ -1136,18 +1736,22 @@
       </nav>
 
       <div class="nav-search">
-        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="M21 21l-4.35-4.35"></path>
+        </svg>
         <input id="siteSearch" type="text" placeholder="Search products…" aria-label="Search" />
       </div>
 
       <button class="nav-cta" onclick="navigate('store')">
         Shop Now
-        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
       </button>
     </div>
   </header>
 
-  <!-- HOME PAGE -->
   <div class="page" id="page-home">
     <section class="hero">
       <div class="hero-bg"></div>
@@ -1156,21 +1760,34 @@
       <div class="hero-left">
         <div class="hero-eyebrow">
           <span class="eyebrow-line"></span>
-          <span class="eyebrow-text">Penthia Interactive Displays - 2026 Lineup</span>
+          <span class="eyebrow-text">Penthia Interactive Displays | 2026 Lineup</span>
         </div>
         <h1 class="hero-headline">Professional<br>displays for<br><em>modern learning.</em></h1>
-        <p class="hero-sub">Precision-engineered interactive smartboards for classrooms and professional environments. Explore the Vertex family - a tiered performance lineup designed for teaching, presenting, and inspiring.</p>
+        <p class="hero-sub">Precision-engineered interactive smartboards for classrooms and professional environments. Explore the Vertex family, a tiered performance lineup designed for teaching, presenting, and inspiring.</p>
+
         <div class="hero-actions">
           <button class="btn-primary" onclick="navigate('store')">
             Browse Products
-            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
           </button>
           <button class="btn-ghost" onclick="navigate('compare')">Compare Models</button>
         </div>
+
         <div class="hero-stats">
-          <div><div class="stat-num">4K</div><div class="stat-label">Display Quality</div></div>
-          <div><div class="stat-num">3</div><div class="stat-label">Performance Tiers</div></div>
-          <div><div class="stat-num">4</div><div class="stat-label">Product Lines</div></div>
+          <div>
+            <div class="stat-num">4K</div>
+            <div class="stat-label">Display Quality</div>
+          </div>
+          <div>
+            <div class="stat-num">3</div>
+            <div class="stat-label">Performance Tiers</div>
+          </div>
+          <div>
+            <div class="stat-num">4</div>
+            <div class="stat-label">Product Lines</div>
+          </div>
         </div>
       </div>
 
@@ -1188,58 +1805,26 @@
       </div>
     </section>
 
-    <!-- IMAGE STRIP SECTION -->
     <div class="home-image-strip">
       <div class="container">
         <div class="home-image-strip-inner">
-
           <div class="strip-image-block">
-            <img src="penthiaimageboard.png" alt="Penthia interactive display in classroom environment" />
+            <img src="IMG-20260408-WA0094.jpg" alt="Penthia interactive display in a modern classroom" />
             <div class="strip-image-overlay"></div>
             <div class="strip-image-caption">
               <div class="strip-image-caption-label">In the Classroom</div>
-              <div class="strip-image-caption-title">Built for real teaching environments.</div>
+              <div class="strip-image-caption-title">Technology that fits naturally into real lessons.</div>
             </div>
           </div>
 
           <div class="strip-image-block">
-            <img src="penthiaimage2.png" alt="Penthia Vertex display technology" />
+            <img src="penthiaboardinsciencelab.png" alt="Penthia interactive board installed in a school science laboratory" />
             <div class="strip-image-overlay"></div>
             <div class="strip-image-caption">
-              <div class="strip-image-caption-label">Vertex Family</div>
-              <div class="strip-image-caption-title">A display for every need.</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- SCIENCE LAB SHOWCASE SECTION -->
-    <div class="home-lab-showcase">
-      <div class="container">
-        <div class="section-label" style="margin-bottom:20px;"><span class="section-label-line"></span><span class="section-label-text">Penthia in Practice</span></div>
-        <h2 class="section-title" style="margin-bottom:40px;">Where science<br>meets <em>discovery.</em></h2>
-        <div class="home-lab-showcase-inner">
-
-          <div class="lab-showcase-main">
-            <img src="penthiaboardinsciencelab.png" alt="Penthia interactive board installed in a school science laboratory" />
-            <div class="lab-showcase-main-overlay"></div>
-            <div class="lab-showcase-main-caption">
               <div class="strip-image-caption-label">Science Lab</div>
               <div class="strip-image-caption-title">Precision displays for every subject.</div>
             </div>
           </div>
-
-          <div class="lab-showcase-secondary">
-            <img src="penthiaboard,studentinsciencelabinfrontofpenthiaboard.png" alt="Student engaged with a Penthia interactive board in a science lab" />
-            <div class="lab-showcase-secondary-overlay"></div>
-            <div class="lab-showcase-secondary-caption">
-              <div class="strip-image-caption-label">Student Engagement</div>
-              <div class="strip-image-caption-title">Designed to inspire the next generation.</div>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
@@ -1258,20 +1843,32 @@
     </footer>
   </div>
 
-  <!-- ABOUT PAGE -->
   <div class="page" id="page-about">
     <div class="page-hero">
       <div class="container">
         <div class="page-hero-inner">
           <div>
-            <div class="section-label"><span class="section-label-line"></span><span class="section-label-text">About Penthia</span></div>
+            <div class="section-label">
+              <span class="section-label-line"></span>
+              <span class="section-label-text">About Penthia</span>
+            </div>
             <h1>Built for <em>better</em> teaching.</h1>
-            <p>Every Penthia display is engineered for the realities of modern classrooms - sharp visuals, responsive touch, flexible configurations, and installation options that adapt to any space.</p>
+            <p>Every Penthia display is engineered for the realities of modern classrooms, with sharp visuals, responsive touch, flexible configurations, and installation options that adapt to the room around them.</p>
           </div>
+
           <div class="page-stat-row">
-            <div class="page-stat"><div class="page-stat-num">4K</div><div class="page-stat-label">Display</div></div>
-            <div class="page-stat"><div class="page-stat-num">3</div><div class="page-stat-label">Tiers</div></div>
-            <div class="page-stat"><div class="page-stat-num">4</div><div class="page-stat-label">Models</div></div>
+            <div class="page-stat">
+              <div class="page-stat-num">4K</div>
+              <div class="page-stat-label">Display</div>
+            </div>
+            <div class="page-stat">
+              <div class="page-stat-num">3</div>
+              <div class="page-stat-label">Tiers</div>
+            </div>
+            <div class="page-stat">
+              <div class="page-stat-num">4</div>
+              <div class="page-stat-label">Models</div>
+            </div>
           </div>
         </div>
       </div>
@@ -1279,69 +1876,101 @@
 
     <div class="section">
       <div class="container">
-
-        <!-- ABOUT HERO IMAGE using penthiaimageboard.png -->
         <div class="about-hero-image-wrap">
-          <img src="penthiaimageboard.png" alt="Penthia interactive display board in a learning environment" />
+          <img src="penthiaimageboard.png" alt="Penthia interactive display in a classroom environment" />
           <div class="about-hero-image-overlay"></div>
           <div class="about-hero-image-text">
-            <div class="section-label"><span class="section-label-line"></span><span class="section-label-text">The Penthia Experience</span></div>
+            <div class="section-label">
+              <span class="section-label-line"></span>
+              <span class="section-label-text">The Penthia Experience</span>
+            </div>
             <h2>Where technology<br>meets <em>teaching.</em></h2>
           </div>
         </div>
 
-        <!-- SCIENCE LAB BANNER using the two new images -->
-        <div class="about-lab-banner">
-          <div class="about-lab-banner-block">
-            <img src="penthiaboardinsciencelab.png" alt="Penthia board installed in a school science lab" />
-            <div class="about-lab-banner-overlay"></div>
-            <div class="about-lab-banner-caption">
-              <div class="strip-image-caption-label">Real Environments</div>
-              <div class="strip-image-caption-title" style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 300; color: var(--white); line-height: 1.15;">From science labs to every classroom.</div>
+        <div class="store-feature-banner" style="margin-top:0; margin-bottom:56px;">
+          <img src="penthiaboard,studentinsciencelabinfrontofpenthiaboard.png" alt="Student engaged with a Penthia interactive board in a science lab" style="height:320px; object-fit:cover; object-position:center;" />
+          <div class="store-feature-banner-overlay"></div>
+          <div class="store-feature-banner-content">
+            <div class="section-label">
+              <span class="section-label-line"></span>
+              <span class="section-label-text">Student-Centered Learning</span>
             </div>
-          </div>
-          <div class="about-lab-banner-block">
-            <img src="penthiaboard,studentinsciencelabinfrontofpenthiaboard.png" alt="Student interacting with Penthia board in science lab" />
-            <div class="about-lab-banner-overlay"></div>
-            <div class="about-lab-banner-caption">
-              <div class="strip-image-caption-label">Student-Centred Learning</div>
-              <div class="strip-image-caption-title" style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 300; color: var(--white); line-height: 1.15;">Displays that put students at the centre.</div>
-            </div>
+            <h3>Designed to inspire<br><em>every student.</em></h3>
+            <p>Displays built for the way students actually learn, interactive, intuitive, and ready for any subject.</p>
           </div>
         </div>
 
-        <div class="section-label" style="margin-bottom:16px;"><span class="section-label-line"></span><span class="section-label-text">Core Features</span></div>
+        <div class="section-label" style="margin-bottom:16px;">
+          <span class="section-label-line"></span>
+          <span class="section-label-text">Core Features</span>
+        </div>
         <h2 class="section-title" style="margin-bottom:40px;">Why choose <em>Penthia.</em></h2>
+
         <div class="about-features">
           <div class="feature-tile">
-            <div class="feature-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+            <div class="feature-icon">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                <path d="M8 21h8M12 17v4"></path>
+              </svg>
+            </div>
             <h3>4K Visual Clarity</h3>
-            <p>Ultra-high resolution ensures every detail - from diagrams to video - is crisp and clear for every student in the room.</p>
+            <p>Ultra-high resolution helps diagrams, media, documents, and lesson content remain sharp and easy to follow across the room.</p>
           </div>
+
           <div class="feature-tile">
-            <div class="feature-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></div>
+            <div class="feature-icon">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z"></path>
+              </svg>
+            </div>
             <h3>Touch + Stylus Input</h3>
-            <p>Natural interaction through precise touchscreen control and full stylus support - write, annotate, and present effortlessly.</p>
+            <p>Natural interaction through precise touchscreen control and stylus support gives teachers a smooth way to write, annotate, and guide instruction.</p>
           </div>
+
           <div class="feature-tile">
-            <div class="feature-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 2v4M16 2v4"/></svg></div>
+            <div class="feature-icon">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="M8 2v4M16 2v4"></path>
+              </svg>
+            </div>
             <h3>Flexible OS Options</h3>
-            <p>The Vertex Elite ships with Android 15 and Windows OPS included as standard. The Vertex Pro runs Android 14 by default with an optional Windows OPS upgrade. The Vertex Standard is a focused Android 14 platform - clean, capable, and ready from day one.</p>
+            <p>The Vertex Elite includes Android 15 and Windows OPS as standard. The Vertex Pro runs Android 14 by default with optional Windows expansion. The Vertex Standard keeps things focused with Android 14 only.</p>
           </div>
+
           <div class="feature-tile">
-            <div class="feature-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73L13 2.27a2 2 0 00-2 0L4 6.27A2 2 0 003 8v8a2 2 0 001 1.73l7 4.04a2 2 0 002 0l7-4.04A2 2 0 0021 16z"/></svg></div>
+            <div class="feature-icon">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 16V8a2 2 0 00-1-1.73L13 2.27a2 2 0 00-2 0L4 6.27A2 2 0 003 8v8a2 2 0 001 1.73l7 4.04a2 2 0 002 0l7-4.04A2 2 0 0021 16z"></path>
+              </svg>
+            </div>
             <h3>Easy Installation</h3>
-            <p>Every board supports wall mounting and stand placement - designed for any room layout or deployment environment.</p>
+            <p>Each board supports wall mounting and stand placement, making deployment easier across classrooms, labs, training rooms, and meeting spaces.</p>
           </div>
+
           <div class="feature-tile">
-            <div class="feature-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div class="feature-icon">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 6v6l4 2"></path>
+              </svg>
+            </div>
             <h3>Built to Last</h3>
-            <p>Penthia displays are engineered for daily classroom use - robust hardware built to perform consistently across full school years.</p>
+            <p>Penthia displays are designed for the demands of daily classroom use, with durable hardware intended for consistent long-term performance.</p>
           </div>
+
           <div class="feature-tile">
-            <div class="feature-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <div class="feature-icon">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"></path>
+              </svg>
+            </div>
             <h3>Educator-First Design</h3>
-            <p>Every specification decision - from screen size to OS flexibility - is made with real classroom environments and teachers in mind.</p>
+            <p>From screen size to platform flexibility, every decision in the lineup is shaped around what teachers and institutions actually need in real use.</p>
           </div>
         </div>
       </div>
@@ -1361,11 +1990,13 @@
     </footer>
   </div>
 
-  <!-- STORE PAGE -->
   <div class="page" id="page-store">
     <div class="page-hero">
       <div class="container">
-        <div class="section-label" style="margin-bottom:16px;"><span class="section-label-line"></span><span class="section-label-text">Product Lineup</span></div>
+        <div class="section-label" style="margin-bottom:16px;">
+          <span class="section-label-line"></span>
+          <span class="section-label-text">Product Lineup</span>
+        </div>
         <h1>The Vertex <em>family.</em></h1>
         <p>Browse the complete current lineup. Click any model to view full specifications, configurations, and purchasing options.</p>
       </div>
@@ -1374,65 +2005,109 @@
     <div class="section">
       <div class="container">
         <div class="store-search-bar">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="M21 21l-4.35-4.35"></path>
+          </svg>
           <input id="productSearch" type="text" placeholder="Search models…" aria-label="Filter products" />
         </div>
 
         <div class="product-grid" id="productGrid">
-
           <article class="prod-card" data-search="vertex elite flagship android 15 windows ops i5 13th gen 16gb 256gb rk3588 4k touchscreen stylus wall mount stand premium" onclick="openProduct('pro-max')">
-            <div class="prod-media"><img src="iBoardWebsite,windowsbackgroundiboardpro.png" alt="Penthia Vertex Elite" /><span class="prod-tag">Elite</span></div>
+            <div class="prod-media">
+              <img src="iBoardWebsite,windowsbackgroundiboardpro.png" alt="Penthia Vertex Elite" />
+              <span class="prod-tag">Elite</span>
+            </div>
             <div class="prod-body">
               <div class="prod-name">Penthia Vertex Elite</div>
-              <div class="prod-desc">Premium flagship interactive display with Android 15, 16GB / 256GB, and a built-in Windows workflow through the included OPS module. Designed for the most demanding classrooms and presentation environments.</div>
-              <div class="prod-footer"><span class="prod-price">Request Pricing</span><span class="prod-arrow"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+              <div class="prod-desc">Premium flagship interactive display with Android 15, 16GB / 256GB, and a built-in Windows workflow through the included OPS module. Designed for demanding classrooms and high-performance presentation environments.</div>
+              <div class="prod-footer">
+                <span class="prod-price">Request Pricing</span>
+                <span class="prod-arrow">
+                  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </span>
+              </div>
             </div>
           </article>
 
           <article class="prod-card" data-search="vertex pro android 14 optional windows ops i7 12th gen 8gb 128gb 16gb 256gb 311d2 4k touchscreen stylus wall mount stand versatile mid tier" onclick="openProduct('pro')">
-            <div class="prod-media"><img src="iBoardWebsite,androidbackground,withstandtoholdup.png" alt="Penthia Vertex Pro" /><span class="prod-tag">Pro</span></div>
+            <div class="prod-media">
+              <img src="iBoardWebsite,androidbackground,withstandtoholdup.png" alt="Penthia Vertex Pro" />
+              <span class="prod-tag">Pro</span>
+            </div>
             <div class="prod-body">
               <div class="prod-name">Penthia Vertex Pro</div>
               <div class="prod-desc">Flexible 4K interactive display with Android 14 as standard, an optional 16GB / 256GB upgrade, and optional Windows OPS expansion for schools that want room to scale.</div>
-              <div class="prod-footer"><span class="prod-price">Request Pricing</span><span class="prod-arrow"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+              <div class="prod-footer">
+                <span class="prod-price">Request Pricing</span>
+                <span class="prod-arrow">
+                  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </span>
+              </div>
             </div>
           </article>
 
           <article class="prod-card" data-search="vertex standard android only 65 inch 4k 8gb 128gb t985 touchscreen stylus wall mount stand entry classroom" onclick="openProduct('iboard')">
-            <div class="prod-media"><img src="iBoardWebsite,androidbackgroundiboardpro.png" alt="Penthia Vertex Standard" /><span class="prod-tag">Standard</span></div>
+            <div class="prod-media">
+              <img src="iBoardWebsite,androidbackgroundiboardpro.png" alt="Penthia Vertex Standard" />
+              <span class="prod-tag">Standard</span>
+            </div>
             <div class="prod-body">
               <div class="prod-name">Penthia Vertex Standard</div>
               <div class="prod-desc">Focused 65&quot; Android-only interactive display built for dependable everyday classroom use with a clean, capable core configuration.</div>
-              <div class="prod-footer"><span class="prod-price">Request Pricing</span><span class="prod-arrow"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+              <div class="prod-footer">
+                <span class="prod-price">Request Pricing</span>
+                <span class="prod-arrow">
+                  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </span>
+              </div>
             </div>
           </article>
 
           <article class="prod-card" data-search="projector penthia classroom presentation projection display" onclick="openProduct('projector')">
-            <div class="prod-media"><img src="iBoardProector.png" alt="Penthia Projector" /><span class="prod-tag">Projection</span></div>
+            <div class="prod-media">
+              <img src="iBoardProector.png" alt="Penthia Projector" />
+              <span class="prod-tag">Projection</span>
+            </div>
             <div class="prod-body">
               <div class="prod-name">Penthia Projector</div>
-              <div class="prod-desc">Projection solution for classrooms and presentation spaces where a traditional display isn't ideal.</div>
-              <div class="prod-footer"><span class="prod-price">Request Pricing</span><span class="prod-arrow"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+              <div class="prod-desc">Projection solution for classrooms and presentation spaces where a traditional display is not ideal.</div>
+              <div class="prod-footer">
+                <span class="prod-price">Request Pricing</span>
+                <span class="prod-arrow">
+                  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </span>
+              </div>
             </div>
           </article>
-
         </div>
 
-        <!-- STORE FEATURE BANNER using penthiaimage2.png -->
         <div class="store-feature-banner">
           <img src="penthiaimage2.png" alt="Penthia interactive display in use" />
           <div class="store-feature-banner-overlay"></div>
           <div class="store-feature-banner-content">
-            <div class="section-label"><span class="section-label-line"></span><span class="section-label-text">See It In Action</span></div>
+            <div class="section-label">
+              <span class="section-label-line"></span>
+              <span class="section-label-text">See It In Action</span>
+            </div>
             <h3>Designed for<br><em>every classroom.</em></h3>
-            <p>From focused Android boards to full Windows-integrated setups, the Vertex family has a configuration for every teaching environment and budget.</p>
+            <p>From focused Android boards to full Windows-integrated setups, the Vertex family has a configuration for different teaching environments and budgets.</p>
             <button class="btn-primary" onclick="navigate('contact')">
               Get in Touch
-              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
             </button>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -1450,11 +2125,13 @@
     </footer>
   </div>
 
-  <!-- COMPARE PAGE -->
   <div class="page" id="page-compare">
     <div class="page-hero">
       <div class="container">
-        <div class="section-label" style="margin-bottom:16px;"><span class="section-label-line"></span><span class="section-label-text">Side by Side</span></div>
+        <div class="section-label" style="margin-bottom:16px;">
+          <span class="section-label-line"></span>
+          <span class="section-label-text">Side by Side</span>
+        </div>
         <h1>Compare the <em>lineup.</em></h1>
         <p>A full breakdown of specifications across all current Penthia models to help you choose the right display for your environment.</p>
       </div>
@@ -1483,8 +2160,8 @@
               </tr>
               <tr>
                 <td>Display</td>
-                <td>4K - contact for sizes</td>
-                <td>4K - contact for sizes</td>
+                <td>4K | contact for sizes</td>
+                <td>4K | contact for sizes</td>
                 <td>65&quot; 4K only</td>
                 <td>Projection display</td>
               </tr>
@@ -1504,8 +2181,8 @@
               </tr>
               <tr>
                 <td>Windows Support</td>
-                <td>Included - i5 13th Gen OPS</td>
-                <td>Optional upgrade - i7 12th Gen OPS</td>
+                <td>Included | i5 13th Gen OPS</td>
+                <td>Optional upgrade | i7 12th Gen OPS</td>
                 <td>Not available</td>
                 <td>Contact for details</td>
               </tr>
@@ -1533,7 +2210,12 @@
             <p>View full product details or contact us to discuss the right configuration for your school.</p>
           </div>
           <div class="compare-cta-actions">
-            <button class="btn-primary" onclick="navigate('store')">View All Products <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            <button class="btn-primary" onclick="navigate('store')">
+              View All Products
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
             <button class="btn-ghost" onclick="navigate('contact')">Contact Sales</button>
           </div>
         </div>
@@ -1554,13 +2236,15 @@
     </footer>
   </div>
 
-  <!-- CONTACT PAGE -->
   <div class="page" id="page-contact">
     <div class="page-hero">
       <div class="container">
-        <div class="section-label" style="margin-bottom:16px;"><span class="section-label-line"></span><span class="section-label-text">Get In Touch</span></div>
+        <div class="section-label" style="margin-bottom:16px;">
+          <span class="section-label-line"></span>
+          <span class="section-label-text">Get In Touch</span>
+        </div>
         <h1>Let's start a <em>conversation.</em></h1>
-        <p>Whether you're ready to purchase, need more information, or want to discuss a deployment - we respond within 24 hours.</p>
+        <p>Whether you're ready to purchase, need more information, or want to discuss a deployment, we respond within 24 hours.</p>
       </div>
     </div>
 
@@ -1568,58 +2252,99 @@
       <div class="container">
         <div class="contact-inner">
           <div>
-            <div class="section-label" style="margin-bottom:20px;"><span class="section-label-line"></span><span class="section-label-text">Contact Information</span></div>
-
-            <div class="contact-info-item">
-              <div class="contact-info-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.22 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l.61-.61a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 15.92v1z"/></svg></div>
-              <div><div class="contact-info-label">Response Time</div><div class="contact-info-value">We reply to all inquiries within 24 hours.</div></div>
+            <div class="section-label" style="margin-bottom:20px;">
+              <span class="section-label-line"></span>
+              <span class="section-label-text">Contact Information</span>
             </div>
 
             <div class="contact-info-item">
-              <div class="contact-info-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2zM16 21H8M12 17v4"/></svg></div>
-              <div><div class="contact-info-label">Product Demos</div><div class="contact-info-value">Ask about scheduling a live demonstration for your team or institution.</div></div>
+              <div class="contact-info-icon">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.22 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l.61-.61a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 15.92v1z"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="contact-info-label">Response Time</div>
+                <div class="contact-info-value">We reply to all inquiries within 24 hours.</div>
+              </div>
             </div>
 
             <div class="contact-info-item">
-              <div class="contact-info-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
-              <div><div class="contact-info-label">Purchasing</div><div class="contact-info-value">Pricing is available upon request for all models and configurations.</div></div>
+              <div class="contact-info-icon">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2zM16 21H8M12 17v4"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="contact-info-label">Product Demos</div>
+                <div class="contact-info-value">Ask about scheduling a live demonstration for your team or institution.</div>
+              </div>
             </div>
 
             <div class="contact-info-item">
-              <div class="contact-info-icon"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-              <div><div class="contact-info-label">Deployment Support</div><div class="contact-info-value">We offer guidance on deployment, installation, and classroom setup for all models.</div></div>
+              <div class="contact-info-icon">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 8v4l3 3"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="contact-info-label">Purchasing</div>
+                <div class="contact-info-value">Pricing is available upon request for all models and configurations.</div>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+              </div>
+              <div>
+                <div class="contact-info-label">Deployment Support</div>
+                <div class="contact-info-value">We offer guidance on deployment, installation, and classroom setup for all models.</div>
+              </div>
             </div>
           </div>
 
           <div>
             <form id="contactForm" action="https://formspree.io/f/xnjoppqk" method="POST">
-              <input type="hidden" name="_subject" value="New Penthia Contact Request">
+              <input type="hidden" name="_subject" value="New Penthia Contact Request" />
+
               <div class="form-grid">
                 <div class="form-field">
                   <label for="firstName">First Name</label>
                   <input id="firstName" name="First Name" type="text" placeholder="Jane" required />
                 </div>
+
                 <div class="form-field">
                   <label for="lastName">Last Name</label>
                   <input id="lastName" name="Last Name" type="text" placeholder="Smith" required />
                 </div>
+
                 <div class="form-field">
                   <label for="email">Email Address</label>
                   <input id="email" name="Email" type="email" placeholder="jane@school.edu" />
                 </div>
+
                 <div class="form-field">
                   <label for="phone">Phone Number</label>
                   <input id="phone" name="Phone Number" type="tel" placeholder="+1 (555) 000-0000" />
                 </div>
+
                 <div class="form-field full">
                   <label for="message">Message</label>
                   <textarea id="message" name="Message" placeholder="Tell us about your classroom setup, questions about a specific model, or anything else we can help with…" required></textarea>
                   <div class="form-note">Please provide at least one of email or phone number.</div>
                 </div>
+
                 <div class="form-field full">
-                  <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">
+                  <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
                     Send Message
-                    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                      <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
                   </button>
                 </div>
               </div>
@@ -1643,10 +2368,12 @@
     </footer>
   </div>
 
-  <!-- PRODUCT MODAL -->
   <div class="modal" id="modal" onclick="handleModalClick(event)">
     <div class="modal-panel">
-      <div class="modal-close"><button class="close-btn" onclick="closeModal()">×</button></div>
+      <div class="modal-close">
+        <button class="close-btn" onclick="closeModal()">×</button>
+      </div>
+
       <div class="modal-product">
         <section class="modal-gallery">
           <div class="gallery-main-wrap">
@@ -1663,11 +2390,31 @@
           <div class="modal-rating">★★★★★</div>
           <p class="modal-desc" id="modalDesc"></p>
           <ul class="modal-bullets" id="modalBullets"></ul>
-          <div class="variant-section"><div class="variant-label">Display</div><div class="chips" id="variantDisplay"></div></div>
-          <div class="variant-section"><div class="variant-label">Operating System</div><div class="chips" id="variantOS"></div></div>
-          <div class="variant-section"><div class="variant-label">RAM / Storage</div><div class="chips" id="variantStorage"></div></div>
-          <div class="variant-section"><div class="variant-label">Mounting</div><div class="chips" id="variantSupport"></div></div>
-          <div class="variant-section"><div class="variant-label">Input</div><div class="chips" id="variantInput"></div></div>
+
+          <div class="variant-section">
+            <div class="variant-label">Display</div>
+            <div class="chips" id="variantDisplay"></div>
+          </div>
+
+          <div class="variant-section">
+            <div class="variant-label">Operating System</div>
+            <div class="chips" id="variantOS"></div>
+          </div>
+
+          <div class="variant-section">
+            <div class="variant-label">RAM / Storage</div>
+            <div class="chips" id="variantStorage"></div>
+          </div>
+
+          <div class="variant-section">
+            <div class="variant-label">Mounting</div>
+            <div class="chips" id="variantSupport"></div>
+          </div>
+
+          <div class="variant-section">
+            <div class="variant-label">Input</div>
+            <div class="chips" id="variantInput"></div>
+          </div>
         </section>
 
         <aside class="modal-buybox">
@@ -1683,27 +2430,44 @@
     </div>
   </div>
 
-  <!-- MOBILE NAV -->
   <nav class="mobile-nav" aria-label="Mobile navigation">
     <div class="mobile-nav-inner">
       <button class="mobile-nav-btn" id="mnav-home" onclick="navigate('home')" aria-label="Home">
-        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
         Home
       </button>
+
       <button class="mobile-nav-btn" id="mnav-about" onclick="navigate('about')" aria-label="About">
-        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
         About
       </button>
+
       <button class="mobile-nav-btn" id="mnav-store" onclick="navigate('store')" aria-label="Store">
-        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+          <path d="M8 21h8M12 17v4"></path>
+        </svg>
         Store
       </button>
+
       <button class="mobile-nav-btn" id="mnav-compare" onclick="navigate('compare')" aria-label="Compare">
-        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"></path>
+        </svg>
         Compare
       </button>
+
       <button class="mobile-nav-btn" id="mnav-contact" onclick="navigate('contact')" aria-label="Contact">
-        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path>
+        </svg>
         Contact
       </button>
     </div>
@@ -1711,26 +2475,41 @@
 
   <script>
     const productImages = {
-      'pro-max': ['iBoardWebsite,windowsbackgroundiboardpro.png','iBoardWebsite,androidbackground,withstandtoholdup.png','iBoardWebsite,androidbackgroundiboardpro.png'],
-      'pro': ['iBoardWebsite,androidbackground,withstandtoholdup.png','iBoardWebsite,windowsbackgroundiboardpro.png','iBoardWebsite,androidbackgroundiboardpro.png'],
-      'iboard': ['iBoardWebsite,androidbackgroundiboardpro.png','iBoardWebsite,androidbackground,withstandtoholdup.png','iBoardWebsite,windowsbackgroundiboardpro.png'],
-      'projector': ['iBoardProector.png','iBoardProjectorimage#2.png']
+      'pro-max': [
+        'iBoardWebsite,windowsbackgroundiboardpro.png',
+        'iBoardWebsite,androidbackground,withstandtoholdup.png',
+        'iBoardWebsite,androidbackgroundiboardpro.png'
+      ],
+      'pro': [
+        'iBoardWebsite,androidbackground,withstandtoholdup.png',
+        'iBoardWebsite,windowsbackgroundiboardpro.png',
+        'iBoardWebsite,androidbackgroundiboardpro.png'
+      ],
+      'iboard': [
+        'iBoardWebsite,androidbackgroundiboardpro.png',
+        'iBoardWebsite,androidbackground,withstandtoholdup.png',
+        'iBoardWebsite,windowsbackgroundiboardpro.png'
+      ],
+      'projector': [
+        'iBoardProector.png',
+        'iBoardProjectorimage#2.png'
+      ]
     };
 
     const products = {
       'pro-max': {
         badge: 'Elite Model',
         title: 'Penthia Vertex Elite',
-        desc: 'The Penthia Vertex Elite is the flagship of the Vertex family - a premium all-inclusive interactive display that ships with both Android 15 and a built-in Windows workflow as standard. Built on the high-end RK3588 platform with 16GB RAM and 256GB storage, it is the most powerful and complete option in the lineup, designed for demanding classrooms and high-performance presentation environments.',
+        desc: 'The Penthia Vertex Elite is the flagship of the Vertex family, a premium all-inclusive interactive display that ships with both Android 15 and a built-in Windows workflow as standard. Built on the high-end RK3588 platform with 16GB RAM and 256GB storage, it is the most powerful and complete option in the lineup.',
         bullets: [
-          '4K interactive display - contact us for available sizes',
+          '4K interactive display | contact us for available sizes',
           'Android 15 included as standard',
-          'Windows OPS included as standard - Intel Core i5 13th Gen',
+          'Windows OPS included as standard | Intel Core i5 13th Gen',
           '16GB RAM / 256GB storage',
           'Wall-mount and stand support included',
           'Touchscreen with full stylus support'
         ],
-        display: ['4K - contact for sizes'],
+        display: ['4K | contact for sizes'],
         os: ['Android 15', 'Windows OPS Included'],
         storage: ['16GB RAM / 256GB'],
         support: ['Wall-mount', 'Stand'],
@@ -1740,17 +2519,17 @@
       'pro': {
         badge: 'Pro Model',
         title: 'Penthia Vertex Pro',
-        desc: 'The Penthia Vertex Pro is the flexible mainstream model in the Vertex lineup - built on the 311D2 platform and running Android 14 as standard, with clear upgrade paths for schools that want more. An optional 16GB / 256GB storage upgrade and optional Windows OPS module make it the right choice for institutions that want room to scale without overcommitting at purchase.',
+        desc: 'The Penthia Vertex Pro is the flexible mainstream model in the Vertex lineup. It runs Android 14 as standard, with clear upgrade paths for schools that want more performance, more storage, or Windows expansion over time.',
         bullets: [
-          '4K interactive display - contact us for available sizes',
+          '4K interactive display | contact us for available sizes',
           'Android 14 as standard operating system',
-          'Optional Windows OPS upgrade - Intel Core i7 12th Gen',
+          'Optional Windows OPS upgrade | Intel Core i7 12th Gen',
           '8GB RAM / 128GB storage standard',
           'Optional upgrade to 16GB RAM / 256GB storage',
           'Wall-mount and stand support included',
           'Touchscreen with full stylus support'
         ],
-        display: ['4K - contact for sizes'],
+        display: ['4K | contact for sizes'],
         os: ['Android 14', 'Optional Windows OPS'],
         storage: ['8GB RAM / 128GB', 'Optional 16GB RAM / 256GB'],
         support: ['Wall-mount', 'Stand'],
@@ -1760,10 +2539,10 @@
       'iboard': {
         badge: 'Standard Model',
         title: 'Penthia Vertex Standard',
-        desc: 'The Penthia Vertex Standard is the streamlined entry model in the lineup - a focused 65&quot; 4K interactive display built on the T985 platform. Android 14 only, with 8GB RAM and 128GB storage, it delivers a clean and capable core experience for everyday classroom use without unnecessary complexity.',
+        desc: 'The Penthia Vertex Standard is the streamlined entry model in the lineup, a focused 65 inch 4K interactive display built for dependable everyday classroom use without unnecessary complexity.',
         bullets: [
           '65&quot; 4K display',
-          'Android 14 - Android only',
+          'Android 14 only',
           '8GB RAM / 128GB storage',
           'Wall-mount and stand support included',
           'Touchscreen with full stylus support'
@@ -1793,44 +2572,56 @@
       }
     };
 
-    let currentKey = null, currentImgIndex = 0;
-
-    const PAGES = ['home','about','store','compare','contact'];
+    let currentKey = null;
+    let currentImgIndex = 0;
+    const PAGES = ['home', 'about', 'store', 'compare', 'contact'];
 
     function navigate(page) {
       if (!PAGES.includes(page)) page = 'home';
+
       PAGES.forEach(p => {
         document.getElementById('page-' + p).classList.remove('active');
         document.getElementById('nav-' + p).classList.remove('active');
-        const mBtn = document.getElementById('mnav-' + p);
-        if (mBtn) mBtn.classList.remove('active');
+        const mobileBtn = document.getElementById('mnav-' + p);
+        if (mobileBtn) mobileBtn.classList.remove('active');
       });
+
       document.getElementById('page-' + page).classList.add('active');
       document.getElementById('nav-' + page).classList.add('active');
-      const mActiveBtn = document.getElementById('mnav-' + page);
-      if (mActiveBtn) mActiveBtn.classList.add('active');
+      const activeMobileBtn = document.getElementById('mnav-' + page);
+      if (activeMobileBtn) activeMobileBtn.classList.add('active');
+
       window.scrollTo({ top: 0, behavior: 'instant' });
       history.pushState({ page }, '', '#' + page);
     }
 
     window.addEventListener('popstate', e => {
-      const page = e.state?.page || location.hash.replace('#','') || 'home';
-      navigate(page);
+      const page = e.state?.page || location.hash.replace('#', '') || 'home';
+      setPageWithoutHistory(page);
     });
 
-    (function() {
-      const hash = location.hash.replace('#','');
-      const page = PAGES.includes(hash) ? hash : 'home';
+    function setPageWithoutHistory(page) {
+      const target = PAGES.includes(page) ? page : 'home';
+
       PAGES.forEach(p => {
         document.getElementById('page-' + p).classList.remove('active');
         document.getElementById('nav-' + p).classList.remove('active');
-        const mBtn = document.getElementById('mnav-' + p);
-        if (mBtn) mBtn.classList.remove('active');
+        const mobileBtn = document.getElementById('mnav-' + p);
+        if (mobileBtn) mobileBtn.classList.remove('active');
       });
-      document.getElementById('page-' + page).classList.add('active');
-      document.getElementById('nav-' + page).classList.add('active');
-      const mActiveBtn = document.getElementById('mnav-' + page);
-      if (mActiveBtn) mActiveBtn.classList.add('active');
+
+      document.getElementById('page-' + target).classList.add('active');
+      document.getElementById('nav-' + target).classList.add('active');
+      const activeMobileBtn = document.getElementById('mnav-' + target);
+      if (activeMobileBtn) activeMobileBtn.classList.add('active');
+
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    (function initPage() {
+      const hash = location.hash.replace('#', '');
+      const page = PAGES.includes(hash) ? hash : 'home';
+      setPageWithoutHistory(page);
       history.replaceState({ page }, '', '#' + page);
     })();
 
@@ -1841,23 +2632,33 @@
     function setImage(index) {
       const imgs = productImages[currentKey] || [];
       if (!imgs.length) return;
+
       currentImgIndex = (index + imgs.length) % imgs.length;
       document.getElementById('modalMainImg').src = imgs[currentImgIndex];
-      document.querySelectorAll('.gallery-thumb').forEach((t, i) => t.classList.toggle('active', i === currentImgIndex));
+
+      document.querySelectorAll('.gallery-thumb').forEach((thumb, i) => {
+        thumb.classList.toggle('active', i === currentImgIndex);
+      });
     }
 
-    function changeImage(dir) { setImage(currentImgIndex + dir); }
+    function changeImage(dir) {
+      setImage(currentImgIndex + dir);
+    }
 
     function renderThumbs(key) {
       const imgs = productImages[key] || [];
       document.getElementById('galleryThumbs').innerHTML = imgs.map((src, i) =>
-        `<div class="gallery-thumb ${i===0?'active':''}" onclick="setImage(${i})"><img src="${src}" alt="View ${i+1}"></div>`
+        `<div class="gallery-thumb ${i === 0 ? 'active' : ''}" onclick="setImage(${i})"><img src="${src}" alt="View ${i + 1}"></div>`
       ).join('');
     }
 
     function openProduct(key) {
-      const p = products[key]; if (!p) return;
-      currentKey = key; currentImgIndex = 0;
+      const p = products[key];
+      if (!p) return;
+
+      currentKey = key;
+      currentImgIndex = 0;
+
       document.getElementById('modalBadge').textContent = p.badge;
       document.getElementById('modalTitle').textContent = p.title;
       document.getElementById('modalDesc').textContent = p.desc;
@@ -1865,12 +2666,16 @@
       document.getElementById('buyboxPrice').textContent = 'Request Pricing';
       document.getElementById('buyboxSub').textContent = `Contact Penthia for ${p.title} purchasing details, available configurations, and deployment discussions.`;
       document.getElementById('buyboxNote').textContent = p.note;
+
       setChips('variantDisplay', p.display);
       setChips('variantOS', p.os);
       setChips('variantStorage', p.storage);
       setChips('variantSupport', p.support);
       setChips('variantInput', p.input);
-      renderThumbs(key); setImage(0);
+
+      renderThumbs(key);
+      setImage(0);
+
       document.getElementById('modal').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
@@ -1880,19 +2685,23 @@
       document.body.style.overflow = '';
     }
 
-    function handleModalClick(e) { if (e.target.id === 'modal') closeModal(); }
+    function handleModalClick(e) {
+      if (e.target.id === 'modal') closeModal();
+    }
 
     function openContactForm(type) {
       const title = currentKey && products[currentKey] ? products[currentKey].title : '';
       const msg = document.getElementById('message');
-      if (msg) msg.value = `${type} - ${title}`;
+      if (msg) msg.value = `${type} | ${title}`;
       closeModal();
       navigate('contact');
     }
 
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeModal();
+
       if (!document.getElementById('modal').classList.contains('active')) return;
+
       if (e.key === 'ArrowLeft') changeImage(-1);
       if (e.key === 'ArrowRight') changeImage(1);
     });
@@ -1900,28 +2709,37 @@
     function filterProducts(q) {
       q = q.trim().toLowerCase();
       document.querySelectorAll('#productGrid .prod-card').forEach(card => {
-        const hay = ((card.dataset.search || '') + ' ' + card.textContent).toLowerCase();
-        card.style.display = !q || hay.includes(q) ? '' : 'none';
+        const haystack = ((card.dataset.search || '') + ' ' + card.textContent).toLowerCase();
+        card.style.display = !q || haystack.includes(q) ? '' : 'none';
       });
     }
 
-    document.getElementById('siteSearch').addEventListener('input', function() {
+    document.getElementById('siteSearch').addEventListener('input', function () {
       filterProducts(this.value);
       if (this.value.trim()) navigate('store');
     });
 
-    document.getElementById('siteSearch').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') { e.preventDefault(); navigate('store'); filterProducts(this.value); }
+    document.getElementById('siteSearch').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        navigate('store');
+        filterProducts(this.value);
+      }
     });
 
-    document.getElementById('productSearch').addEventListener('input', function() { filterProducts(this.value); });
+    document.getElementById('productSearch').addEventListener('input', function () {
+      filterProducts(this.value);
+    });
 
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
       const email = document.getElementById('email').value.trim();
       const phone = document.getElementById('phone').value.trim();
-      if (!email && !phone) { e.preventDefault(); alert('Please provide at least an email or phone number so we can reach you.'); }
+
+      if (!email && !phone) {
+        e.preventDefault();
+        alert('Please provide at least an email or phone number so we can reach you.');
+      }
     });
   </script>
-
 </body>
 </html>
