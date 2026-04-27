@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Penthia LLC — Product Catalog 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --ink:#060608;
+  --paper:#0b0b0e;
+  --surface:#111116;
+  --surface2:#16161c;
+  --gold:#c9a84c;
+  --gold-hi:#e8c96a;
+  --gold-dim:#8a6e2f;
+  --gold-line:rgba(201,168,76,0.18);
+  --gold-glow:rgba(201,168,76,0.06);
+  --white:#f0ede6;
+  --muted:#9c9990;
+  --rule:rgba(240,237,230,0.07);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html,body{
+  background:var(--ink);
+  color:var(--white);
+  font-family:'DM Sans',sans-serif;
+  font-weight:300;
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+}
+
+/* ─── PAGE ─── */
+.page{
+  width:min(1280px,100%);
+  margin:0 auto;
+  padding:0 32px 80px;
+}
+
+/* ─── COVER HEADER ─── */
+.cover{
+  position:relative;
+  min-height:160px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  padding:48px 0 40px;
+  border-bottom:1px solid var(--gold-line);
+  overflow:hidden;
+}
+
+.cover::before{
+  content:'';
+  position:absolute;
+  top:0;right:0;
+  width:520px;height:100%;
+  background:radial-gradient(ellipse at top right, rgba(201,168,76,0.10) 0%, transparent 60%);
+  pointer-events:none;
+}
+
+.cover-left{
+  display:flex;
+  align-items:center;
+  gap:24px;
+}
+
+.logo-mark{
+  width:72px;height:72px;
+  border:1px solid var(--gold-line);
+  border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--surface);
+  flex-shrink:0;
+}
+
+.logo-mark img{
+  width:52px;height:52px;
+  object-fit:contain;
+}
+
+.brand-stack{}
+
+.brand-eyebrow{
+  font-family:'DM Sans',sans-serif;
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:5px;
+}
+
+.brand-wordmark{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:3.6rem;
+  letter-spacing:0.05em;
+  line-height:1;
+  color:var(--white);
+}
+
+.cover-right{
+  text-align:right;
+  padding-bottom:4px;
+}
+
+.cover-tagline{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:1.15rem;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+
+.cover-contact{
+  font-size:0.85rem;
+  font-weight:400;
+  color:var(--gold-hi);
+  letter-spacing:0.04em;
+}
+
+.cover-contact a{
+  color:inherit;
+  text-decoration:none;
+}
+
+/* ─── CATALOG LABEL ─── */
+.catalog-label{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:22px 0 28px;
+  border-bottom:1px solid var(--rule);
+}
+
+.catalog-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1rem;
+  letter-spacing:0.30em;
+  color:var(--muted);
+}
+
+.catalog-year{
+  font-family:'Cormorant Garamond',serif;
+  font-size:0.9rem;
+  color:var(--gold-dim);
+  letter-spacing:0.12em;
+}
+
+/* ─── PRODUCT ENTRY ─── */
+.product{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+  border-bottom:1px solid var(--rule);
+  page-break-inside:avoid;
+  break-inside:avoid;
+}
+
+.product:first-of-type{
+  border-top:none;
+}
+
+/* alt layout — image right */
+.product.flip{
+  direction:rtl;
+}
+.product.flip > *{
+  direction:ltr;
+}
+
+/* ─── IMAGE PANE ─── */
+.img-pane{
+  position:relative;
+  min-height:620px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--surface);
+  overflow:hidden;
+}
+
+.product:not(.flip) .img-pane{
+  border-right:1px solid var(--gold-line);
+}
+.product.flip .img-pane{
+  border-left:1px solid var(--gold-line);
+}
+
+.img-pane::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse at center, rgba(201,168,76,0.05) 0%, transparent 70%);
+  pointer-events:none;
+}
+
+.img-pane::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:120px;
+  background:linear-gradient(to top, var(--surface) 0%, transparent 100%);
+  pointer-events:none;
+}
+
+.img-pane img{
+  width:100%;
+  height: 100%;
+  max-height:520px;
+  object-fit:contain;
+  position:relative;
+  z-index:1;
+  filter:drop-shadow(0 24px 48px rgba(0,0,0,0.7));
+}
+
+.tier-badge{
+  position:absolute;
+  top:24px;
+  right:24px;
+  font-family:'DM Sans',sans-serif;
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  color:var(--gold);
+  border:1px solid var(--gold-line);
+  border-radius:40px;
+  padding:5px 14px;
+  background:rgba(11,11,14,0.72);
+  backdrop-filter:blur(8px);
+  z-index:2;
+}
+
+.product.flip .tier-badge{
+  right:auto;
+  left:24px;
+}
+
+/* ─── COPY PANE ─── */
+.copy-pane{
+  padding:52px 48px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:28px;
+  background:var(--paper);
+}
+
+.product-number{
+  font-family:'Cormorant Garamond',serif;
+  font-size:6rem;
+  font-weight:300;
+  line-height:1;
+  color:rgba(201,168,76,0.10);
+  letter-spacing:-0.02em;
+  margin-bottom:-16px;
+  display:block;
+}
+
+.product-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:3.8rem;
+  letter-spacing:0.04em;
+  line-height:0.95;
+  color:var(--white);
+}
+
+.product-name span{
+  color:var(--gold);
+}
+
+.divider{
+  width:48px;
+  height:1px;
+  background:var(--gold);
+  opacity:0.5;
+}
+
+.product-description{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.18rem;
+  font-style:italic;
+  color:var(--muted);
+  line-height:1.65;
+  max-width:420px;
+}
+
+/* ─── SPEC GRID ─── */
+.spec-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.spec-item{
+  padding:14px 18px;
+  background:var(--surface);
+}
+
+.spec-label{
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--gold-dim);
+  display:block;
+  margin-bottom:5px;
+}
+
+.spec-value{
+  font-size:0.9rem;
+  font-weight:400;
+  color:var(--white);
+  line-height:1.4;
+}
+
+/* ─── FEATURE LIST ─── */
+.feature-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.feature-list li{
+  font-size:0.855rem;
+  font-weight:300;
+  color:#b8b4ad;
+  padding-left:18px;
+  position:relative;
+  line-height:1.4;
+}
+
+.feature-list li::before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:7px;
+  width:6px;
+  height:1px;
+  background:var(--gold);
+  opacity:0.6;
+}
+
+/* ─── CONTACT EMAIL ─── */
+.contact-email strong{
+  display:block;
+  font-family:'DM Sans',sans-serif;
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  color:var(--gold-dim);
+  margin-bottom:6px;
+}
+
+.contact-email a{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;
+  color:var(--gold-hi);
+  text-decoration:none;
+  letter-spacing:0.04em;
+}
+
+/* ─── FOOTER ─── */
+.catalog-footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:36px 0 0;
+  border-top:1px solid var(--gold-line);
+  margin-top:0;
+}
+
+.footer-brand{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.4rem;
+  letter-spacing:0.10em;
+  color:var(--gold-dim);
+}
+
+.footer-center{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:0.95rem;
+  color:var(--muted);
+}
+
+.footer-right{
+  font-size:0.8rem;
+  color:var(--gold);
+  font-weight:400;
+  letter-spacing:0.05em;
+}
+
+.footer-right a{
+  color:inherit;
+  text-decoration:none;
+}
+
+/* ─── SECTION DIVIDER ─── */
+.section-break{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:32px 0;
+}
+
+.section-break-line{
+  flex:1;
+  height:1px;
+  background:var(--rule);
+}
+
+.section-break-label{
+  font-family:'DM Sans',sans-serif;
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:0.30em;
+  text-transform:uppercase;
+  color:var(--gold-dim);
+  white-space:nowrap;
+}
+
+/* ─── PRINT ─── */
+@media print{
+  body{background:#060608!important;color:#f0ede6!important}
+  .img-pane,.copy-pane,.spec-item{background:#111116!important}
+  a{color:#e8c96a!important}
+  .product{page-break-inside:avoid;break-inside:avoid}
+}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .product,.product.flip{
+    grid-template-columns:1fr;
+    direction:ltr;
+  }
+  .product:not(.flip) .img-pane,
+  .product.flip .img-pane{
+    border-right:none;
+    border-left:none;
+    border-bottom:1px solid var(--gold-line);
+    min-height:360px;
+  }
+  .product.flip .tier-badge{right:24px;left:auto}
+  .copy-pane{padding:36px 28px}
+  .spec-grid{grid-template-columns:1fr}
+  .cover{flex-direction:column;align-items:flex-start;gap:20px}
+  .cover-right{text-align:left}
+  .brand-wordmark{font-size:2.6rem}
+  .product-name{font-size:3rem}
+  .page{padding:0 16px 60px}
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- COVER HEADER -->
+  <header class="cover">
+    <div class="cover-left">
+      <div class="logo-mark">
+        <img src="penthialogobackgroundremoved.png" alt="Penthia"/>
+      </div>
+      <div class="brand-stack">
+        <div class="brand-eyebrow">Interactive Displays</div>
+        <div class="brand-wordmark">Penthia LLC</div>
+      </div>
+    </div>
+    <div class="cover-right">
+      <div class="cover-tagline">Precision-engineered for modern learning</div>
+      <div class="cover-contact"><a href="mailto:info@penthiasolutions.com">info@penthiasolutions.com</a></div>
+    </div>
+  </header>
+
+  <!-- CATALOG META -->
+  <div class="catalog-label">
+    <span class="catalog-title">Product Catalog &nbsp;·&nbsp; Vertex Family &nbsp;·&nbsp; QS3 Series</span>
+    <span class="catalog-year">2026 Lineup</span>
+  </div>
+
+  <!-- ══ PRODUCT 01 — VERTEX ELITE ══ -->
+  <article class="product">
+    <div class="img-pane">
+      <div class="tier-badge">Flagship</div>
+      <img src="vertexelite3bgremoved.png" alt="Vertex Elite interactive smartboard"/>
+    </div>
+    <div class="copy-pane">
+      <div>
+        <span class="product-number">01</span>
+        <h2 class="product-name">Vertex <span>Elite</span></h2>
+      </div>
+      <div class="divider"></div>
+      <p class="product-description">The pinnacle of the Vertex family. Built for demanding classrooms and high-performance presentation environments where nothing short of the best will do.</p>
+
+      <div class="spec-grid">
+        <div class="spec-item">
+          <span class="spec-label">Processor</span>
+          <span class="spec-value">RK3588 High-End</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">OS / Memory</span>
+          <span class="spec-value">Android 15 · 16GB + 256GB</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Display</span>
+          <span class="spec-value">4K UHD · 3840 × 2160</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Available Sizes</span>
+          <span class="spec-value">65 · 75 · 86 · 98 · 110 in</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Touch Points</span>
+          <span class="spec-value">50 points · Anti-glare</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Audio</span>
+          <span class="spec-value">20W × 2 + 20W Subwoofer</span>
+        </div>
+      </div>
+
+      <ul class="feature-list">
+        <li>Optional Windows OPS — i5 13th Gen or i7 12th Gen</li>
+        <li>Type-C full function with 65W fast charging</li>
+        <li>Integrated whiteboard software & one-screen sharing</li>
+        <li>Optional 48MP camera and microphone</li>
+        <li>Wall mount included · Stand available at additional cost</li>
+        <li>Accessories: IWB Pen ×2, HDMI Cable, Touch USB, Power Cable</li>
+        <li>AC 100–240V · Brightness 350 nits</li>
+      </ul>
+
+      <div class="contact-email">
+        <strong>Pricing & Enquiries</strong>
+        <a href="mailto:info@penthiasolutions.com">info@penthiasolutions.com</a>
+      </div>
+    </div>
+  </article>
+
+  <div class="section-break">
+    <div class="section-break-line"></div>
+    <div class="section-break-label">Vertex Family</div>
+    <div class="section-break-line"></div>
+  </div>
+
+  <!-- ══ PRODUCT 02 — VERTEX PRO ══ -->
+  <article class="product flip">
+    <div class="img-pane">
+      <div class="tier-badge">Pro</div>
+      <img src="vertexelite3bgremoved.png" alt="Vertex Pro interactive smartboard"/>
+    </div>
+    <div class="copy-pane">
+      <div>
+        <span class="product-number">02</span>
+        <h2 class="product-name">Vertex <span>Pro</span></h2>
+      </div>
+      <div class="divider"></div>
+      <p class="product-description">Versatile and scalable. Android 14 as standard with the flexibility to expand storage, memory, and operating system as your institution grows.</p>
+
+      <div class="spec-grid">
+        <div class="spec-item">
+          <span class="spec-label">Processor</span>
+          <span class="spec-value">311D2 Higher Version</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">OS / Memory</span>
+          <span class="spec-value">Android 14 · 8GB + 128GB std</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Display</span>
+          <span class="spec-value">4K UHD · 3840 × 2160</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Available Sizes</span>
+          <span class="spec-value">65 · 75 · 86 · 98 · 110 in</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Touch Points</span>
+          <span class="spec-value">50 points · Anti-glare</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Audio</span>
+          <span class="spec-value">20W × 2 + 20W Subwoofer</span>
+        </div>
+      </div>
+
+      <ul class="feature-list">
+        <li>Optional 16GB + 256GB memory upgrade</li>
+        <li>Optional Windows OPS — i5 12th Gen</li>
+        <li>Type-C full function with 65W fast charging</li>
+        <li>Integrated whiteboard software & one-screen sharing</li>
+        <li>Optional 48MP camera and microphone</li>
+        <li>Wall mount included · Stand available at additional cost</li>
+        <li>Accessories: IWB Pen ×2, HDMI Cable, Touch USB, Power Cable, Remote ×1</li>
+        <li>AC 100–240V · Brightness 350 nits</li>
+      </ul>
+
+      <div class="contact-email">
+        <strong>Pricing & Enquiries</strong>
+        <a href="mailto:info@penthiasolutions.com">info@penthiasolutions.com</a>
+      </div>
+    </div>
+  </article>
+
+  <div class="section-break">
+    <div class="section-break-line"></div>
+    <div class="section-break-label">Vertex Family</div>
+    <div class="section-break-line"></div>
+  </div>
+
+  <!-- ══ PRODUCT 03 — VERTEX STANDARD ══ -->
+  <article class="product">
+    <div class="img-pane">
+      <div class="tier-badge">Standard</div>
+      <img src="penthiaandroudbackgroundremovedbg.png" alt="Vertex Standard interactive smartboard"/>
+    </div>
+    <div class="copy-pane">
+      <div>
+        <span class="product-number">03</span>
+        <h2 class="product-name">Vertex <span>Standard</span></h2>
+      </div>
+      <div class="divider"></div>
+      <p class="product-description">Focused, reliable, and ready for daily classroom use. A clean Android-only configuration that delivers everything essential without compromise.</p>
+
+      <div class="spec-grid">
+        <div class="spec-item">
+          <span class="spec-label">Processor</span>
+          <span class="spec-value">T985 Higher Mid-Range</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">OS / Memory</span>
+          <span class="spec-value">Android 14 · 8GB + 128GB</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Display</span>
+          <span class="spec-value">4K UHD · 3840 × 2160</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Available Sizes</span>
+          <span class="spec-value">65 · 75 in (others on request)</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Touch Points</span>
+          <span class="spec-value">50 points · Anti-glare</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Audio</span>
+          <span class="spec-value">20W × 2 + 20W Subwoofer</span>
+        </div>
+      </div>
+
+      <ul class="feature-list">
+        <li>Android only — no Windows OPS option</li>
+        <li>Type-C full function with 15W charging</li>
+        <li>Integrated whiteboard software & one-screen sharing</li>
+        <li>Optional 48MP camera and microphone</li>
+        <li>Wall mount included · Stand available at additional cost</li>
+        <li>Accessories: IWB Pen ×2, HDMI Cable, Touch USB, Power Cable, Remote ×1</li>
+        <li>AC 100–240V · Brightness 350 nits</li>
+      </ul>
+
+      <div class="contact-email">
+        <strong>Pricing & Enquiries</strong>
+        <a href="mailto:info@penthiasolutions.com">info@penthiasolutions.com</a>
+      </div>
+    </div>
+  </article>
+
+  <div class="section-break">
+    <div class="section-break-line"></div>
+    <div class="section-break-label">QS3 Series</div>
+    <div class="section-break-line"></div>
+  </div>
+
+  <!-- ══ PRODUCT 04 — QS3 SERIES ══ -->
+  <article class="product flip">
+    <div class="img-pane">
+      <div class="tier-badge">Professional Display</div>
+      <img src="penthianosoftwareboard.png" alt="QS3 Series professional display"/>
+    </div>
+    <div class="copy-pane">
+      <div>
+        <span class="product-number">04</span>
+        <h2 class="product-name">QS3 <span>Series</span></h2>
+      </div>
+      <div class="divider"></div>
+      <p class="product-description">A large-format professional display that works with any device. Bring your own Windows, Mac, or Linux setup and unlock the full power of 4K touch annotation.</p>
+
+      <div class="spec-grid">
+        <div class="spec-item">
+          <span class="spec-label">System</span>
+          <span class="spec-value">Non-Android · External device</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Compatibility</span>
+          <span class="spec-value">Windows · Mac · Linux</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Display</span>
+          <span class="spec-value">4K UHD · 3840 × 2160</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Touch Points</span>
+          <span class="spec-value">20 points · Anti-glare</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Audio</span>
+          <span class="spec-value">15W × 2</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Brightness</span>
+          <span class="spec-value">350 nits · AC 100–240V</span>
+        </div>
+      </div>
+
+      <ul class="feature-list">
+        <li>Touchscreen and annotation through external device connection</li>
+        <li>Ports: Touch USB ×1, USB ×3, HDMI In ×1, RS232, AV In, OPS Slot</li>
+        <li>Optional 48MP camera and microphone</li>
+        <li>Wall mount included · Stand available at additional cost</li>
+        <li>Accessories: IWB Pen ×1, Power Cable, Remote ×1, Wall Mounting Bracket ×1</li>
+      </ul>
+
+      <div class="contact-email">
+        <strong>Pricing & Enquiries</strong>
+        <a href="mailto:info@penthiasolutions.com">info@penthiasolutions.com</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- FOOTER -->
+  <footer class="catalog-footer">
+    <div class="footer-brand">Penthia LLC</div>
+    <div class="footer-center">Professional displays for modern learning</div>
+    <div class="footer-right"><a href="mailto:info@penthiasolutions.com">info@penthiasolutions.com</a></div>
+  </footer>
+
+</div>
+
+</body>
+</html>
