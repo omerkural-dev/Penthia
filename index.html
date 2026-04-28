@@ -2390,14 +2390,18 @@
 
                   <div class="form-field">
                     <label for="email">Email Address</label>
-                    <input id="email" name="Email" type="email" placeholder="jane@school.edu" />
+                    <input id="email" name="Email" type="email" placeholder="jane@school.edu" pattern="[^\s@]+@[^\s@]+\.[^\s@]+" />
                   </div>
 
                   <div class="form-field">
                     <label for="phone">Phone Number</label>
-                    <input id="phone" name="Phone Number" type="tel" placeholder="+1 (555) 000-0000" />
+                    <input id="phone" name="Phone Number" type="tel" placeholder="+1 (555) 000-0000" pattern="^\+?[0-9\s\-()]{7,}$" />
                   </div>
-
+                  <div class="form-field">
+                    <label for="organization">Organization (Optional)</label>
+                    <input id="organization" name="Organization" type="text" placeholder="School, company, or institution (optional)" />
+                  </div>
+                  
                   <div class="form-field full">
                     <label for="message">Message</label>
                     <textarea id="message" name="Message" placeholder="Tell us about your classroom setup, questions about a specific model, or anything else we can help with…" required></textarea>
@@ -2832,12 +2836,25 @@
       e.preventDefault();
 
       const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
+const phone = document.getElementById('phone').value.trim();
 
-      if (!email && !phone) {
-        alert('Please provide at least an email or phone number so we can reach you.');
-        return;
-      }
+const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+const phoneValid = /^\+?[0-9\s\-()]{7,}$/.test(phone);
+
+if (!email && !phone) {
+  alert('Please provide at least an email or phone number so we can reach you.');
+  return;
+}
+
+if (email && !emailValid) {
+  alert('Please enter a valid email address.');
+  return;
+}
+
+if (phone && !phoneValid) {
+  alert('Please enter a valid phone number.');
+  return;
+}
 
       const submitBtn = this.querySelector('button[type="submit"]');
       submitBtn.disabled = true;
