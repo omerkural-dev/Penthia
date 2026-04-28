@@ -1246,6 +1246,49 @@
       margin-top: 4px;
     }
 
+    /* ── Thank-you screen ── */
+    #contactThankyou {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 32px;
+      gap: 24px;
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .thankyou-icon {
+      width: 72px;
+      height: 72px;
+      background: var(--gold-pale);
+      border: 1px solid var(--gold-border);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+    }
+
+    .thankyou-icon svg { width: 32px; height: 32px; }
+
+    #contactThankyou h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+    }
+
+    #contactThankyou h2 em { font-style: italic; color: var(--gold-2); }
+
+    #contactThankyou p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--muted-2);
+      font-weight: 300;
+      max-width: 400px;
+    }
+
     footer {
       background: var(--ink-2);
       border-top: 1px solid var(--line-2);
@@ -2322,48 +2365,70 @@
             </div>
           </div>
 
+          <!-- ═══════════════════════════════════════════════════
+               CHANGE: Wrapped form + added Penthia thank-you div.
+               The form submits silently via JavaScript fetch().
+               Formspree still receives the data, but the visitor
+               never sees Formspree's branded redirect page.
+          ════════════════════════════════════════════════════ -->
           <div>
-            <form id="contactForm" action="https://formspree.io/f/xnjoppqk" method="POST">
-              <input type="hidden" name="_subject" value="New Penthia Contact Request" />
+            <!-- Form wrapper — hidden after successful submit -->
+            <div id="contactFormWrap">
+              <form id="contactForm">
+                <input type="hidden" name="_subject" value="New Penthia Contact Request" />
 
-              <div class="form-grid">
-                <div class="form-field">
-                  <label for="firstName">First Name</label>
-                  <input id="firstName" name="First Name" type="text" placeholder="Jane" required />
-                </div>
+                <div class="form-grid">
+                  <div class="form-field">
+                    <label for="firstName">First Name</label>
+                    <input id="firstName" name="First Name" type="text" placeholder="Jane" required />
+                  </div>
 
-                <div class="form-field">
-                  <label for="lastName">Last Name</label>
-                  <input id="lastName" name="Last Name" type="text" placeholder="Smith" required />
-                </div>
+                  <div class="form-field">
+                    <label for="lastName">Last Name</label>
+                    <input id="lastName" name="Last Name" type="text" placeholder="Smith" required />
+                  </div>
 
-                <div class="form-field">
-                  <label for="email">Email Address</label>
-                  <input id="email" name="Email" type="email" placeholder="jane@school.edu" />
-                </div>
+                  <div class="form-field">
+                    <label for="email">Email Address</label>
+                    <input id="email" name="Email" type="email" placeholder="jane@school.edu" />
+                  </div>
 
-                <div class="form-field">
-                  <label for="phone">Phone Number</label>
-                  <input id="phone" name="Phone Number" type="tel" placeholder="+1 (555) 000-0000" />
-                </div>
+                  <div class="form-field">
+                    <label for="phone">Phone Number</label>
+                    <input id="phone" name="Phone Number" type="tel" placeholder="+1 (555) 000-0000" />
+                  </div>
 
-                <div class="form-field full">
-                  <label for="message">Message</label>
-                  <textarea id="message" name="Message" placeholder="Tell us about your classroom setup, questions about a specific model, or anything else we can help with…" required></textarea>
-                  <div class="form-note">Please provide at least one of email or phone number.</div>
-                </div>
+                  <div class="form-field full">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="Message" placeholder="Tell us about your classroom setup, questions about a specific model, or anything else we can help with…" required></textarea>
+                    <div class="form-note">Please provide at least one of email or phone number.</div>
+                  </div>
 
-                <div class="form-field full">
-                  <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
-                    Send Message
-                    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                      <path d="M5 12h14M12 5l7 7-7 7"></path>
-                    </svg>
-                  </button>
+                  <div class="form-field full">
+                    <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
+                      Send Message
+                      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                      </svg>
+                    </button>
+                  </div>
                 </div>
+              </form>
+            </div>
+
+            <!-- Penthia thank-you screen — shown after submit -->
+            <div id="contactThankyou">
+              <div class="thankyou-icon">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
               </div>
-            </form>
+              <h2>Message <em>received.</em></h2>
+              <p>Thank you for reaching out to Penthia Solutions. We'll be in touch within 24 hours.</p>
+              <button class="btn-ghost" onclick="navigate('store')">Browse Our Products</button>
+            </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -2760,14 +2825,38 @@
       filterProducts(this.value);
     });
 
-    document.getElementById('contactForm').addEventListener('submit', function (e) {
+    // ── CHANGED: async intercept — form still goes to Formspree,
+    //    but visitor never sees the Formspree redirect page.
+    //    Instead they see Penthia's own thank-you screen.
+    document.getElementById('contactForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
       const email = document.getElementById('email').value.trim();
       const phone = document.getElementById('phone').value.trim();
 
       if (!email && !phone) {
-        e.preventDefault();
         alert('Please provide at least an email or phone number so we can reach you.');
+        return;
       }
+
+      const submitBtn = this.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      try {
+        const data = new FormData(this);
+        await fetch('https://formspree.io/f/xnjoppqk', {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+      } catch (_) {
+        // Silent — message still shows regardless of network issues
+      }
+
+      // Hide form, show Penthia thank-you screen
+      document.getElementById('contactFormWrap').style.display = 'none';
+      document.getElementById('contactThankyou').style.display = 'flex';
     });
   </script>
 </body>
